@@ -1,0 +1,136 @@
+<div ref="{{rootRef}}" class="vroot" style="position: relative; font-family: Spectral, Georgia, serif; color: #EFE4CC; background: #070A14; overflow-x: clip;">
+  
+
+  <canvas ref="{{skyRef}}" aria-hidden="true" style="position: fixed; left: 0; top: 0; width: 100vw; height: 100vh; display: block; z-index: 0; pointer-events: none;"></canvas>
+  <div ref="{{labelsRef}}" aria-hidden="true" style="position: fixed; left: 0; top: 0; width: 100vw; height: 100vh; z-index: 1; pointer-events: none; overflow: hidden;">
+    <sc-for list="{{labels}}" as="n" hint-placeholder-count="9">
+      <span style="position: absolute; left: 0; top: 0; font-family: 'Tiro Devanagari Sanskrit', serif; font-size: 15px; color: #C9BEA4; white-space: nowrap; opacity: 0; will-change: transform, opacity; text-shadow: 0 0 10px #070A14;">{{n.d}}</span>
+    </sc-for>
+  </div>
+  <div ref="{{fadeRef}}" aria-hidden="true" style="position: fixed; inset: 0; z-index: 2; background: #070A14; opacity: 0; pointer-events: none;"></div>
+
+  
+
+  <nav ref="{{railRef}}" class="rail" aria-label="Sections" style="position: fixed; right: 26px; top: 50%; transform: translateY(-50%); z-index: 20; display: flex; flex-direction: column; align-items: flex-end;">
+    <span aria-hidden="true" style="position: absolute; right: 4px; top: 10px; bottom: 10px; width: 1px; background: linear-gradient(#B23A1F, #E3B04B);"></span>
+    <sc-for list="{{scenes}}" as="s" hint-placeholder-count="6">
+      <a href="{{s.href}}" class="bead" data-on="0" aria-label="{{s.en}}"><span>{{s.deva}}</span><i></i></a>
+    </sc-for>
+  </nav>
+
+  <main id="main">
+    <!-- 0 · visit: everything a visitor needs in the first screen -->
+    <section id="top" data-scene="0" aria-label="Plan a visit" style="position: relative; padding: 132px 0 40px;">
+      <div class="w">
+        <p class="ui" style="margin: 0; font-size: 14px; letter-spacing: .16em; color: #9C927E;">दर्शन · VISIT</p>
+        <h1 style="margin: 14px 0 0; font-weight: 200; font-size: clamp(48px, 6vw, 88px); line-height: 1.04;">Plan a visit to the hill.</h1>
+        <p class="body" style="margin-top: 18px; max-width: 34em;">Dashrathanchal hill, Devprayag, Tehri Garhwal. About three hours by road from Rishikesh on the Badrinath highway.</p>
+        <div class="vq" role="list" aria-label="At a glance">
+          <div role="listitem"><span class="vq-k">Tonight</span><span class="vq-v">Sunset {{v.sunset}}</span><span class="vq-s">The Moon is {{v.illum}}% lit, in {{v.nak}}</span></div>
+          <div role="listitem"><span class="vq-k">Darkest nights</span><span class="vq-v">Around {{v.newMoon}}</span><span class="vq-s">Amāvasyā, the new Moon</span></div>
+          <div role="listitem"><span class="vq-k">Hours</span><span class="vq-v">[Visiting hours]</span><span class="vq-s">Night viewing [by appointment?] · [closed days]</span></div>
+          <div role="listitem"><span class="vq-k">Ask the family</span><span class="vq-v"><a href="tel:+919557140296" style="color: inherit;">+91 95571 40296</a></span><span class="vq-s"><a href="https://wa.me/919557140296" class="line" style="min-height: 44px;">WhatsApp</a> · <a href="#ask" class="line" style="min-height: 44px;">Write a note</a></span></div>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px 28px; margin-top: 28px;">
+          <a href="#ask" class="pill">Ask to come <span aria-hidden="true">→</span></a>
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=Nakshatra+Vedshala+Devprayag" class="line" rel="noopener">Open in Maps</a>
+          <span class="ui" style="font-size: 14px; color: #8C8474;">Map pin to be checked by the family</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 · plan a visit -->
+    <section id="visit" data-scene="1" aria-label="Getting there" style="position: relative; padding: 72px 0 80px;">
+      <div class="w">
+        <div class="panel rv" style="max-width: 760px;">
+          <p class="kick"><span class="sh"><span class="t">दर्शन</span></span> · visit</p>
+          <h2 class="lede" style="margin-top: 14px;">Getting there, and what to bring.</h2>
+          <p class="body" style="margin-top: 14px;">Dashrathanchal hill, Devprayag, Tehri Garhwal. About three hours by road from Rishikesh on the Badrinath highway.</p>
+        </div>
+        <div class="stack rv" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; margin-top: 48px;">
+          <figure style="margin: 0;">
+            <img src="/img/0abf2842e5db5f0c75add576e148ab56.jpg" alt="Devprayag at dusk: the town on the slope and a bridge over the green river" style="display: block; width: 100%; height: clamp(360px, 40vw, 560px); object-fit: cover; object-position: 50% 55%; filter: saturate(.85) brightness(.92);">
+            <figcaption class="ui" style="display: flex; justify-content: space-between; gap: 12px; margin-top: 10px; font-size: 14px;"><span style="color: #E3B04B;">Dusk · सन्ध्या</span><span style="color: #8C8474;">Rohan Sah · Unsplash</span></figcaption>
+          </figure>
+          <figure style="margin: 0;">
+            <img src="/img/0314027519d5a613cd1421cd7ccef262.jpg" alt="Devprayag at night: lit houses above the Sangam and a bridge reflected red in the water" style="display: block; width: 100%; height: clamp(360px, 40vw, 560px); object-fit: cover; object-position: 50% 62%;">
+            <figcaption class="ui" style="display: flex; justify-content: space-between; gap: 12px; margin-top: 10px; font-size: 14px;"><span style="color: #E3B04B;">Night · रात्रि</span><span style="color: #8C8474;">RachnaChaudhary1 · Wikimedia Commons · <a href="https://creativecommons.org/licenses/by-sa/4.0/" style="color: inherit;">CC BY-SA 4.0</a></span></figcaption>
+          </figure>
+        </div>
+        <div class="stack rv" style="display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 28px 56px; align-items: center; margin-top: 16px; padding: 28px; background: rgba(7,10,20,.78); border: 1px solid rgba(239,228,204,.12);">
+          <figure style="margin: 0;">
+            <img src="/img/827ea5f9efa517e940bf6c16481c31e5.jpg" alt="A weathered hand-painted signboard reading Nakshatra-Vedhshala (Observatory), sthapana 1946, Research Library, sansthapak Acharya Pt. Chakradhar Joshi, with a six-pointed star and a Sun and crescent Moon" style="display: block; width: 100%; height: auto; filter: saturate(.9) brightness(.94);">
+            <figcaption class="ui" style="margin-top: 10px; font-size: 14px; color: #8C8474;">The signboard at the Vedshala · photograph source to confirm</figcaption>
+          </figure>
+          <div>
+            <p class="kick"><span class="sh"><span class="t">पहचान</span></span> · at the gate</p>
+            <p style="margin: 12px 0 0; font-weight: 300; font-size: 30px; line-height: 1.25;">Look for the painted sign.</p>
+            <p class="body" style="margin-top: 12px; font-size: 18px;">Red and blue on white, rusted at the edges: नक्षत्र-वेधशाला, Observatory, स्थापना 1946, Research Library. Along the bottom, its founder: आचार्य पं. चक्रधर जोशी.</p>
+          </div>
+        </div>
+        <div class="stack box" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px 64px; margin-top: 48px;">
+          <dl class="ui" style="margin: 0; font-size: 16px;">
+            <sc-for list="{{facts}}" as="f" hint-placeholder-count="5">
+              <div style="display: grid; grid-template-columns: 170px 1fr; gap: 12px; padding: 16px 0; border-top: 1px solid rgba(239,228,204,.14);"><dt style="color: #9C927E;">{{f.k}}</dt><dd style="margin: 0; font-family: Spectral, serif; font-size: 19px;">{{f.v}}</dd></div>
+            </sc-for>
+          </dl>
+          <div>
+            <p class="ui" style="margin: 0; font-size: 14px; letter-spacing: .12em; color: #E3B04B;">BRING</p>
+            <ul style="margin: 10px 0 0; padding-left: 22px; font-weight: 300; font-size: 20px; line-height: 1.8;">
+              <li>A warm layer: the hill is cold after dark, even in autumn</li>
+              <li>A torch with a red light, to keep your eyes used to the dark</li>
+              <li>Shoes for steps and a slope up the hill</li>
+              <li>Patience: eyes take about twenty minutes to see faint stars</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 · ask to come -->
+    <section id="ask" data-scene="2" aria-label="Ask to visit" style="position: relative; padding: 60px 0 140px;">
+      <div class="w" style="max-width: 900px;">
+        <div class="box">
+          <sc-if value="{{r.open}}" hint-placeholder-val="{{true}}">
+            <p class="kick"><span class="sh"><span class="t">निवेदन</span></span> · ask to come</p>
+            <h2 class="lede" style="margin-top: 12px; font-size: clamp(28px, 2.8vw, 38px);">Tell the family when you would like to come.</h2>
+            <div style="display: grid; gap: 16px; margin-top: 24px;">
+              <div class="stack" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px;">
+                <div><label class="lbl" for="rn">Your name</label><input id="rn" class="fld" type="text" autocomplete="name" value="{{r.name}}" onInput="{{r.setName}}" onChange="{{r.setName}}"><span class="ui" style="display: block; margin-top: 4px; font-size: 14px; color: #E07A5F;">{{r.nameErr}}</span></div>
+                <div><label class="lbl" for="re">Email</label><input id="re" class="fld" type="email" autocomplete="email" value="{{r.email}}" onInput="{{r.setEmail}}" onChange="{{r.setEmail}}"><span class="ui" style="display: block; margin-top: 4px; font-size: 14px; color: #E07A5F;">{{r.emailErr}}</span></div>
+              </div>
+              <div class="stack" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px;">
+                <div><label class="lbl" for="rd">Preferred date</label><input id="rd" class="fld" type="date" value="{{r.date}}" onInput="{{r.setDate}}" onChange="{{r.setDate}}"></div>
+                <div><label class="lbl" for="rg">How many people</label><input id="rg" class="fld" type="number" min="1" max="60" value="{{r.size}}" onInput="{{r.setSize}}" onChange="{{r.setSize}}"></div>
+              </div>
+              <div role="group" aria-label="What would you like to do">
+                <span class="lbl">What would you like to do</span>
+                <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                  <sc-for list="{{r.wants}}" as="c" hint-placeholder-count="4">
+                    <button type="button" class="chip ui" aria-pressed="{{c.on}}" onClick="{{c.pick}}" style="min-height: 44px; padding: 0 18px; border-radius: 999px; border: 1px solid {{c.border}}; background: {{c.bg}}; color: {{c.fg}}; cursor: pointer; font-size: 15px;">{{c.label}}</button>
+                  </sc-for>
+                </div>
+              </div>
+              <div><label class="lbl" for="rm">Anything else <span style="color: #8C8474;">(optional)</span></label><textarea id="rm" class="fld" rows="3" onInput="{{r.setMsg}}" onChange="{{r.setMsg}}" style="resize: vertical;">{{r.msg}}</textarea></div>
+              <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px;">
+                <button type="button" class="pill" onClick="{{r.send}}">Send the request <span aria-hidden="true">→</span></button>
+                <span class="ui" style="font-size: 14px; color: #8C8474;">{{r.hint}}</span>
+              </div>
+            </div>
+          </sc-if>
+          <sc-if value="{{r.sent}}" hint-placeholder-val="{{false}}">
+            <div aria-live="polite" style="text-align: center; padding: 20px 0;">
+              <p style="margin: 0; font-family: 'Tiro Devanagari Sanskrit', serif; font-size: 22px; color: #E3B04B;">॥ स्वागतम् ॥</p>
+              <p style="margin: 10px 0 0; font-weight: 200; font-size: 38px; line-height: 1.2;">We'll keep a place on the hill{{r.first}}.</p>
+              <p class="body" style="margin: 12px auto 0; max-width: 28em; font-size: 19px;">{{r.summary}}</p>
+              <p class="ui" style="margin: 12px 0 0; font-size: 14px; color: #8C8474;">[On the live site this request goes to the family, who reply by email.]</p>
+              <button type="button" class="line" onClick="{{r.reset}}" style="margin-top: 12px;">Change the request</button>
+            </div>
+          </sc-if>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  
+</div>
