@@ -1,0 +1,16 @@
+/* Design tokens from the System page (design/prototype/System.dc.html).
+   The ported pages keep the prototype's literal values for fidelity; new code should use these names. */
+:root{
+  /* night */
+  --night:#070A14; --sky:#161C33; --moonlight:#EFE4CC; --dust:#C9BEA4; --shade:#9C927E; --faint:#8C8474;
+  --gold:#E3B04B; --gold-hover:#F2CD7A; --kalava:#B23A1F; --ink-on-gold:#120D08;
+  /* the paper leaf, inside drawings */
+  --leaf:#E8CF96; --leaf-edge:#D8B477; --leaf-ink:#2B170A; --rubric:#9A2812;
+  /* reading light · paper */
+  --paper:#EFE6D2; --paper-ink:#2A1F14; --paper-ink-soft:#4A3B2A; --paper-faint:#6E5C45; --sindoor:#7A2E16;
+  /* type */
+  --f-display:'Rozha One',serif; --f-deva:'Tiro Devanagari Sanskrit',serif; --f-hindi:'Tiro Devanagari Hindi',serif;
+  --f-text:Spectral,Georgia,serif; --f-ui:Mukta,sans-serif;
+  /* rules from the audit */
+  --tap:44px; --label-min:14px; --body:20px;
+}

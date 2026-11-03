@@ -7,7 +7,7 @@ Preview the prototype: `python3 -m http.server 5190 --directory ../design/protot
 ## Checklist
 
 - [x] **Setup**: Astro project (static output), TypeScript, git, `npm run build`, folder layout, three.js as a dependency · Astro 5.18, three r149 pinned to match the prototype, i18n en/hi, build passes
-- [ ] **Tokens and base CSS**: `src/styles/tokens.css` from System, shared base CSS (header, pill, line, bead rail, skip link, focus, paper reading light, glossary, starfield fallback)
+- [x] **Tokens and base CSS**: `src/styles/tokens.css` from System, shared base CSS (header, pill, line, bead rail, skip link, focus, paper reading light, glossary, starfield fallback) · base.css holds the 26 rules identical on all 11 pages; reading.css is the paper/glossary block verbatim; pill and header pill compute the same as the prototype. Rules that vary by page (.line, .kick, .lede, .body, .bead, phone media) travel with each page
 - [ ] **Shared layout**: `BaseLayout.astro` with head, fonts, header (solid on scroll, outline pill, language switch, phone menu), footer, Emblem component
 - [ ] **Shared islands**: cursor thread, headings that write themselves, Devanagari `lang` tagging, reading light, glossary popover
 - [ ] **Shared maths**: `src/lib/astro.ts` (Sun, Moon, nakshatra, tithi, sunrise/sunset, new and full Moon) with unit checks against the prototype's numbers
