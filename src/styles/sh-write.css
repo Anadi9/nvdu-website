@@ -1,0 +1,5 @@
+/* headings that write themselves (pages that use the shared shInit), verbatim from the prototype */
+.js-io .sh[data-w="1"]>.t{clip-path:inset(-40% 100% -60% -2%);transition:clip-path 1.25s cubic-bezier(.55,.05,.25,1) .4s}
+.js-io .sh[data-w="1"]::before{transform:scaleX(0);transform-origin:left center;transition:transform .6s cubic-bezier(.55,.05,.25,1)}
+.js-io .sh[data-w="1"][data-in="1"]>.t{clip-path:inset(-40% -6% -60% -2%)}
+.js-io .sh[data-w="1"][data-in="1"]::before{transform:none}

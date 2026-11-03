@@ -1,0 +1,5 @@
+---
+// Night / Paper switch. The island in reading.ts sets aria-pressed and the root class.
+interface Props { style?: string }
+---
+<div class="mode" role="group" aria-label="Reading light" style={Astro.props.style}><span class="ui mode-k">Read in</span><button type="button" class="mode-b ui" data-mode="night" aria-pressed="true">Night</button><button type="button" class="mode-b ui" data-mode="paper" aria-pressed="false">Paper</button></div>

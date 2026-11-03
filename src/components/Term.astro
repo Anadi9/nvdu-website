@@ -1,0 +1,5 @@
+---
+// A Sanskrit term in running text: <Term k="tithi">tithis</Term>
+interface Props { k: string }
+---
+<button type="button" class="gt" data-gt={Astro.props.k} aria-expanded="false"><slot /></button>

@@ -1,7 +1,20 @@
 ---
-// Temporary: the shared layout on its own, until Home is ported.
+// Temporary: the shared layout and islands on their own, until Home is ported.
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ReadingSwitch from '../components/ReadingSwitch.astro';
+import GlossaryPopover from '../components/GlossaryPopover.astro';
+import Term from '../components/Term.astro';
+import '../styles/reading.css';
 ---
 <BaseLayout title="Nakshatra Vedshala · Home" current="home">
-  <section style="min-height: 140vh; padding-top: 160px;"><div class="w"><p class="ui" style="color: #9C927E;">Layout check · the Home page is ported in its own step.</p></div></section>
+  <section style="min-height: 140vh; padding-top: 160px;"><div class="w">
+    <p class="kick" style="font-family: 'Tiro Devanagari Sanskrit', serif; font-size: 18px; color: #E3B04B; margin: 0;"><span class="sh"><span class="t">संग्रह</span></span> · from the collection</p>
+    <p class="ui" style="color: #9C927E;">Island check · the pañcāṅga counts the month in <Term k="tithi">tithis</Term>.</p>
+    <ReadingSwitch />
+  </div></section>
+  <GlossaryPopover />
 </BaseLayout>
+<script>
+  import { initReading, initGlossary } from '../islands/reading';
+  initReading(false); initGlossary();
+</script>
