@@ -1,0 +1,17 @@
+---
+// Manuscript record for folio ४६४२, ported from design/prototype/PothiRecord.dc.html (opens in Paper)
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Board from '../../../components/Board.astro';
+import tpl from '../../../boards/record.html?raw';
+import make from '../../../boards/record.js';
+import '../../../styles/pages/record.css';
+---
+<BaseLayout title="Nakshatra Vedshala · Folio ४६४२" description="Folio ४६४२ in the Vedshala's register: the scan, the catalogue entry, the reading and where the leaf is in the six stages." current="pothi" bare>
+  <Board tpl={tpl} make={make} />
+</BaseLayout>
+<script>
+  import { boot } from '../../../lib/dc/boot.js';
+  import tpl from '../../../boards/record.html?raw';
+  import make from '../../../boards/record.js';
+  boot(tpl, make);
+</script>

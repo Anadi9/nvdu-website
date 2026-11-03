@@ -1,0 +1,120 @@
+<div ref="{{rootRef}}" class="vroot" style="position: relative; font-family: Spectral, Georgia, serif; color: #EFE4CC; background: radial-gradient(ellipse at 50% 0%, #161C33 0%, #070A14 60%); overflow-x: clip;">
+  
+
+  <canvas ref="{{skyRef}}" aria-hidden="true" style="position: fixed; left: 0; top: 0; width: 100vw; height: 100vh; display: block; z-index: 0;"></canvas>
+  
+
+
+  <main id="main" class="rcd" style="position: relative;">
+    <!-- the record of one manuscript: what the register row opens -->
+    <section aria-labelledby="rec-h" style="position: relative; padding: 116px 0 40px;">
+      <div class="w">
+        <nav class="crumbs ui" aria-label="You are here"><a href="/manuscripts/">Manuscripts</a><span aria-hidden="true">›</span><a href="/manuscripts/#register">The register</a><span aria-hidden="true">›</span><span aria-current="page">क्र. ४६४२</span></nav>
+        <div class="rec-head">
+          <div>
+            <p class="ui rec-kick">सूची · REGISTER NO. 4642 · <span class="rec-chip">Being surveyed · stage १ of ६</span></p>
+            <h1 id="rec-h" class="rec-h"><span class="rec-no">४६४२</span><span class="rec-t">[Title to be identified]</span></h1>
+            <p class="rec-lede">A long paper leaf of close Devanagari, its number inked in the corner and water-stained along the right edge.</p>
+          </div>
+          <div class="mode" role="group" aria-label="Reading light">
+            <span class="ui mode-k">Read in</span>
+            <button type="button" class="mode-b ui" aria-pressed="{{mode.night}}" onClick="{{mode.toNight}}">Night</button>
+            <button type="button" class="mode-b ui" aria-pressed="{{mode.paper}}" onClick="{{mode.toPaper}}">Paper</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- the scan: zoom and move across the leaf -->
+    <section aria-label="The scan" style="position: relative; padding: 0 0 56px;">
+      <div class="w">
+        <div class="vw" data-light="{{light}}">
+          <div class="vw-frame" tabindex="0" aria-label="Scan of folio ४६४२. Use plus and minus to zoom, arrow keys to move." role="img">
+            <img class="vw-img" src="/img/ab292d406849614bd754870a44e317da.jpg" alt="" draggable="false">
+            <i class="vw-rake" aria-hidden="true"></i>
+          </div>
+          <div class="vw-bar ui">
+            <div class="vw-z" role="group" aria-label="Zoom">
+              <button type="button" class="vw-b" data-z="-1" aria-label="Zoom out">−</button>
+              <button type="button" class="vw-b" data-z="0" aria-label="Fit the whole leaf">Fit</button>
+              <button type="button" class="vw-b" data-z="1" aria-label="Zoom in">+</button>
+            </div>
+            <div class="vw-z" role="group" aria-label="Light">
+              <button type="button" class="vw-b vw-w" aria-pressed="{{lightEven}}" onClick="{{toEven}}">Even light</button>
+              <button type="button" class="vw-b vw-w" aria-pressed="{{lightRake}}" onClick="{{toRake}}">Raking light</button>
+            </div>
+            <span class="vw-n">{{lightNote}}</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- the record and the reading, side by side -->
+    <section aria-label="The record" style="position: relative; padding: 0 0 96px;">
+      <div class="w rec-grid">
+        <div>
+          <p class="kick"><span class="sh"><span class="t">पाठ</span></span> · the reading</p>
+          <div role="tablist" aria-label="Read the leaf as" class="rd-tabs">
+            <sc-for list="{{layers}}" as="l" hint-placeholder-count="4">
+              <button type="button" role="tab" class="rd-tab ui" aria-selected="{{l.on}}" onClick="{{l.pick}}" lang="{{l.lang}}">{{l.label}}</button>
+            </sc-for>
+          </div>
+          <div class="rd-panel" role="tabpanel" aria-live="polite">
+            <p class="rd-line" lang="{{reading.lang}}">{{reading.l1}}</p>
+            <p class="rd-line" lang="{{reading.lang}}">{{reading.l2}}</p>
+            <p class="rd-line" lang="{{reading.lang}}">{{reading.l3}}</p>
+            <p class="ui rd-src">{{reading.note}}</p>
+          </div>
+
+          <h2 class="rec-h2"><span lang="sa">टिप्पणी</span> · a note on this leaf</h2>
+          <div class="rec-note">
+            <p>This <button type="button" class="gt" data-gt="patra" aria-expanded="false">patra</button> is one loose leaf from a bundle on the shelves. Its number, ४६४२, is written in the top corner, the way every leaf in the <button type="button" class="gt" data-gt="suchi" aria-expanded="false">sūcī</button> is found again.</p>
+            <p>The writing runs edge to edge with no spaces between words, and each phrase closes with a <button type="button" class="gt" data-gt="danda" aria-expanded="false">daṇḍa</button>. Water has soaked in from the right and a lower corner has worn away, which is why it is among the first bundles in the survey.</p>
+            <p class="ui rec-small">[A note on what the leaf teaches and which branch of Jyotisha it belongs to, written by the Vedshala once it is read.]</p>
+          </div>
+
+          <h2 class="rec-h2">Cite this record</h2>
+          <div class="cite">
+            <p class="cite-t">Nakshatra Vedshala, Devprayag. Folio ४६४२, [title to be identified]. Register no. 4642. Accessed {{today}}.</p>
+            <button type="button" class="line" onClick="{{copyCite}}">{{citeLabel}}</button>
+          </div>
+        </div>
+
+        <aside class="rec-side" aria-label="Catalogue entry">
+          <h2 class="rec-h2" style="margin-top: 0;">Catalogue entry</h2>
+          <dl class="cat">
+            <sc-for list="{{cat}}" as="c" hint-placeholder-count="10">
+              <div><dt>{{c.k}}</dt><dd>{{c.v}}</dd></div>
+            </sc-for>
+          </dl>
+          <h2 class="rec-h2">Where this leaf is</h2>
+          <ol class="stages ui">
+            <sc-for list="{{stages}}" as="s" hint-placeholder-count="6">
+              <li data-done="{{s.done}}"><b lang="sa">{{s.deva}}</b><span>{{s.en}}</span></li>
+            </sc-for>
+          </ol>
+          <div class="adopt">
+            <p class="adopt-t">Adopt this leaf.</p>
+            <p class="ui adopt-s">Your gift photographs it in raking light, reads and translates it, and publishes it here with your name in its record, if you wish.</p>
+            <a href="/support/" class="pill" style="margin-top: 14px;">Adopt folio ४६४२ · [₹ amount] <span aria-hidden="true">→</span></a>
+            <p class="ui rec-small" style="margin-top: 10px;">Whether a single leaf can be adopted is for the Vedshala to decide.</p>
+          </div>
+        </aside>
+      </div>
+      <div class="w">
+        <nav class="pn ui" aria-label="More records">
+          <a href="/manuscripts/#register">← Back to the register</a>
+          <span>The next records are published as each bundle is read.</span>
+        </nav>
+      </div>
+    </section>
+    <div class="gpop" role="dialog" aria-modal="false" aria-label="Glossary" hidden>
+      <p class="gpop-d" lang="sa"></p>
+      <p class="gpop-i"></p>
+      <p class="gpop-m"></p>
+      <a class="gpop-l ui" href="/learn/">More in Learn →</a>
+    </div>
+  </main>
+
+  
+</div>

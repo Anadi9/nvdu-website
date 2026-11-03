@@ -13,7 +13,7 @@ Preview the prototype: `python3 -m http.server 5190 --directory ../design/protot
 - [x] **Shared maths**: `src/lib/astro.ts` (Sun, Moon, nakshatra, tithi, sunrise/sunset, new and full Moon) with unit checks against the prototype's numbers · kept as `astro.js` (verbatim) with `astro.d.ts` types; `npm run test:astro` compares 20,000 values against all 7 page variants, 0 differ
 - [x] **Home** (`/`) · live 3D sky ring, thread, tonight, 27 picker and month play, three branches, verse leaf, Devprayag, gifts, journal · all 8 sections at identical offsets and heights at 1440×900 (8400px) and 375×812 (11070px); 3D ring, thread, picker, play, verse tabs and gifts work; no console errors
 - [x] **Manuscripts** (`/manuscripts/`) · opening, how to read a leaf, the shelf, register with search and empty state, six stages, adopt · same section offsets as the prototype at both sizes (17915px / 14393px); stepping the page's tick() gives the identical reading-camera transform, shelf offset and active stage; search empty state and the ४६४२ row link work
-- [ ] **Manuscript record** (`/manuscripts/4642/`) · scan viewer, reading tabs, catalogue, stages, cite, paper default
+- [x] **Manuscript record** (`/manuscripts/4642/`) · scan viewer, reading tabs, catalogue, stages, cite, paper default · identical layout to the prototype at both sizes (2906px / 5166px); opens in Paper with the paper header; zoom, reading tabs, glossary and Night switch work; a remembered reading light overrides the default, as designed
 - [ ] **The 27** (`/nakshatra/`) · nakshatra explorer and its sky
 - [ ] **Learn** (`/learn/`) · the three instruments (tithi, shadow-stick, kundali)
 - [ ] **Our story** (`/our-story/`) · keepers, shadow-stick, 3D journey
