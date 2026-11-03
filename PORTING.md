@@ -25,7 +25,7 @@ Preview the prototype: `python3 -m http.server 5190 --directory ../design/protot
 - [x] **Hindi** (`/hi/`) · Hindi Home through Astro i18n routing · `<html lang="hi">`, Hindi header and footer; identical section offsets and page text to the prototype at both sizes (8281px / 10572px); no lang="sa" tagging on the Hindi page; no console errors. Other pages stay English, as in the prototype
 - [x] **Content collections**: journal posts, manuscript records, register as Markdown/JSON · `src/content/register.json`, `journal.json`, `records/4642.catalogue.json`, `records/4642.reading.json`, documented in `src/content/README.md`; the extractor now seeds these once and makes the boards read them; Journal, Manuscripts register and the record give identical text to the prototype
 - [x] **Worker stubs**: visit request and Razorpay webhook in `worker/` (no keys) · `/api/visit`, `/api/gift/order`, `/api/gift/webhook` (HMAC-verified); answer 503 until keys and an email binding are set; `npm run test:worker` passes. The pages still show their prototype placeholders; wiring their buttons to these routes waits for the family's accounts
-- [ ] **Visual tests green**: Playwright compares every page with the prototype at both sizes
+- [x] **Visual tests green**: Playwright compares every page with the prototype at both sizes · `npm run test:visual`: 24 tests (12 pages × 1440×900 and 375×812) check height, section positions, no sideways scroll, no console errors, and three screens per page pixel-matched (≤2% differing, 3D canvases masked, clock frozen, reduced motion); all 24 pass; a deliberate mismatch (Home vs Learn) fails as it should
 - [ ] **README**: how to run, build, test, where content lives, what the family still has to supply
 
 ## How pages are ported
