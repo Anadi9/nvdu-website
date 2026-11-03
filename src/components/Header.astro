@@ -1,0 +1,64 @@
+---
+// The site header, ported from the prototype: fixed, solid once the page scrolls,
+// Tie a thread in outline, a language switch, and the phone menu.
+import Emblem from './Emblem.astro';
+import { R, NAV, NAV_HI, type NavKey, type Lang } from '../lib/routes';
+interface Props { current: NavKey; lang?: Lang }
+const { current, lang = 'en' } = Astro.props;
+const hi = lang === 'hi';
+const items = NAV.map(([k, href, en, deva]) => {
+  const on = k === current;
+  return { href, label: hi ? NAV_HI[k] : en, deva: hi ? en : deva, cur: on ? 'page' : 'false', c: on ? '#E3B04B' : '#EFE4CC' };
+});
+const pill = current !== 'dana';
+const T = hi
+  ? { skip: 'सामग्री पर जाएँ', home: 'नक्षत्र वेधशाला, मुखपृष्ठ', tie: 'धागा बाँधें', menu: 'मेनू', close: 'बन्द करें' }
+  : { skip: 'Skip to content', home: 'Nakshatra Vedshala, home', tie: 'Tie a thread', menu: 'Menu', close: 'Close' };
+---
+<header style="position: fixed; left: 0; right: 0; top: 0; z-index: 20; background: linear-gradient(180deg, rgba(7,10,20,.92), rgba(7,10,20,0));">
+  <a href="#main" class="skip">{T.skip}</a>
+  <div class="w" style="display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 76px;">
+    <a href={hi ? R.homeHi : R.home} aria-label={T.home} style="display: flex; align-items: center; min-height: 44px; gap: 12px; color: #EFE4CC; text-decoration: none;">
+      <Emblem glyph="mark" size={34} color="#E3B04B" />
+      <span style="font-family: 'Rozha One', serif; font-size: 23px; line-height: 1;">नक्षत्र वेधशाला</span>
+    </a>
+    <nav aria-label="Main" class="ui" style="display: flex; align-items: center; gap: 4px 26px; font-size: 16px;">
+      {items.map((n) => <a href={n.href} class="line hide-sm" aria-current={n.cur} style={`color: ${n.c};`}>{n.label}</a>)}
+      {pill && <a href={R.dana} class="pill hdr-pill" style="min-height: 42px; padding: 0 20px; font-size: 16px;">{T.tie}</a>}
+      {hi
+        ? <a href={R.home} class="line hide-sm" lang="en" hreflang="en" aria-label="Read in English">English</a>
+        : <a href={R.homeHi} class="line hide-sm lang-sw" lang="hi" hreflang="hi" aria-label="हिन्दी में पढ़ें, read in Hindi">हिन्दी</a>}
+      <button type="button" class="menu-btn" aria-expanded="false" aria-controls="phone-nav" data-open-label={T.close} data-closed-label={T.menu}>{T.menu}</button>
+    </nav>
+  </div>
+  <nav id="phone-nav" class="phone-nav" aria-label="Main, phone" hidden>
+    <a href={hi ? R.homeHi : R.home}><span>नक्षत्र वेधशाला</span>Home</a>
+    {items.map((n) => <a href={n.href} aria-current={n.cur} style={`color: ${n.c};`}><span>{n.deva}</span>{n.label}</a>)}
+    {hi
+      ? <a href={R.home} lang="en" hreflang="en"><span>हिन्दी</span>Read in English</a>
+      : <a href={R.homeHi} lang="hi" hreflang="hi"><span>English</span>हिन्दी में पढ़ें</a>}
+    <a href={R.dana} class="pill" style="margin-top: 18px;">{T.tie}</a>
+  </nav>
+</header>
+
+<style is:global>
+  /* the phone menu is rendered once and shown or hidden, instead of mounted on demand as on the canvas */
+  .phone-nav[hidden]{display:none !important}
+</style>
+
+<script>
+  // solid header once the page moves; the phone menu opens and closes
+  const hd = document.querySelector('header');
+  if (hd) {
+    hd.classList.add('hdr');
+    const onH = () => hd.classList.toggle('hdr-on', window.scrollY > 24);
+    window.addEventListener('scroll', onH, { passive: true }); onH();
+    const btn = hd.querySelector<HTMLButtonElement>('.menu-btn'), menu = hd.querySelector<HTMLElement>('#phone-nav');
+    if (btn && menu) {
+      const set = (open: boolean) => { menu.hidden = !open; btn.setAttribute('aria-expanded', String(open)); btn.textContent = open ? btn.dataset.openLabel! : btn.dataset.closedLabel!; };
+      btn.addEventListener('click', () => set(menu.hidden));
+      menu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => set(false)));
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !menu.hidden) { set(false); btn.focus(); } });
+    }
+  }
+</script>

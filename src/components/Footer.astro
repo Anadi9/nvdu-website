@@ -1,0 +1,36 @@
+---
+// The site footer, ported from the prototype.
+import Emblem from './Emblem.astro';
+import { R, type Lang } from '../lib/routes';
+interface Props { lang?: Lang }
+const hi = (Astro.props.lang ?? 'en') === 'hi';
+const T = hi ? {
+  about: '1946 से जोशी परिवार द्वारा सँभाली गई वेधशाला और पाण्डुलिपि पुस्तकालय।',
+  explore: 'देखें', e: ['सत्ताईस नक्षत्र', 'ज्योतिष सीखें', 'पाण्डुलिपियाँ', 'पत्रिका'],
+  part: 'जुड़ें', p: ['हमारी कथा', 'यात्रा की योजना', 'धागा बाँधें', 'मासिक आकाश-दर्शिका'],
+  find: 'पता', addr: ['दशरथाञ्चल पहाड़ी, देवप्रयाग', 'टिहरी गढ़वाल, उत्तराखण्ड'],
+  note: 'इन पृष्ठों का आकाश देवप्रयाग के लिए लगभग एक अंश की शुद्धता से अभी गिना जाता है। इतिहास और अनुवाद परिवार की जाँच के बाद।',
+} : {
+  about: 'An observatory and manuscript library kept by the Joshi family since 1946.',
+  explore: 'EXPLORE', e: ['The 27 Nakshatras', 'Learn Jyotisha', 'The manuscripts', 'Journal'],
+  part: 'TAKE PART', p: ['Our story', 'Plan a visit', 'Tie a thread', 'The monthly sky guide'],
+  find: 'FIND US', addr: ['Dashrathanchal hill, Devprayag', 'Tehri Garhwal, Uttarakhand'],
+  note: "The sky on these pages is computed live for Devprayag, to about a degree. History and translations pending the family's review.",
+};
+---
+<footer style="position: relative; z-index: 3; border-top: 1px solid rgba(239,228,204,.12); background: #070A14;">
+  <div class="w" style="padding-top: 56px; padding-bottom: 28px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 32px 40px;">
+    <div>
+      <a href={hi ? R.homeHi : R.home} style="display: flex; align-items: center; min-height: 44px; gap: 12px; color: #EFE4CC; text-decoration: none;"><Emblem glyph="mark" size={34} color="#E3B04B" /><span style="font-family: 'Rozha One', serif; font-size: 24px;">नक्षत्र वेधशाला</span></a>
+      <p class="ui" style="margin: 12px 0 0; font-size: 15px; line-height: 1.6; color: #9C927E;">{T.about}</p>
+      <div style="display: flex; align-items: center; gap: 14px; margin-top: 16px;"><img src="/img/sansthan-seal.jpg" alt="Seal of the Shri Laxmidhar Acharya Chakradhar Joshi Vidyamandir Shodh Sansthan" width="56" height="56" loading="lazy" style="flex: none; width: 56px; height: 56px; border-radius: 50%; border: 1px solid rgba(227,176,75,.5); filter: saturate(.8);"><span class="ui" style="font-size: 14px; line-height: 1.5; color: #8C8474;">Run by the Shri Laxmidhar Acharya Chakradhar Joshi Vidyamandir Shodh Sansthan · a Gyan Bharatam cluster centre</span></div>
+    </div>
+    <nav class="fnav ui" aria-label="Footer, explore" style="display: flex; flex-direction: column; font-size: 15px;"><span style="color: #E3B04B; font-size: 14px; letter-spacing: .12em; margin-bottom: 6px;">{T.explore}</span><a href={R.nakshatra}>{T.e[0]}</a><a href={R.learn}>{T.e[1]}</a><a href={R.pothi}>{T.e[2]}</a><a href={R.journal}>{T.e[3]}</a></nav>
+    <nav class="fnav ui" aria-label="Footer, take part" style="display: flex; flex-direction: column; font-size: 15px;"><span style="color: #E3B04B; font-size: 14px; letter-spacing: .12em; margin-bottom: 6px;">{T.part}</span><a href={R.katha}>{T.p[0]}</a><a href={R.visit}>{T.p[1]}</a><a href={R.dana}>{T.p[2]}</a><a href={R.journal}>{T.p[3]}</a></nav>
+    <div class="ui" style="font-size: 15px; line-height: 1.6; color: #9C927E;"><span style="color: #E3B04B; font-size: 14px; letter-spacing: .12em;">{T.find}</span><br>{T.addr[0]}<br>{T.addr[1]}<br><a href="tel:+919557140296" style="color: inherit; display: inline-block; padding: 10px 0;">+91 95571 40296</a><br><a href="mailto:nakshatravedshaladev@gmail.com" style="color: inherit; display: inline-block; padding: 10px 0;">nakshatravedshaladev@gmail.com</a></div>
+  </div>
+  <div class="w ui" style="padding-top: 18px; padding-bottom: 36px; border-top: 1px solid rgba(239,228,204,.08); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; font-size: 14px; color: #8C8474;">
+    <span style="font-family: 'Tiro Devanagari Sanskrit', serif; font-size: 17px; color: #E3B04B;">॥ इति शुभम् ॥</span>
+    <span>{T.note}</span>
+  </div>
+</footer>

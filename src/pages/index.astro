@@ -1,8 +1,7 @@
 ---
-// Setup placeholder: the real Home is ported in its own checklist item.
+// Temporary: the shared layout on its own, until Home is ported.
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
-<!doctype html>
-<html lang="en">
-  <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Nakshatra Vedshala</title></head>
-  <body style="margin:0;background:#070A14;color:#EFE4CC;font-family:Georgia,serif;padding:40px">Setup check · the Home page is ported next.</body>
-</html>
+<BaseLayout title="Nakshatra Vedshala · Home" current="home">
+  <section style="min-height: 140vh; padding-top: 160px;"><div class="w"><p class="ui" style="color: #9C927E;">Layout check · the Home page is ported in its own step.</p></div></section>
+</BaseLayout>

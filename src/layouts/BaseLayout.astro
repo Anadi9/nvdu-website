@@ -1,0 +1,35 @@
+---
+// Every page: head and fonts, the shared styles, the night root, header, main and footer.
+// A page passes its own stylesheet (verbatim from its prototype board) through the "head" slot or an import.
+import '../styles/tokens.css';
+import '../styles/base.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import type { NavKey, Lang } from '../lib/routes';
+interface Props { title: string; description?: string; current: NavKey; lang?: Lang; rootClass?: string; rootStyle?: string; footer?: boolean }
+const { title, description = 'An observatory and manuscript library above the confluence at Devprayag, kept by the Joshi family since 1946.', current, lang = 'en', rootClass = '', rootStyle = '', footer = true } = Astro.props;
+---
+<!doctype html>
+<html lang={lang}>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{title}</title>
+  <meta name="description" content={description}>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rozha+One&family=Tiro+Devanagari+Hindi&family=Tiro+Devanagari+Sanskrit:ital@0;1&family=Spectral:ital,wght@0,200;0,300;0,400;1,200;1,300&family=Mukta:wght@300;400;500&display=swap" rel="stylesheet">
+  <slot name="head" />
+</head>
+<body>
+  <div class={`vroot ${rootClass}`.trim()} style={`position: relative; font-family: Spectral, Georgia, serif; color: #EFE4CC; background: radial-gradient(ellipse at 50% 0%, #161C33 0%, #070A14 60%); overflow-x: clip; ${rootStyle}`}>
+    <slot name="before" />
+    <Header current={current} lang={lang} />
+    <slot name="rail" />
+    <main id="main" style="position: relative;">
+      <slot />
+    </main>
+    {footer && <Footer lang={lang} />}
+  </div>
+</body>
+</html>
