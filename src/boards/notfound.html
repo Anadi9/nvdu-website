@@ -1,0 +1,34 @@
+<div ref="{{rootRef}}" class="vroot" style="position: relative; font-family: Spectral, Georgia, serif; color: #EFE4CC; background: #070A14; overflow-x: clip;">
+  
+
+  <canvas ref="{{skyRef}}" aria-hidden="true" style="position: fixed; left: 0; top: 0; width: 100vw; height: 100vh; display: block; z-index: 0; pointer-events: none;"></canvas>
+  <div ref="{{labelsRef}}" aria-hidden="true" style="position: fixed; left: 0; top: 0; width: 100vw; height: 100vh; z-index: 1; pointer-events: none; overflow: hidden;">
+    <sc-for list="{{labels}}" as="n" hint-placeholder-count="9">
+      <span style="position: absolute; left: 0; top: 0; font-family: 'Tiro Devanagari Sanskrit', serif; font-size: 15px; color: #C9BEA4; white-space: nowrap; opacity: 0; will-change: transform, opacity; text-shadow: 0 0 10px #070A14;">{{n.d}}</span>
+    </sc-for>
+  </div>
+  <div ref="{{fadeRef}}" aria-hidden="true" style="position: fixed; inset: 0; z-index: 2; background: #070A14; opacity: 0; pointer-events: none;"></div>
+
+  
+
+
+  <main id="main">
+    <!-- a leaf that is not in the bundle -->
+    <section id="top" data-scene="0" aria-labelledby="nf-h" style="position: relative; min-height: clamp(620px, 92vh, 900px); display: flex; align-items: center;">
+      <div class="w" style="width: 100%;">
+        <p class="ui" style="margin: 0; font-size: 14px; letter-spacing: .16em; color: #9C927E;">४०४ · PAGE NOT FOUND</p>
+        <p style="margin: 18px 0 0; font-family: 'Rozha One', serif; font-size: clamp(72px, 10vw, 150px); line-height: 1; color: #EFE4CC;" lang="hi">पत्र नहीं मिला</p>
+        <h1 id="nf-h" style="margin: 18px 0 0; font-weight: 200; font-size: clamp(32px, 3.6vw, 52px); line-height: 1.15; max-width: 18em;">This leaf isn't in the bundle.</h1>
+        <p class="body" style="margin-top: 16px; max-width: 32em;">The page may have moved, or the link may be mistyped. Tonight the Moon is {{v.illum}}% lit and rests in {{v.nak}}, if that helps you find your way.</p>
+        <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px 28px; margin-top: 32px;">
+          <a href="/" class="pill">Back to the sky <span aria-hidden="true">→</span></a>
+          <a href="/manuscripts/#register" class="line">Find a manuscript</a>
+          <a href="/nakshatra/" class="line">Tonight's Nakshatra</a>
+          <a href="/visit/" class="line">Plan a visit</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  
+</div>
