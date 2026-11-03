@@ -1,0 +1,19 @@
+---
+// Manuscripts, ported from design/prototype/Pothi.dc.html
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Board from '../../components/Board.astro';
+import tpl from '../../boards/pothi.html?raw';
+import make from '../../boards/pothi.js';
+import '../../styles/pages/pothi.css';
+---
+<BaseLayout title="Nakshatra Vedshala · Manuscripts" description="About 3,000 manuscripts kept on Dashrathanchal hill since 1946: how to read a leaf, the collection, the register and the six stages of the Gyan Bharatam Mission." current="pothi" bare>
+  <Board tpl={tpl} make={make} />
+</BaseLayout>
+<script>
+  import * as THREE from 'three';
+  import { boot } from '../../lib/dc/boot.js';
+  import tpl from '../../boards/pothi.html?raw';
+  import make from '../../boards/pothi.js';
+  (window as any).THREE = THREE;
+  boot(tpl, make);
+</script>

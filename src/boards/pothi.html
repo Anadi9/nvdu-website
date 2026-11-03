@@ -1,0 +1,250 @@
+<div ref="{{rootRef}}" class="vroot" style="position: relative; font-family: Spectral, Georgia, serif; color: #EFE4CC; background: radial-gradient(ellipse at 50% 0%, #161C33 0%, #070A14 60%); overflow-x: clip;">
+  
+
+  <canvas ref="{{skyRef}}" aria-hidden="true" style="position: fixed; left: 0; top: 0; width: 100vw; height: 100vh; display: block; z-index: 0;"></canvas>
+  
+
+  <nav ref="{{railRef}}" class="rail" aria-label="Sections" style="position: fixed; right: 26px; top: 50%; transform: translateY(-50%); z-index: 20; display: flex; flex-direction: column; align-items: flex-end;">
+    <span aria-hidden="true" style="position: absolute; right: 4px; top: 10px; bottom: 10px; width: 1px; background: linear-gradient(#B23A1F, #E3B04B);"></span>
+    <sc-for list="{{scenes}}" as="s" hint-placeholder-count="10">
+      <a href="{{s.href}}" class="bead" data-on="0" aria-label="{{s.en}}"><span>{{s.deva}}</span><i></i></a>
+    </sc-for>
+  </nav>
+
+  <main id="main" style="position: relative;">
+    <span class="gthread" aria-hidden="true"></span>
+
+    <!-- 0 · the manuscripts: one bound pothi, open, and nothing else -->
+    <section id="top" data-scene="0" aria-label="The manuscripts" style="position: relative; min-height: var(--VH); padding: 104px 0 64px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center;">
+      <div class="w" style="width: 100%;">
+        <div class="op-head">
+          <div>
+            <p class="ui op-kick">ग्रन्थागार · THE MANUSCRIPTS</p>
+            <h1 class="dis"><span class="sh tail" style="--tl: 32px;"><span class="t">पोथी</span></span></h1>
+          </div>
+          <p class="lede op-lede">About 3,000 manuscripts, kept on Dashrathanchal hill since 1946.</p>
+        </div>
+        <figure class="op-fig">
+          <div class="op-book"><img src="/img/bb9b14dadbf141d9a7a72d419991f658.jpg" alt="A small bound pothi lying open: two painted figures in a gold border on the left page, a block of black and red writing on the right"><i class="op-light" aria-hidden="true"></i></div>
+          <figcaption class="ui op-cap"><span>A small bound pothi, open at leaf ५</span><span>Title and date to be identified</span></figcaption>
+        </figure>
+        <dl class="op-facts ui">
+          <div><dt>~3,000</dt><dd>manuscripts, on paper and palm leaf</dd></div>
+          <div><dt>1946</dt><dd>the year Pt. Chakradhar Joshi began the library</dd></div>
+          <div><dt>३ स्कन्ध</dt><dd>Siddhānta, Saṃhitā and Horā, the three branches of Jyotisha</dd></div>
+        </dl>
+      </div>
+      <p class="hint op-hint">Scroll to learn to read a leaf</p>
+    </section>
+
+    <!-- 1 · how to read a leaf: one folio, its parts named in turn -->
+    <section id="leaves" class="pin" data-scene="1" aria-label="How to read a leaf" style="position: relative; height: calc(var(--VH) * 5.4);">
+      <div class="stage" style="position: sticky; top: 0; height: var(--VH); display: flex; align-items: center; padding-top: 64px; box-sizing: border-box;">
+        <div class="w rd-grid" style="width: 100%;">
+          <div class="rd-view" role="img" aria-label="A painted opening leaf with a chariot scene, and below it a plain leaf of text inside ruled red and yellow lines">
+            <img class="rd-img" src="/img/9a1fe0d98f937c3f43d3fe8acb41eb6c.jpg" alt="">
+            <i class="rd-mark" aria-hidden="true"><b class="ui"></b></i>
+          </div>
+          <div class="rd-txt">
+            <p class="kick"><span class="sh"><span class="t">पत्र</span></span> · how to read a leaf</p>
+            <h2 class="lede rd-h">Seven things to look for on a leaf.</h2>
+            <ol class="rd-terms ui" aria-hidden="true">
+              <li data-on="1"><i>१</i><b>पत्र</b><span>The leaf</span></li>
+              <li><i>२</i><b>पत्राङ्क</b><span>The leaf number</span></li>
+              <li><i>३</i><b>मङ्गल</b><span>The opening blessing</span></li>
+              <li><i>४</i><b>चित्र</b><span>The painting</span></li>
+              <li><i>५</i><b>हाशिया</b><span>The margin title</span></li>
+              <li><i>६</i><b>पाठ</b><span>The text</span></li>
+              <li><i>७</i><b>श्लोकाङ्क</b><span>The verse number</span></li>
+            </ol>
+            <div class="caps rd-caps" aria-live="polite">
+              <div class="cap" data-on="1">
+                <p class="kick">१ · पत्र · patra</p>
+                <h3 class="rd-c">A pothi is a stack of loose leaves.</h3>
+                <p class="body rd-b">It is not bound like a book. The leaves are wider than they are tall, kept flat between two boards and wrapped in cloth. This painted leaf opens one.</p>
+              </div>
+              <div class="cap">
+                <p class="kick">२ · पत्राङ्क · patrāṅka</p>
+                <h3 class="rd-c">Leaves are counted, not pages.</h3>
+                <p class="body rd-b">A leaf usually carries one number for both its sides. A later hand has added a count in pencil along the top edge: “TOTAL FOLIO-162”.</p>
+              </div>
+              <div class="cap">
+                <p class="kick">३ · मङ्गल · maṅgala</p>
+                <h3 class="rd-c">It opens with a blessing, in red.</h3>
+                <p class="body rd-b">Before the first word of the work, the scribe salutes a deity. The first line here seems to read ॐ श्रीगणेशाय नमः, a salutation to Gaṇeśa.</p>
+                <p class="ui rd-n">Reading to be confirmed by the family</p>
+              </div>
+              <div class="cap">
+                <p class="kick">४ · चित्र · citra</p>
+                <h3 class="rd-c">Some opening leaves are painted.</h3>
+                <p class="body rd-b">A chariot drawn by white horses sits in the middle of the text, and gold scrollwork runs round the border. Most leaves have no picture at all.</p>
+              </div>
+              <div class="cap">
+                <p class="kick">५ · हाशिया · hāśiyā</p>
+                <h3 class="rd-c">The margin carries a short title.</h3>
+                <p class="body rd-b">Loose leaves get separated. A short name in the margin, here what looks like गी. टी., tells a reader which work a stray leaf belongs to.</p>
+                <p class="ui rd-n">Reading to be confirmed by the family</p>
+              </div>
+              <div class="cap">
+                <p class="kick">६ · पाठ · pāṭha</p>
+                <h3 class="rd-c">Most leaves are text, inside ruled lines.</h3>
+                <p class="body rd-b">A plain leaf from further in, numbered 58 in pencil. The scribe ruled a frame first, in red and yellow, then wrote thirteen lines with no spaces between the words.</p>
+              </div>
+              <div class="cap">
+                <p class="kick">७ · श्लोकाङ्क · ślokāṅka</p>
+                <h3 class="rd-c">Each verse ends with its number.</h3>
+                <p class="body rd-b">Two upright strokes, the double daṇḍa, close a verse, with its number beside them: here, २८ ॥. It is how a reader keeps their place.</p>
+              </div>
+            </div>
+            <p class="hint rd-hint">Scroll to read the next part</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7b · the collection: every other photograph, each shown once, along a shelf -->
+    <section id="collection" data-scene="3" aria-labelledby="gl-h" style="position: relative; background: linear-gradient(180deg, rgba(7,10,20,0), rgba(7,10,20,.94) 6%);">
+      <div class="gl-pin">
+        <div class="gl-stage">
+          <div class="gl-track">
+            <div class="gl-intro">
+              <p class="kick"><span class="sh"><span class="t">संग्रह</span></span> · from the collection</p>
+              <h2 id="gl-h" class="lede" style="margin-top: 14px;">Seven more leaves, as the family photographed them.</h2>
+              <p class="body gl-ib">Taken by phone on a white cloth, before any cleaning. None has been read or dated yet. Look for what you just learnt: the red ink, the margins, the numbers.</p>
+              <p class="hint gl-hint">Scroll to walk along the shelf</p>
+            </div>
+            <figure class="gl-it" style="--ar: .75;"><div class="gl-ph"><img src="/img/8c74da7b675de2a0378b961a65ad599b.jpg" alt="A painted panel set into the text: a crowned figure with folded hands" loading="lazy"></div><figcaption><span class="gl-n">१ / ७</span><span class="gl-t">A painted panel set into the text: a crowned figure with folded hands.</span><span class="gl-l">The red lines above and below it are headings, as on the opening leaf.</span><span class="gl-m">Title and date to be identified</span></figcaption></figure>
+            <figure class="gl-it" style="--ar: 1.5368;"><div class="gl-ph"><img src="/img/d417d37306c2b8adf21d780e9dc57425.jpg" alt="Ink drawings on paper: a rayed Sun and tall, instrument-like figures, each one labelled" loading="lazy"></div><figcaption><span class="gl-n">२ / ७</span><span class="gl-t">Ink drawings of a rayed Sun and tall, instrument-like figures.</span><span class="gl-l">Every figure has a label written beside it. Three lines of text run above.</span><span class="gl-m">Title and date to be identified</span></figcaption></figure>
+            <figure class="gl-it" style="--ar: .75;"><div class="gl-ph"><img src="/img/3aa6b8dce1dd6e871efa5e971bb51327.jpg" alt="A lotus-petal yantra, with a small four-cell chart above it" loading="lazy"></div><figcaption><span class="gl-n">३ / ७</span><span class="gl-t">A lotus-petal yantra, with a small four-cell chart above it.</span><span class="gl-l">A yantra is a diagram drawn to be used, not only looked at.</span><span class="gl-m">Title and date to be identified</span></figcaption></figure>
+            <figure class="gl-it" style="--ar: 1.3333;"><div class="gl-ph"><img src="/img/a841f16dd5dc7d0c582f3c136e2f2815.jpg" alt="Four loose folios: three painted scenes and a page of text" loading="lazy"></div><figcaption><span class="gl-n">४ / ७</span><span class="gl-t">Four loose leaves: three painted scenes and a page of text.</span><span class="gl-l">Loose leaves like these are why the margin title and the leaf number matter.</span><span class="gl-m">Title and date to be identified</span></figcaption></figure>
+            <figure class="gl-it" style="--ar: 1.3333;"><div class="gl-ph gl-rot"><img src="/img/e3700875d9b95590e44aec6f41e72452.jpg" alt="A folio of bold, even calligraphy, four long lines with red marks between phrases" loading="lazy"></div><figcaption><span class="gl-n">५ / ७</span><span class="gl-t">Bold calligraphy, four long lines to the leaf.</span><span class="gl-l">The red strokes close each phrase. Photographed sideways; shown here the right way up.</span><span class="gl-m">Title and date to be identified</span></figcaption></figure>
+            <figure class="gl-it" style="--ar: 1.6787;"><div class="gl-ph"><img src="/img/53ec827e19bd033fcc10e867e03365fa.jpg" alt="Yantra figures in black and red, under a heading on parihāra and śānti" loading="lazy"></div><figcaption><span class="gl-n">६ / ७</span><span class="gl-t">Yantra figures in black and red, under a heading on parihāra and śānti.</span><span class="gl-l">Śānti means calming. These may be drawn for a rite to calm the planets.</span><span class="gl-m">Title and date to be identified · purpose to be confirmed</span></figcaption></figure>
+            <figure class="gl-it" style="--ar: 1;"><div class="gl-ph gl-ring"><img src="/img/ec765694ee6e049f3b1ec244351040aa.jpg" alt="A round sheet covered in fine Devanagari written in concentric rings around a small blank centre, in a glazed frame" loading="lazy"></div><figcaption><span class="gl-n">७ / ७</span><span class="gl-t">A whole text written in rings, around a blank centre.</span><span class="gl-l">It hangs framed on a wall at the Vedshala. To read it, you turn the sheet.</span><span class="gl-m">Title and date to be identified · photograph source to confirm</span></figcaption></figure>
+          </div>
+          <div class="gl-bar" aria-hidden="true"><i></i></div>
+        </div>
+      </div>
+    </section>
+    <!-- 4 · the register, drawn as a long folio -->
+    <section id="register" data-scene="4" aria-label="The catalogue" style="position: relative; padding: 110px 0 120px; background: rgba(7,10,20,.94);">
+      <div class="w">
+        <div class="stack" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px 80px; align-items: end;">
+          <div>
+            <h2 class="dis"><span class="sh tail" style="--tl: 16vw;"><span class="t">सूची</span></span></h2>
+            <p class="lede" style="margin-top: 14px;">Find a manuscript.</p>
+          </div>
+          <p class="body io">The register lists every bundle by its number, branch, material and state, the same number written in the corner of each leaf. Choose a branch and the register closes up around it.</p>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; margin-top: 44px;">
+          <label class="ui" style="flex: 1 1 320px; display: flex; align-items: center; gap: 12px; min-height: 52px; padding: 0 20px; border: 1px solid rgba(239,228,204,.25); border-radius: 999px;">
+            <span style="color: #9C927E; font-size: 15px;">Search</span>
+            <input type="search" aria-label="Search the register" placeholder="Number, title, author or subject" value="{{q}}" onInput="{{setQ}}" onChange="{{setQ}}" style="flex: 1; min-width: 0; border: 0; background: transparent; color: #EFE4CC; font-family: Spectral, serif; font-size: 19px; outline: none;">
+          </label>
+          <div role="group" aria-label="Branch" style="display: flex; flex-wrap: wrap; gap: 8px;">
+            <sc-for list="{{chips}}" as="c" hint-placeholder-count="4">
+              <button type="button" class="chip ui" aria-pressed="{{c.on}}" onClick="{{c.pick}}" style="min-height: 44px; padding: 0 18px; border-radius: 999px; border: 1px solid {{c.border}}; background: {{c.bg}}; color: {{c.fg}}; cursor: pointer; font-size: 15px;">{{c.label}}</button>
+            </sc-for>
+          </div>
+        </div>
+        <div class="ledger">
+          <div class="led-head ui"><span>क्रमांक</span><span>TITLE</span><span>BRANCH</span><span>MATERIAL</span><span>STATUS</span></div>
+          <ul style="list-style: none; margin: 0; padding: 0;">
+            <sc-for list="{{reg}}" as="r" hint-placeholder-count="7">
+              <li class="led-r" data-hide="{{r.hide}}" aria-hidden="{{r.ah}}"><div><a href="{{r.href}}" class="row led-a" tabindex="{{r.ti}}" aria-label="{{r.aria}}">
+                <span class="led-no">{{r.no}}</span>
+                <span class="led-t">{{r.title}}</span>
+                <span class="ui hide-sm" style="font-size: 16px;">{{r.branch}}</span>
+                <span class="ui hide-sm" style="font-size: 16px; color: #9C927E;">{{r.mat}}</span>
+                <span class="ui" style="font-size: 14px; color: {{r.sc}};">{{r.status}}</span>
+              </a></div></li>
+            </sc-for>
+          </ul>
+          <sc-if value="{{noRows}}" hint-placeholder-val="{{false}}">
+            <div class="led-empty" aria-live="polite">
+              <p style="margin: 0; font-weight: 300; font-size: 24px;">No bundle matches “{{q}}”.</p>
+              <p class="ui" style="margin: 8px 0 0; font-size: 15px; color: #9C927E;">Try a number such as ४६४२ or 4642, or a word from a title. This sample lists seven rows; the real register will list about 3,000.</p>
+              <button type="button" class="line" onClick="{{clearQ}}" style="margin-top: 6px;">Clear the search</button>
+            </div>
+          </sc-if>
+        </div>
+        <p class="ui" style="margin: 18px 0 0; font-size: 14px; color: #8C8474;">Showing {{rowCount}} sample rows · ४६४२ is the one real number so far · the real register will list all ~3,000 bundles</p>
+      </div>
+    </section>
+
+    <!-- the journey: one leaf through the six stages -->
+    <section id="journey" data-scene="4" aria-labelledby="journey-h" style="position: relative; padding-top: 110px; background: rgba(7,10,20,.94);">
+      <div class="w">
+        <div class="stack" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px 80px; align-items: end;">
+          <div>
+            <p class="kick"><span class="sh"><span class="t">ज्ञान</span></span> <span class="sh"><span class="t">भारतम्</span></span> · the Gyan Bharatam Mission</p>
+            <h2 id="journey-h" class="lede" style="margin-top: 14px;">The Gyan Bharatam Mission's six stages.</h2>
+          </div>
+          <p class="body">The Vedshala is a cluster centre of the Gyan Bharatam Mission, the national effort to keep India's manuscripts. Every bundle here passes through the same six stages. Scroll, and folio ४६४२ moves from the shelf to the reader.</p>
+        </div>
+      </div>
+      <div class="jpin" style="position: relative; height: calc(var(--VH) * 5.5);">
+      <div class="stage" style="position: sticky; top: 0; height: var(--VH); display: flex; align-items: center; padding-top: 70px; background: rgba(7,10,20,.94); box-sizing: border-box;">
+        <div class="w" style="width: 100%;">
+          <div class="jgrid jstage">
+            <nav class="j-l" aria-label="The six stages">
+              <sc-for list="{{jr}}" as="j" hint-placeholder-count="6">
+                <button type="button" class="jk" onClick="{{j.go}}"><b>{{j.n}}</b><span><i>{{j.deva}}</i>{{j.pct}}</span></button>
+              </sc-for>
+            </nav>
+            <div class="j-c">
+              <div class="jfig">
+                <img class="j-img" src="/img/ab292d406849614bd754870a44e317da.jpg" alt="Folio ४६४२: a long paper leaf of Devanagari, water-stained along its right edge">
+                <span class="j-dust" aria-hidden="true"></span>
+                <span class="j-wipe" aria-hidden="true"></span>
+                <span class="j-grid" aria-hidden="true"></span>
+                <span class="j-scan" aria-hidden="true"></span>
+                <span class="j-hl" aria-hidden="true"></span>
+                <span class="j-tag" aria-hidden="true">क्र. ४६४२</span>
+              </div>
+              <div class="j-below" aria-live="polite">
+                <div class="jp"><div class="jp-row"><span class="jp-chip">Counted</span><span class="jp-chip">Named</span><span class="jp-chip">Numbered ४६४२</span></div><p class="ui" style="margin: 14px 0 0; font-size: 14px; color: #9C927E;">The number on its tag is the one written in the leaf's own corner.</p></div>
+                <div class="jp"><div class="jp-row"><span class="jp-chip">Dust lifted</span><span class="jp-chip">Flattened</span><span class="jp-chip">Boxed against damp</span></div><p class="ui" style="margin: 14px 0 0; font-size: 14px; color: #9C927E;">Illustration: the cleaning here is drawn over the photograph. The real leaf has not been treated yet.</p></div>
+                <div class="jp"><div class="jp-row"><span class="jp-chip">Even light</span><span class="jp-chip">Raking light</span><span class="jp-chip">Both sides</span><span class="jp-chip">Archive resolution</span></div><div class="chk" aria-hidden="true"><i style="background:#F2F0EA;"></i><i style="background:#9E9C97;"></i><i style="background:#2C2B29;"></i><i style="background:#B23A1F;"></i><i style="background:#3C6E3A;"></i><i style="background:#2F4F8A;"></i><i style="background:#E3B04B;"></i></div><p class="ui" style="margin: 10px 0 0; font-size: 14px; color: #9C927E;">A colour chart is photographed beside every leaf, so its colours stay true.</p></div>
+                <div class="jp"><dl class="jdl"><div><dt>क्रमांक · number</dt><dd>४६४२</dd></div><div><dt>Material</dt><dd>Paper</dd></div><div><dt>Branch</dt><dd>[to be identified]</dd></div><div><dt>Condition</dt><dd>Water-stained along the right edge; lower corner worn</dd></div></dl></div>
+                <div class="jp"><dl class="jdl"><div><dt>देवनागरी</dt><dd>[line 1, as read by the Vedshala]</dd></div><div><dt>IAST</dt><dd>[transliteration]</dd></div><div><dt>Meaning</dt><dd>[Hindi and English translation]</dd></div></dl></div>
+                <div class="jp"><div class="rec"><div><p class="ink-s" style="color: #6B4A28;">Published · free to read</p><p style="margin: 4px 0 0; font-size: 22px;">[Title] · folio ४६४२</p><p class="ink-s" style="margin-top: 6px; color: #6B4A28;">With thanks to <span style="color: #9A2812;">[your name]</span>, if you wish</p></div><a href="#adopt" class="line" style="color: #9A2812;">Adopt a leaf</a></div></div>
+              </div>
+            </div>
+            <aside class="j-r">
+              <sc-for list="{{jr}}" as="j" hint-placeholder-count="6">
+                <div class="jn">
+                  <p class="kick">चरण {{j.n}} · {{j.deva}}</p>
+                  <h2 style="margin: 10px 0 0; font-weight: 300; font-size: 28px; line-height: 1.2;">{{j.en}}</h2>
+                  <p class="body" style="margin-top: 12px; font-size: 17px; line-height: 1.6;">{{j.text}}</p>
+                  <p class="ui" style="margin: 14px 0 0; font-size: 14px; line-height: 1.5; color: #9C927E;">At the Vedshala: [count] of about 3,000 bundles · {{j.pct}}</p>
+                  <p class="ui" style="margin: 8px 0 0; font-size: 14px; line-height: 1.5; color: #C9BEA4;">{{j.gift}}</p>
+                  <a href="/support/" class="line" style="margin-top: 4px; font-size: 16px;">Tie a thread for this stage</a>
+                </div>
+              </sc-for>
+            </aside>
+          </div>
+          <p class="hint" style="margin: 14px 0 0;">Scroll to move the leaf along · percentages are samples</p>
+        </div>
+      </div>
+      </div>
+    </section>
+
+    <!-- 10 · adopt a leaf -->
+    <section id="adopt" data-scene="10" aria-label="Adopt a leaf" style="position: relative; padding: 140px 0 140px;">
+      <div class="w" style="text-align: center;">
+        <div class="rv" style="max-width: 820px; margin: 0 auto;">
+          <p class="kick"><span class="sh"><span class="t">दान</span></span> · adopt a leaf</p>
+          <h2 style="margin: 16px 0 0; font-weight: 200; font-size: clamp(44px, 5.4vw, 80px); line-height: 1.08;">Keep one leaf from crumbling.</h2>
+          <p class="body" style="margin: 22px auto 0; max-width: 32em;">A gift photographs one bundle in raking light, transliterates and translates it, and publishes it here with your name in its record, if you wish.</p>
+          <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 12px 28px; margin-top: 34px;">
+            <a href="/support/" class="pill">Adopt a leaf · [₹ amount] <span aria-hidden="true">→</span></a>
+            <a href="/" class="line">Back to the sky</a>
+          </div>
+          <p class="ui" style="margin: 18px 0 0; font-size: 14px; color: #8C8474;">[80G status] · UPI, cards, netbanking · on the Support page this is the gift called “Digitise a manuscript”</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  
+</div>

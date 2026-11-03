@@ -12,7 +12,7 @@ Preview the prototype: `python3 -m http.server 5190 --directory ../design/protot
 - [x] **Shared islands**: cursor thread, headings that write themselves, Devanagari `lang` tagging, reading light, glossary popover · checked in the browser: cursor draws on mouse only, headings get data-w/data-in, Devanagari gets lang="sa", glossary opens/closes on Esc and returns focus, Paper toggles and is stored as nv-read. Cursor and lang tags are in BaseLayout; reading and glossary are per page (ReadingSwitch, Term, GlossaryPopover). Manuscripts and Record keep their own heading variant, ported with those pages
 - [x] **Shared maths**: `src/lib/astro.ts` (Sun, Moon, nakshatra, tithi, sunrise/sunset, new and full Moon) with unit checks against the prototype's numbers · kept as `astro.js` (verbatim) with `astro.d.ts` types; `npm run test:astro` compares 20,000 values against all 7 page variants, 0 differ
 - [x] **Home** (`/`) · live 3D sky ring, thread, tonight, 27 picker and month play, three branches, verse leaf, Devprayag, gifts, journal · all 8 sections at identical offsets and heights at 1440×900 (8400px) and 375×812 (11070px); 3D ring, thread, picker, play, verse tabs and gifts work; no console errors
-- [ ] **Manuscripts** (`/manuscripts/`) · opening, how to read a leaf, the shelf, register with search and empty state, six stages, adopt
+- [x] **Manuscripts** (`/manuscripts/`) · opening, how to read a leaf, the shelf, register with search and empty state, six stages, adopt · same section offsets as the prototype at both sizes (17915px / 14393px); stepping the page's tick() gives the identical reading-camera transform, shelf offset and active stage; search empty state and the ४६४२ row link work
 - [ ] **Manuscript record** (`/manuscripts/4642/`) · scan viewer, reading tabs, catalogue, stages, cite, paper default
 - [ ] **The 27** (`/nakshatra/`) · nakshatra explorer and its sky
 - [ ] **Learn** (`/learn/`) · the three instruments (tithi, shadow-stick, kundali)
@@ -31,6 +31,10 @@ Preview the prototype: `python3 -m http.server 5190 --directory ../design/protot
 ## How pages are ported
 
 Each prototype board is split by `scripts/extract-board.py` into `src/boards/<page>.html` (template), `src/boards/<page>.js` (its component logic, verbatim) and `src/styles/pages/<page>.css`. `src/lib/dc/runtime.js` is the prototype's own template runtime: the page is rendered to HTML at build time (`ssr.js`, so it loads complete and is indexable) and the browser then mounts the same component (`boot.js`). Header, footer and cursor are the shared Astro components.
+
+## Notes for checking
+
+- The browser pane in this setup can run in the background, which pauses animation frames. Scroll scenes are then checked by calling the page's own `tick()` through `window.__board` (exposed by `boot.js`), on both the site and the prototype (`window.__dc`).
 
 ## Differences
 

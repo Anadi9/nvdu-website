@@ -8,5 +8,7 @@ export function boot(tpl, makeClass, selector = '[data-board]') {
   const comps = { Emblem: parseBoard(DOMParser, emblemTpl, emblemCls) };
   const board = parseBoard(DOMParser, tpl, makeClass);
   wrap.replaceChildren();
-  return mount(board, {}, wrap, comps);
+  const inst = mount(board, {}, wrap, comps);
+  window.__board = inst;
+  return inst;
 }
