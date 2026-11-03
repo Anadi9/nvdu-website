@@ -11,7 +11,7 @@ Preview the prototype: `python3 -m http.server 5190 --directory ../design/protot
 - [x] **Shared layout**: `BaseLayout.astro` with head, fonts, header (solid on scroll, outline pill, language switch, phone menu), footer, Emblem component · header and footer links sit at the same x, y, width and height as the prototype at 1440px; phone menu matches at 375px; English and Hindi strings; routes in src/lib/routes.ts
 - [x] **Shared islands**: cursor thread, headings that write themselves, Devanagari `lang` tagging, reading light, glossary popover · checked in the browser: cursor draws on mouse only, headings get data-w/data-in, Devanagari gets lang="sa", glossary opens/closes on Esc and returns focus, Paper toggles and is stored as nv-read. Cursor and lang tags are in BaseLayout; reading and glossary are per page (ReadingSwitch, Term, GlossaryPopover). Manuscripts and Record keep their own heading variant, ported with those pages
 - [x] **Shared maths**: `src/lib/astro.ts` (Sun, Moon, nakshatra, tithi, sunrise/sunset, new and full Moon) with unit checks against the prototype's numbers · kept as `astro.js` (verbatim) with `astro.d.ts` types; `npm run test:astro` compares 20,000 values against all 7 page variants, 0 differ
-- [ ] **Home** (`/`) · live 3D sky ring, thread, tonight, 27 picker and month play, three branches, verse leaf, Devprayag, gifts, journal
+- [x] **Home** (`/`) · live 3D sky ring, thread, tonight, 27 picker and month play, three branches, verse leaf, Devprayag, gifts, journal · all 8 sections at identical offsets and heights at 1440×900 (8400px) and 375×812 (11070px); 3D ring, thread, picker, play, verse tabs and gifts work; no console errors
 - [ ] **Manuscripts** (`/manuscripts/`) · opening, how to read a leaf, the shelf, register with search and empty state, six stages, adopt
 - [ ] **Manuscript record** (`/manuscripts/4642/`) · scan viewer, reading tabs, catalogue, stages, cite, paper default
 - [ ] **The 27** (`/nakshatra/`) · nakshatra explorer and its sky
@@ -28,11 +28,17 @@ Preview the prototype: `python3 -m http.server 5190 --directory ../design/protot
 - [ ] **Visual tests green**: Playwright compares every page with the prototype at both sizes
 - [ ] **README**: how to run, build, test, where content lives, what the family still has to supply
 
+## How pages are ported
+
+Each prototype board is split by `scripts/extract-board.py` into `src/boards/<page>.html` (template), `src/boards/<page>.js` (its component logic, verbatim) and `src/styles/pages/<page>.css`. `src/lib/dc/runtime.js` is the prototype's own template runtime: the page is rendered to HTML at build time (`ssr.js`, so it loads complete and is indexable) and the browser then mounts the same component (`boot.js`). Header, footer and cursor are the shared Astro components.
+
 ## Differences
 
 Anything that could not be matched exactly, and why.
 
 - Phone menu: the canvas mounts it on demand; the site renders it once with `hidden` and toggles it (adds Esc to close). Looks and behaves the same.
+- Pages with their own root background use the layout's `bare` mode: header and footer sit beside the page root instead of inside it. The header follows the root's Paper light through `body:has(.vroot.paper)`.
+- Live values (tonight's Moon, dates) are computed at build time in the HTML and recomputed in the browser on load.
 - Sky maths: kept as verbatim JavaScript (`src/lib/astro.js` + types) rather than rewritten in TypeScript, so the numbers cannot drift from the prototype.
 
 ## Still needed from the family

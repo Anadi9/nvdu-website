@@ -1,0 +1,76 @@
+/* HomeSutra board stylesheet, verbatim from the prototype */
+body{margin:0;background:#070A14}
+a{color:#E3B04B}a:hover{color:#F2CD7A}
+button{font:inherit}
+::selection{background:#B23A1F;color:#F7EEDC}
+.w{max-width:1320px;margin:0 auto;padding:0 40px;box-sizing:border-box;position:relative;z-index:3}
+.kick{font-family:'Tiro Devanagari Sanskrit',serif;font-size:18px;color:#E3B04B;margin:0}
+.lede{font-weight:200;font-size:clamp(30px,3.3vw,46px);line-height:1.22;margin:0}
+.body{font-weight:300;font-size:20px;line-height:1.7;color:#C9BEA4;margin:0}
+.ui{font-family:Mukta,sans-serif;font-weight:400}
+.pill{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:52px;padding:0 28px;border-radius:999px;background:#E3B04B;color:#120D08 !important;text-decoration:none;font-family:Mukta,sans-serif;font-size:17px;font-weight:500;border:0;cursor:pointer;transition:background-color .3s ease,transform .3s ease}
+.pill:hover{background:#F2CD7A;transform:translateY(-1px)}
+.line{display:inline-flex;align-items:center;min-height:48px;font-family:Mukta,sans-serif;font-size:17px;color:#EFE4CC;text-decoration:none;background:linear-gradient(currentColor,currentColor) 0 calc(100% - 10px)/100% 1px no-repeat;transition:background-size .35s ease}
+.line:hover{color:#EFE4CC;background-size:40% 1px}
+.nk{transition:color .25s ease,background-color .25s ease}
+.pl-btn{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 20px;border-radius:999px;border:1px solid rgba(239,228,204,.3);background:rgba(7,10,20,.5);color:#EFE4CC;font-family:Mukta,sans-serif;font-size:15px;cursor:pointer;transition:border-color .25s ease,background-color .25s ease,color .25s ease}
+.pl-btn:hover{border-color:#E3B04B}
+.pl-btn.on{background:#E3B04B;border-color:#E3B04B;color:#120D08}
+.pl-btn svg{flex:none}
+.nk:hover{color:#F2CD7A}
+.bead{position:relative;display:flex;align-items:center;justify-content:flex-end;gap:14px;height:44px;text-decoration:none;color:#EFE4CC}
+.bead i{display:block;width:9px;height:9px;border-radius:50%;background:#3A3326;box-shadow:0 0 0 1px rgba(227,176,75,.55);transition:all .35s ease}
+.bead span{opacity:0;transform:translateX(6px);transition:all .3s ease;font-family:'Tiro Devanagari Sanskrit',serif;font-size:16px;white-space:nowrap}
+.bead:hover span,.bead:focus-visible span,.bead[data-on="1"] span{opacity:1;transform:none}
+.bead[data-on="1"] i{background:#E3B04B;box-shadow:0 0 0 4px rgba(227,176,75,.18),0 0 14px rgba(227,176,75,.7)}
+.layer{transition:background-color .25s ease,color .25s ease}
+.gift{transition:border-color .3s ease,background-color .3s ease}.gift:hover{border-color:rgba(227,176,75,.7)}
+.col2{grid-column:2}
+.row{transition:padding-left .35s ease,color .25s ease}.row:hover{padding-left:14px;color:#F2CD7A}
+@keyframes drop{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+@keyframes rise{from{opacity:0;transform:translateY(34px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion: no-preference){
+  .cue{animation:drop 2.6s cubic-bezier(.6,0,.3,1) infinite}
+}
+@supports (animation-timeline: view()){@media (prefers-reduced-motion: no-preference){
+  .rv{animation:rise linear both;animation-timeline:view();animation-range:entry 5% cover 25%}
+}}
+@media (max-width: 860px){
+  .w{padding:0 22px}
+  .hide-sm{display:none !important}
+  .rail{display:none !important}
+  .stack{grid-template-columns:1fr !important}
+  .tl{grid-template-columns:40px minmax(0,1fr) !important}
+  .tl>.l{display:none !important}
+  .tl>.c{grid-column:1}
+  .tl>.r{grid-column:2;text-align:left !important}
+  .col2{grid-column:auto !important}
+  .bm{margin-top:0 !important}
+}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,summary:focus-visible{outline:2px solid #E3B04B;outline-offset:3px}
+.skip{position:fixed;left:16px;top:-80px;z-index:40;padding:10px 18px;border-radius:999px;background:#E3B04B;color:#120D08 !important;font-family:Mukta,sans-serif;font-size:15px;text-decoration:none;transition:top .2s ease}.skip:focus{top:14px}
+.menu-btn{display:none;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;border:1px solid rgba(239,228,204,.3);background:rgba(7,10,20,.5);color:#EFE4CC;font-family:Mukta,sans-serif;font-size:15px;cursor:pointer}
+.phone-nav{display:none}
+.fnav a{color:#C9BEA4;text-decoration:none;padding:11px 0;transition:color .2s ease}.fnav a:hover{color:#F2CD7A}
+@media (max-width: 860px){.menu-btn{display:inline-flex}.hdr-pill{display:none !important}.phone-nav{display:flex;flex-direction:column;max-height:calc(100vh - 76px);overflow:auto;padding:6px 20px 28px;background:rgba(7,10,20,.97);border-top:1px solid rgba(227,176,75,.3)}.phone-nav a:not(.pill){display:flex;flex-direction:column;padding:14px 0;border-bottom:1px solid rgba(239,228,204,.1);color:#EFE4CC;text-decoration:none;font-family:Spectral,serif;font-size:22px;font-weight:300}.phone-nav a span{font-family:'Tiro Devanagari Sanskrit',serif;font-size:14px;color:#9C927E}}
+.sh{position:relative;display:inline-block;--sr:.205em;--sw:.06em}
+.sh>.t{display:inline-block}
+.sh::before{content:"";position:absolute;left:-.02em;right:-.02em;top:var(--sr);height:max(1.5px,var(--sw));background:currentColor;border-radius:1px}
+.js-io .sh[data-w="1"]>.t{clip-path:inset(-40% 100% -60% -2%);transition:clip-path 1.25s cubic-bezier(.55,.05,.25,1) .4s}
+.js-io .sh[data-w="1"]::before{transform:scaleX(0);transform-origin:left center;transition:transform .6s cubic-bezier(.55,.05,.25,1)}
+.js-io .sh[data-w="1"][data-in="1"]>.t{clip-path:inset(-40% -6% -60% -2%)}
+.js-io .sh[data-w="1"][data-in="1"]::before{transform:none}
+.c-on,.c-on *{cursor:none !important}.c-on input[type=text],.c-on input[type=email],.c-on input[type=tel],.c-on input[type=search],.c-on input[type=number],.c-on input[type=date],.c-on textarea{cursor:text !important}
+
+/* final pass · the header turns solid once the page moves, so text never runs under the name */
+.hdr{transition:background-color .3s ease,box-shadow .3s ease}
+.hdr.hdr-on{background:rgba(7,10,20,.92) !important;-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);box-shadow:0 1px 0 rgba(239,228,204,.1)}
+/* one gold action per view: in the header, Tie a thread is drawn in outline */
+.hdr-pill{background:transparent !important;color:#E3B04B !important;box-shadow:inset 0 0 0 1px rgba(227,176,75,.75)}
+.hdr-pill:hover{background:#E3B04B !important;color:#120D08 !important}
+.lang-sw{font-family:'Tiro Devanagari Hindi','Tiro Devanagari Sanskrit',serif !important;font-size:17px !important}
+/* if the live sky cannot draw, a still sky stands in */
+.vroot::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background-image:radial-gradient(1.2px 1.2px at 22px 34px,rgba(239,228,204,.8) 50%,transparent 52%),radial-gradient(1px 1px at 131px 88px,rgba(239,228,204,.55) 50%,transparent 52%),radial-gradient(1.4px 1.4px at 203px 171px,rgba(242,205,122,.7) 50%,transparent 52%),radial-gradient(1px 1px at 61px 211px,rgba(239,228,204,.45) 50%,transparent 52%),radial-gradient(1px 1px at 172px 23px,rgba(239,228,204,.5) 50%,transparent 52%);background-size:240px 240px}
+/* the thread runs behind the words; on phones, where columns stack, it steps back further */
+.sutra{z-index:1 !important}
+@media (max-width: 860px){.sutra{opacity:.45}}

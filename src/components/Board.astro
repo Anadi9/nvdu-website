@@ -1,0 +1,8 @@
+---
+// A ported prototype page: its template rendered at build time inside a display:contents wrapper.
+// The page adds a script that calls boot() with the same template and logic.
+import { renderBoardHTML } from '../lib/dc/ssr.js';
+interface Props { tpl: string; make: (D: any) => any }
+const html = renderBoardHTML(Astro.props.tpl, Astro.props.make);
+---
+<div data-board style="display: contents;" set:html={html}></div>

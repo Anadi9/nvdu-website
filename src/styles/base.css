@@ -29,3 +29,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 /* header pieces that every page needs; pages restate their own variants after this */
 .line{display:inline-flex;align-items:center;min-height:48px;font-family:Mukta,sans-serif;font-size:17px;color:#EFE4CC;text-decoration:none;background:linear-gradient(currentColor,currentColor) 0 calc(100% - 10px)/100% 1px no-repeat;border:0;padding:0;cursor:pointer;transition:background-size .35s ease}
 @media (max-width: 860px){.w{padding:0 22px}.hide-sm{display:none !important}.menu-btn{display:inline-flex}.hdr-pill{display:none !important}.phone-nav{display:flex;flex-direction:column;max-height:calc(100vh - 76px);overflow:auto;padding:6px 20px 28px;background:rgba(7,10,20,.97);border-top:1px solid rgba(227,176,75,.3)}.phone-nav a:not(.pill){display:flex;flex-direction:column;padding:14px 0;border-bottom:1px solid rgba(239,228,204,.1);color:#EFE4CC;text-decoration:none;font-family:Spectral,serif;font-size:22px;font-weight:300}.phone-nav a span{font-family:'Tiro Devanagari Sanskrit',serif;font-size:14px;color:#9C927E}}
+/* on ported boards the header sits beside the page root, not inside it: follow the root's reading light */
+body:has(.vroot.paper) header{background:rgba(239,230,210,.94) !important;box-shadow:0 1px 0 rgba(42,31,20,.12)}
+body:has(.vroot.paper) header a,body:has(.vroot.paper) header .line{color:#2A1F14 !important}
+body:has(.vroot.paper) header a[aria-current="page"]{color:#7A2E16 !important}
+body:has(.vroot.paper) header .menu-btn{color:#2A1F14;border-color:rgba(42,31,20,.3);background:rgba(255,250,238,.6)}
+body:has(.vroot.paper) header .hdr-pill{color:#7A2E16 !important;box-shadow:inset 0 0 0 1px rgba(122,46,22,.6)}
+body:has(.vroot.paper) header .hdr-pill:hover{background:#7A2E16 !important;color:#FFF8EA !important}

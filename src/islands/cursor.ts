@@ -11,7 +11,7 @@ export function initCursor(): void {
   const P = Array.from({ length: N }, () => ({ x: -99, y: -99 }));
   const m = { x: -99, y: -99, on: false, hov: false, text: false };
   let rg = 0, pulse = 0, px = -99, py = -99;
-  root.classList.add('c-on');
+  document.body.classList.add('c-on');
   window.addEventListener('pointermove', (e) => {
     if (e.pointerType && e.pointerType !== 'mouse' && e.pointerType !== 'pen') return;
     m.x = e.clientX; m.y = e.clientY;

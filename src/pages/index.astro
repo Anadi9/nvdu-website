@@ -1,20 +1,19 @@
 ---
-// Temporary: the shared layout and islands on their own, until Home is ported.
+// Home, ported from design/prototype/HomeSutra.dc.html
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ReadingSwitch from '../components/ReadingSwitch.astro';
-import GlossaryPopover from '../components/GlossaryPopover.astro';
-import Term from '../components/Term.astro';
-import '../styles/reading.css';
+import Board from '../components/Board.astro';
+import tpl from '../boards/home.html?raw';
+import make from '../boards/home.js';
+import '../styles/pages/home.css';
 ---
-<BaseLayout title="Nakshatra Vedshala · Home" current="home">
-  <section style="min-height: 140vh; padding-top: 160px;"><div class="w">
-    <p class="kick" style="font-family: 'Tiro Devanagari Sanskrit', serif; font-size: 18px; color: #E3B04B; margin: 0;"><span class="sh"><span class="t">संग्रह</span></span> · from the collection</p>
-    <p class="ui" style="color: #9C927E;">Island check · the pañcāṅga counts the month in <Term k="tithi">tithis</Term>.</p>
-    <ReadingSwitch />
-  </div></section>
-  <GlossaryPopover />
+<BaseLayout title="Nakshatra Vedshala · Home" current="home" bare>
+  <Board tpl={tpl} make={make} />
 </BaseLayout>
 <script>
-  import { initReading, initGlossary } from '../islands/reading';
-  initReading(false); initGlossary();
+  import * as THREE from 'three';
+  import { boot } from '../lib/dc/boot.js';
+  import tpl from '../boards/home.html?raw';
+  import make from '../boards/home.js';
+  (window as any).THREE = THREE;
+  boot(tpl, make);
 </script>
