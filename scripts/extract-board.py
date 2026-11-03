@@ -13,9 +13,11 @@ ROUTES = {'HomeSutra': '/', 'HomeHi': '/hi/', 'Pothi': '/manuscripts/', 'PothiRe
           'Learn': '/learn/', 'Katha': '/our-story/', 'Visit': '/visit/', 'Journal': '/journal/', 'JournalPost': '/journal/sky-guide/',
           'Dana': '/support/', 'NotFound': '/404.html', 'System': '/system/'}
 
+THREE_ID = 'a403dadf537a806e344cdc5c9735369f'
+
 def ext_of(path):
     kind = subprocess.run(['file', '-b', path], capture_output=True, text=True).stdout
-    return 'jpg' if 'JPEG' in kind else 'png' if 'PNG' in kind else 'webp' if 'Web/P' in kind else 'js' if 'JavaScript' in kind or 'text' in kind.lower() else 'json' if 'JSON' in kind else 'bin'
+    return 'jpg' if 'JPEG' in kind else 'png' if 'PNG' in kind else 'webp' if 'Web/P' in kind else 'json' if 'JSON' in kind else 'js' if 'JavaScript' in kind or 'text' in kind.lower() else 'bin'
 
 def cut_block(t, start, tag):
     """remove the element that begins at `start` (an opening tag) through its matching close"""
@@ -50,11 +52,15 @@ def main(name, key):
     for i in ids:
         src = os.path.join(PROTO, '_blob', i)
         if not os.path.exists(src): continue
+        if i == THREE_ID: continue  # three.js comes from npm (pinned to the same r149)
         e = ext_of(src)
-        if e in ('js', 'bin', 'json'): continue  # three.js and data come from npm, not from here
-        shutil.copy(src, os.path.join(SITE, 'public', 'img', i + '.' + e))
-        tpl = tpl.replace('/_blob/' + i, '/img/' + i + '.' + e)
-        js = js.replace('/_blob/' + i, '/img/' + i + '.' + e).replace("'" + i + "'", "'" + i + '.' + e + "'")
+        folder = 'img' if e in ('jpg', 'png', 'webp') else 'data' if e == 'json' else 'vendor' if e == 'js' else None
+        if not folder: continue
+        os.makedirs(os.path.join(SITE, 'public', folder), exist_ok=True)
+        shutil.copy(src, os.path.join(SITE, 'public', folder, i + '.' + e))
+        tpl = tpl.replace('/_blob/' + i, '/' + folder + '/' + i + '.' + e)
+        js = js.replace('/_blob/' + i, '/' + folder + '/' + i + '.' + e)
+        if folder == 'img': js = js.replace("'" + i + "'", "'" + i + '.' + e + "'")
     js = js.replace("'/_blob/'", "'/img/'")
     out = os.path.join(SITE, 'src', 'boards'); os.makedirs(out, exist_ok=True)
     open(os.path.join(out, key + '.html'), 'w', encoding='utf-8').write(tpl.strip() + '\n')

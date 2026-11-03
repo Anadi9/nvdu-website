@@ -1,0 +1,191 @@
+<div ref="{{rootRef}}" class="vroot" style="position: relative; font-family: Spectral, Georgia, serif; color: #EFE4CC; background: #070A14; overflow-x: clip;">
+  
+
+  <canvas ref="{{skyRef}}" aria-hidden="true" style="position: fixed; left: 0; top: 0; width: 100vw; height: 100vh; display: block; z-index: 0; pointer-events: none;"></canvas>
+  <div ref="{{labelsRef}}" aria-hidden="true" style="position: fixed; left: 0; top: 0; width: 100vw; height: 100vh; z-index: 1; pointer-events: none; overflow: hidden;">
+    <sc-for list="{{labels}}" as="n" hint-placeholder-count="35">
+      <span style="position: absolute; left: 0; top: 0; font-family: {{n.f}}; font-size: 14px; color: #C9BEA4; white-space: nowrap; opacity: 0; will-change: transform, opacity;">{{n.d}}</span>
+    </sc-for>
+  </div>
+  <div ref="{{fadeRef}}" aria-hidden="true" style="position: fixed; inset: 0; z-index: 2; background: #070A14; opacity: 0; pointer-events: none;"></div>
+
+  
+
+  <nav ref="{{railRef}}" class="rail" aria-label="Sections" style="position: fixed; right: 26px; top: 50%; transform: translateY(-50%); z-index: 20; display: flex; flex-direction: column; align-items: flex-end;">
+    <span aria-hidden="true" style="position: absolute; right: 4px; top: 10px; bottom: 10px; width: 1px; background: linear-gradient(#B23A1F, #E3B04B);"></span>
+    <sc-for list="{{scenes}}" as="s" hint-placeholder-count="6">
+      <a href="{{s.href}}" class="bead" data-on="0" aria-label="{{s.en}}"><span>{{s.deva}}</span><i></i></a>
+    </sc-for>
+  </nav>
+
+  <main id="main">
+    <!-- 0 · the mansion -->
+    <section id="top" data-scene="0" aria-label="{{n.name}}" style="position: relative; min-height: clamp(720px, 100vh, 980px); display: flex; align-items: flex-end;">
+      <div class="w" style="width: 100%; padding-bottom: 56px;">
+        <div class="panel" style="max-width: 640px;">
+          <p class="ui" style="margin: 0; font-size: 14px; letter-spacing: .16em; color: #9C927E;">NAKSHATRA {{n.num}} OF 27{{n.nowTag}}</p>
+          <h1 aria-live="polite" style="margin: 12px 0 0; font-family: 'Rozha One', serif; font-weight: 400; font-size: clamp(80px, 11vw, 176px); line-height: .95; color: #EFE4CC;">{{n.deva}}</h1>
+          <p style="margin: 14px 0 0; font-weight: 300; font-size: clamp(26px, 2.6vw, 36px); line-height: 1.25;">{{n.name}}, <span style="color: #9C927E;">{{n.meaning}}</span></p>
+          <dl class="ui" style="margin: 30px 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px 24px; font-size: 15px;">
+            <div style="border-top: 1px solid rgba(227,176,75,.4); padding-top: 10px;"><dt style="color: #9C927E;">Deity</dt><dd style="margin: 2px 0 0; font-family: Spectral, serif; font-size: 20px; color: #EFE4CC;">{{n.deity}}</dd></div>
+            <div style="border-top: 1px solid rgba(227,176,75,.4); padding-top: 10px;"><dt style="color: #9C927E;">Junction star</dt><dd style="margin: 2px 0 0; font-family: Spectral, serif; font-size: 20px; color: #EFE4CC;">{{n.star}}</dd></div>
+            <div style="border-top: 1px solid rgba(227,176,75,.4); padding-top: 10px;"><dt style="color: #9C927E;">Lord</dt><dd style="margin: 2px 0 0; font-family: Spectral, serif; font-size: 20px; color: #EFE4CC;">{{n.lordEn}}</dd></div>
+          </dl>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px 18px; margin-top: 34px;">
+          <button type="button" class="ring pk-a" onClick="{{prev}}" aria-label="Previous Nakshatra: {{n.prevName}}">‹</button>
+          <div class="pk-d" role="group" aria-label="Choose a Nakshatra" style="display: flex; flex-wrap: wrap; gap: 8px;">
+            <sc-for list="{{dots}}" as="d" hint-placeholder-count="27">
+              <button type="button" class="dot ui" onClick="{{d.pick}}" aria-label="{{d.label}}" aria-pressed="{{d.on}}" style="position: relative; width: 36px; height: 36px; border-radius: 50%; border: 1px solid {{d.border}}; background: {{d.bg}}; color: {{d.fg}}; font-size: 14px; cursor: pointer; padding: 0;">{{d.n}}</button>
+            </sc-for>
+          </div>
+          <button type="button" class="ring pk-a" onClick="{{next}}" aria-label="Next Nakshatra: {{n.nextName}}">›</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 1 · span and padas -->
+    <section id="padas" data-scene="1" aria-label="Span and padas" style="position: relative; min-height: clamp(720px, 100vh, 980px); display: flex; align-items: flex-end;">
+      <div class="w" style="width: 100%; padding-bottom: 64px;">
+        <div class="panel rv" style="max-width: 700px;">
+          <p class="kick"><span class="sh"><span class="t">पाद</span></span> · the four quarters</p>
+          <h2 class="lede" style="margin-top: 14px;">{{n.spanFrom}} to {{n.spanTo}} along the Moon's path.</h2>
+          <p class="body" style="margin-top: 14px;">{{n.rashiLine}} Each of its four padas spans 3° 20′ and carries a navāṃśa, the sign used for the ninth-part chart.</p>
+          <ol style="list-style: none; margin: 24px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; border-top: 1px solid rgba(227,176,75,.45);">
+            <sc-for list="{{padas}}" as="p" hint-placeholder-count="4">
+              <li style="padding: 14px 12px 0 0; border-right: 1px solid rgba(239,228,204,.1);">
+                <span class="ui" style="display: block; font-size: 14px; letter-spacing: .1em; color: #9C927E;">PADA {{p.n}}</span>
+                <span style="display: block; margin-top: 4px; font-family: 'Tiro Devanagari Sanskrit', serif; font-size: 26px; color: #E3B04B;">{{p.navDeva}}</span>
+                <span style="display: block; font-size: 17px;">{{p.navEn}} navāṃśa</span>
+                <span class="ui" style="display: block; margin-top: 4px; font-size: 14px; color: #9C927E;">{{p.from}}–{{p.to}}</span>
+              </li>
+            </sc-for>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2 · the lord -->
+    <section id="lord" data-scene="2" aria-label="The ruling graha" style="position: relative; min-height: clamp(700px, 96vh, 940px); display: flex; align-items: center;">
+      <div class="w" style="width: 100%;">
+        <div class="stack" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px 80px; align-items: center;">
+          <div class="panel rv">
+            <p class="kick"><span class="sh"><span class="t">दशा</span></span>-<span class="sh"><span class="t">स्वामी</span></span> · the lord</p>
+            <h2 class="lede" style="margin-top: 14px;"><span style="font-family: 'Tiro Devanagari Sanskrit', serif; color: #E3B04B;">{{n.lordDeva}}</span> rules {{n.name}}.</h2>
+            <p class="body" style="margin-top: 14px;">In the Vimśottarī system the nine grahas rule the 27 Nakshatras in a fixed cycle, three Nakshatras each. A person born with the Moon in {{n.name}} begins life in the period of {{n.lordEn}}, which lasts {{n.lordYears}} years of the 120.</p>
+          </div>
+          <ol class="lords" aria-label="The cycle of the nine lords" style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px;">
+            <sc-for list="{{lords}}" as="g" hint-placeholder-count="9">
+              <li style="padding: 16px; border: 1px solid {{g.border}}; background: {{g.bg}};">
+                <span style="display: block; font-family: 'Tiro Devanagari Sanskrit', serif; font-size: 24px; color: {{g.c}};">{{g.deva}}</span>
+                <span class="ui" style="display: block; font-size: 14px; color: #9C927E;">{{g.en}} · {{g.years}} yrs</span>
+                <span class="ui" style="display: block; margin-top: 6px; font-size: 14px; color: {{g.c2}};">{{g.naks}}</span>
+              </li>
+            </sc-for>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 · from the hill -->
+    <section id="hill" data-scene="3" aria-label="Finding it from Devprayag" style="position: relative; min-height: clamp(760px, 104vh, 1020px); display: flex; align-items: flex-end;">
+      <div class="w" style="width: 100%; padding-bottom: 64px;">
+        <div class="panel rv" style="max-width: 680px;">
+          <p class="kick"><span class="sh"><span class="t">दर्शन</span></span> · from the hill</p>
+          <h2 class="lede" style="margin-top: 14px;">{{h.headline}}</h2>
+          <p class="body" style="margin-top: 14px;">{{h.text}}</p>
+          <dl class="ui" style="margin: 24px 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px 24px; font-size: 15px;">
+            <div style="border-top: 1px solid rgba(227,176,75,.4); padding-top: 10px;"><dt style="color: #9C927E;">Rises</dt><dd style="margin: 2px 0 0; font-family: Spectral, serif; font-size: 20px;">{{h.rise}}</dd><dd style="margin: 0; color: #9C927E;">{{h.riseDir}}</dd></div>
+            <div style="border-top: 1px solid rgba(227,176,75,.4); padding-top: 10px;"><dt style="color: #9C927E;">Highest</dt><dd style="margin: 2px 0 0; font-family: Spectral, serif; font-size: 20px;">{{h.transit}}</dd><dd style="margin: 0; color: #9C927E;">{{h.alt}}° up, {{h.transitDir}}</dd></div>
+            <div style="border-top: 1px solid rgba(227,176,75,.4); padding-top: 10px;"><dt style="color: #9C927E;">Sets</dt><dd style="margin: 2px 0 0; font-family: Spectral, serif; font-size: 20px;">{{h.set}}</dd><dd style="margin: 0; color: #9C927E;">{{h.setDir}}</dd></div>
+          </dl>
+          <p class="ui" style="margin: 16px 0 0; font-size: 14px; color: #8C8474;">Computed for Dashrathanchal hill, Devprayag (30.15° N, 78.60° E), IST, to within a few minutes. The view shows the sky at its highest.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 · visits -->
+    <section id="visits" data-scene="4" aria-label="When the Moon and Sun are here" style="position: relative; padding: 140px 0 120px;">
+      <div class="w">
+        <div class="stack" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px 80px; align-items: start;">
+          <div class="panel rv">
+            <p class="kick"><span class="sh"><span class="t">चन्द्र</span></span> · the Moon's visits</p>
+            <h2 class="lede" style="margin-top: 14px;">The Moon rests here about one day in every 27.</h2>
+            <ul style="list-style: none; margin: 26px 0 0; padding: 0; border-top: 1px solid rgba(227,176,75,.45);">
+              <sc-for list="{{visits}}" as="v" hint-placeholder-count="3">
+                <li style="display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; align-items: baseline; padding: 18px 0; border-bottom: 1px solid rgba(239,228,204,.12);">
+                  <span><span style="display: block; font-weight: 300; font-size: 24px;">{{v.from}}</span><span class="ui" style="display: block; font-size: 15px; color: #9C927E;">until {{v.to}}</span></span>
+                  <span class="ui" style="font-size: 14px; color: {{v.c}};">{{v.tag}}</span>
+                </li>
+              </sc-for>
+            </ul>
+          </div>
+          <div class="panel rv">
+            <p class="kick"><span class="sh"><span class="t">सूर्य</span></span> · the Sun's stay</p>
+            <h2 class="lede" style="margin-top: 14px;">{{sun.headline}}</h2>
+            <p class="body" style="margin-top: 14px;">The Sun takes a year to pass all 27, staying about thirteen days in each. {{sun.text}}</p>
+            <p class="ui" style="margin: 16px 0 0; font-size: 14px; color: #8C8474;">Sidereal positions with the Lahiri ayanāṃśa, computed live; times are approximate to an hour or two.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4b · the Moon's road: the 27 over the real stars -->
+    <section id="road" aria-label="The Moon's road among the real stars" style="position: relative; z-index: 3; padding: 110px 0 90px; background: rgba(7,10,20,.94);">
+      <div class="w">
+        <div class="stack" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px 80px; align-items: end;">
+          <div>
+            <p class="kick"><span class="sh"><span class="t">चन्द्रमार्ग</span></span> · the Moon's road</p>
+            <h2 class="lede" style="margin-top: 14px;">Watch the Moon walk the twenty-seven, over the real stars.</h2>
+          </div>
+          <div aria-live="polite">
+            <p class="ui" style="margin: 0; font-size: 14px; letter-spacing: .1em; color: #9C927E;">{{road.when}} · <span style="font-family: 'Tiro Devanagari Sanskrit', serif; font-size: 17px; letter-spacing: 0; color: #F2CD7A;">{{road.deva}}</span></p>
+            <p style="margin: 6px 0 0; font-weight: 200; font-size: clamp(20px, 2vw, 26px);">{{road.line}}</p>
+            <div class="rd-ctl" style="margin-top: 16px;">
+              <button type="button" onClick="{{road.back}}">− 1 day</button>
+              <button type="button" class="{{road.playCls}}" onClick="{{road.play}}">{{road.playLabel}}</button>
+              <button type="button" onClick="{{road.fwd}}">+ 1 day</button>
+              <button type="button" class="{{road.nowCls}}" onClick="{{road.now}}">Tonight</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 28px;">
+        <canvas ref="{{roadRef}}" class="rd-road" role="img" aria-label="A strip of the real sky along the Moon's path, divided into the 27 Nakshatras. Drag sideways to travel along it; tap a Nakshatra to read about it above."></canvas>
+      </div>
+      <div class="w">
+        <div class="rd-tl"><span>← east</span><span>Looking south · drag the road · tap a Nakshatra to read it above</span><span>west →</span></div>
+        <p class="ui" style="margin: 10px 0 0; font-size: 14px; color: #8C8474;">Real stars to magnitude 5.8 within 12° of the ecliptic, from the Yale Bright Star Catalogue · the Moon and Sun from astronomy-engine, drawn larger than life · gold rings mark the junction stars · the Nakshatra open on this page is washed in gold</p>
+      </div>
+    </section>
+
+    <!-- 5 · deeper -->
+    <section id="deeper" data-scene="5" aria-label="Go deeper" style="position: relative; padding: 80px 0 140px;">
+      <div class="w">
+        <div class="stack" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px;">
+          <a href="/manuscripts/#leaves" style="display: flex; flex-direction: column; gap: 10px; min-height: 220px; padding: 28px; border: 1px solid rgba(239,228,204,.18); background: rgba(7,10,20,.6); color: #EFE4CC; text-decoration: none;">
+            <dc-import name="Emblem" glyph="patra" size="34" color="#E3B04B" hint-size="34px,34px"></dc-import>
+            <span style="margin-top: auto; font-weight: 300; font-size: 26px; line-height: 1.2;">On the leaf</span>
+            <span class="ui" style="font-size: 15px; color: #9C927E;">Read the garland of the 27 in the pothi →</span>
+          </a>
+          <button type="button" onClick="{{prev}}" style="display: flex; flex-direction: column; align-items: flex-start; gap: 10px; min-height: 220px; padding: 28px; border: 1px solid rgba(239,228,204,.18); background: rgba(7,10,20,.6); color: #EFE4CC; text-align: left; cursor: pointer;">
+            <span class="ui" style="font-size: 14px; letter-spacing: .14em; color: #9C927E;">← BEFORE</span>
+            <span style="margin-top: auto; font-family: 'Tiro Devanagari Sanskrit', serif; font-size: 40px; color: #E3B04B;">{{n.prevDeva}}</span>
+            <span style="font-weight: 300; font-size: 22px;">{{n.prevName}}</span>
+          </button>
+          <button type="button" onClick="{{next}}" style="display: flex; flex-direction: column; align-items: flex-start; gap: 10px; min-height: 220px; padding: 28px; border: 1px solid rgba(239,228,204,.18); background: rgba(7,10,20,.6); color: #EFE4CC; text-align: left; cursor: pointer;">
+            <span class="ui" style="font-size: 14px; letter-spacing: .14em; color: #9C927E;">AFTER →</span>
+            <span style="margin-top: auto; font-family: 'Tiro Devanagari Sanskrit', serif; font-size: 40px; color: #E3B04B;">{{n.nextDeva}}</span>
+            <span style="font-weight: 300; font-size: 22px;">{{n.nextName}}</span>
+          </button>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 28px; margin-top: 56px;">
+          <a href="/learn/" class="pill">Learn the Nakshatras from the beginning <span aria-hidden="true">→</span></a>
+          <a href="/" class="line">Back to the sky</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  
+</div>

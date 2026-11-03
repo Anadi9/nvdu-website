@@ -14,7 +14,7 @@ Preview the prototype: `python3 -m http.server 5190 --directory ../design/protot
 - [x] **Home** (`/`) · live 3D sky ring, thread, tonight, 27 picker and month play, three branches, verse leaf, Devprayag, gifts, journal · all 8 sections at identical offsets and heights at 1440×900 (8400px) and 375×812 (11070px); 3D ring, thread, picker, play, verse tabs and gifts work; no console errors
 - [x] **Manuscripts** (`/manuscripts/`) · opening, how to read a leaf, the shelf, register with search and empty state, six stages, adopt · same section offsets as the prototype at both sizes (17915px / 14393px); stepping the page's tick() gives the identical reading-camera transform, shelf offset and active stage; search empty state and the ४६४२ row link work
 - [x] **Manuscript record** (`/manuscripts/4642/`) · scan viewer, reading tabs, catalogue, stages, cite, paper default · identical layout to the prototype at both sizes (2906px / 5166px); opens in Paper with the paper header; zoom, reading tabs, glossary and Night switch work; a remembered reading light overrides the default, as designed
-- [ ] **The 27** (`/nakshatra/`) · nakshatra explorer and its sky
+- [x] **The 27** (`/nakshatra/`) · nakshatra explorer and its sky · identical section offsets at both sizes (6256px / 7839px); picking a nakshatra, the 3D sky and the Moon's road (star catalogue from public/data, astronomy-engine from public/vendor) work; no console errors
 - [ ] **Learn** (`/learn/`) · the three instruments (tithi, shadow-stick, kundali)
 - [ ] **Our story** (`/our-story/`) · keepers, shadow-stick, 3D journey
 - [ ] **Visit** (`/visit/`) · at a glance, getting there, ask-to-come form and its states
@@ -43,6 +43,7 @@ Anything that could not be matched exactly, and why.
 - Phone menu: the canvas mounts it on demand; the site renders it once with `hidden` and toggles it (adds Esc to close). Looks and behaves the same.
 - Pages with their own root background use the layout's `bare` mode: header and footer sit beside the page root instead of inside it. The header follows the root's Paper light through `body:has(.vroot.paper)`.
 - Live values (tonight's Moon, dates) are computed at build time in the HTML and recomputed in the browser on load.
+- The Moon's road and the sky guide use astronomy-engine (MIT, Don Cross). The prototype's exact minified browser build ships as `public/vendor/astronomy.browser.min.js`, licence header intact, loaded with `defer` before the page logic. Star and Milky Way catalogues are in `public/data/`.
 - Sky maths: kept as verbatim JavaScript (`src/lib/astro.js` + types) rather than rewritten in TypeScript, so the numbers cannot drift from the prototype.
 
 ## Still needed from the family
