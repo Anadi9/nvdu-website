@@ -26,7 +26,7 @@ Preview the prototype: `python3 -m http.server 5190 --directory ../design/protot
 - [x] **Content collections**: journal posts, manuscript records, register as Markdown/JSON · `src/content/register.json`, `journal.json`, `records/4642.catalogue.json`, `records/4642.reading.json`, documented in `src/content/README.md`; the extractor now seeds these once and makes the boards read them; Journal, Manuscripts register and the record give identical text to the prototype
 - [x] **Worker stubs**: visit request and Razorpay webhook in `worker/` (no keys) · `/api/visit`, `/api/gift/order`, `/api/gift/webhook` (HMAC-verified); answer 503 until keys and an email binding are set; `npm run test:worker` passes. The pages still show their prototype placeholders; wiring their buttons to these routes waits for the family's accounts
 - [x] **Visual tests green**: Playwright compares every page with the prototype at both sizes · `npm run test:visual`: 24 tests (12 pages × 1440×900 and 375×812) check height, section positions, no sideways scroll, no console errors, and three screens per page pixel-matched (≤2% differing, 3D canvases masked, clock frozen, reduced motion); all 24 pass; a deliberate mismatch (Home vs Learn) fails as it should
-- [ ] **README**: how to run, build, test, where content lives, what the family still has to supply
+- [x] **README**: how to run, build, test, where content lives, what the family still has to supply · `README.md`; final run: 12 pages built, test:astro 0/20,000 differ, test:worker passed, test:visual 24/24 passed
 
 ## How pages are ported
 
