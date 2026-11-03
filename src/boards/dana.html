@@ -1,0 +1,187 @@
+<div ref="{{rootRef}}" class="vroot" style="position: relative; font-family: Spectral, Georgia, serif; color: #EFE4CC; background: #070A14; overflow-x: clip;">
+  
+
+  <canvas ref="{{skyRef}}" aria-hidden="true" style="position: fixed; left: 0; top: 0; width: 100vw; height: 100vh; display: block; z-index: 0; pointer-events: none;"></canvas>
+
+  
+
+  <main id="main">
+    <!-- the flow -->
+    <section id="give" aria-label="Give to the Vedshala" style="position: relative; padding: 120px 0 80px;">
+      <div class="w">
+        <div class="stack" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 560px); gap: 32px 64px; align-items: start;">
+          <div class="stage" style="min-height: 640px; display: flex; flex-direction: column; justify-content: flex-end; padding-bottom: 8px;">
+            <p class="kick"><span class="sh"><span class="t">दान</span></span> · ग्रन्थि</p>
+            <h1 style="margin: 14px 0 0; font-weight: 200; font-size: clamp(48px, 5.6vw, 84px); line-height: 1.04;">Tie your thread<br>to the Vedshala.</h1>
+            <p class="body" style="margin-top: 18px; max-width: 26em;">A red-and-yellow thread is tied at the wrist as a promise. Each gift winds one more turn around the bundle of leaves the family keeps.</p>
+            <p class="ui" style="margin: 18px 0 0; font-size: 15px; color: #9C927E;"><span class="live" style="color: #E3B04B;">●</span> {{turnsLine}}</p>
+          </div>
+
+          <div class="flow" aria-live="polite">
+            <ol aria-label="Steps" style="list-style: none; margin: 0 0 26px; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px;">
+              <sc-for list="{{steps}}" as="s" hint-placeholder-count="4">
+                <li aria-current="{{s.cur}}" style="border-top: 2px solid {{s.bar}}; padding-top: 8px;"><span class="ui" style="font-size: 14px; color: {{s.c}};">{{s.n}} · {{s.label}}</span></li>
+              </sc-for>
+            </ol>
+
+            <!-- step 1 · purpose -->
+            <sc-if value="{{is.s1}}" hint-placeholder-val="{{true}}">
+              <fieldset style="margin: 0; padding: 0; border: 0;">
+                <legend style="padding: 0; font-weight: 300; font-size: 30px; line-height: 1.25;">What should your gift do?</legend>
+                <div class="purp" role="radiogroup" aria-label="Purpose" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 20px;">
+                  <sc-for list="{{purposes}}" as="p" hint-placeholder-count="4">
+                    <button type="button" role="radio" class="opt" aria-checked="{{p.on}}" onClick="{{p.pick}}" style="display: flex; flex-direction: column; align-items: flex-start; gap: 8px; min-height: 150px; padding: 18px; border: 1px solid {{p.border}}; border-radius: 4px; background: {{p.bg}}; color: #EFE4CC; text-align: left; cursor: pointer;">
+                      <dc-import name="Emblem" glyph="{{p.glyph}}" size="30" color="#E3B04B" hint-size="30px,30px"></dc-import>
+                      <span style="margin-top: auto; font-weight: 300; font-size: 21px; line-height: 1.2;">{{p.title}}</span>
+                      <span class="ui" style="font-size: 14px; line-height: 1.4; color: #9C927E;">{{p.desc}}</span>
+                    </button>
+                  </sc-for>
+                </div>
+              </fieldset>
+            </sc-if>
+
+            <!-- step 2 · amount -->
+            <sc-if value="{{is.s2}}" hint-placeholder-val="{{false}}">
+              <fieldset style="margin: 0; padding: 0; border: 0;">
+                <legend style="padding: 0; font-weight: 300; font-size: 30px; line-height: 1.25;">How much, and how often?</legend>
+                <div role="radiogroup" aria-label="Frequency" style="display: inline-flex; margin-top: 18px; padding: 4px; border: 1px solid rgba(239,228,204,.25); border-radius: 999px;">
+                  <sc-for list="{{freqs}}" as="f" hint-placeholder-count="2">
+                    <button type="button" role="radio" aria-checked="{{f.on}}" onClick="{{f.pick}}" class="ui" style="min-height: 42px; padding: 0 20px; border: 0; border-radius: 999px; background: {{f.bg}}; color: {{f.fg}}; font-size: 15px; cursor: pointer;">{{f.label}}</button>
+                  </sc-for>
+                </div>
+                <div class="tiers" role="radiogroup" aria-label="Amount" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-top: 18px;">
+                  <sc-for list="{{tiers}}" as="t" hint-placeholder-count="4">
+                    <button type="button" role="radio" class="opt" aria-checked="{{t.on}}" onClick="{{t.pick}}" style="min-height: 72px; padding: 10px; border: 1px solid {{t.border}}; border-radius: 4px; background: {{t.bg}}; color: #EFE4CC; cursor: pointer;"><span style="display: block; font-weight: 300; font-size: 24px;">{{t.label}}</span><span class="ui" style="display: block; font-size: 14px; color: #9C927E;">{{t.turns}} turns</span></button>
+                  </sc-for>
+                </div>
+                <label class="lbl" for="amt" style="margin-top: 18px;">Or another amount, in rupees</label>
+                <input id="amt" class="fld" type="text" inputmode="numeric" placeholder="e.g. 3100" value="{{custom}}" onInput="{{setCustom}}" onChange="{{setCustom}}">
+                <p class="ui" style="margin: 14px 0 0; font-size: 15px; color: #C9BEA4;">{{impact}}</p>
+                <p class="ui" style="margin: 6px 0 0; font-size: 14px; color: #8C8474;">Sample amounts · the Vedshala will set its own</p>
+              </fieldset>
+            </sc-if>
+
+            <!-- step 3 · details -->
+            <sc-if value="{{is.s3}}" hint-placeholder-val="{{false}}">
+              <fieldset style="margin: 0; padding: 0; border: 0;">
+                <legend style="padding: 0; font-weight: 300; font-size: 30px; line-height: 1.25;">Who is tying this thread?</legend>
+                <div style="display: grid; gap: 16px; margin-top: 20px;">
+                  <div><label class="lbl" for="nm">Your name</label><input id="nm" class="fld" type="text" autocomplete="name" value="{{f.name}}" onInput="{{f.setName}}" onChange="{{f.setName}}" aria-invalid="{{f.nameBad}}"><span class="ui" style="display: block; margin-top: 4px; font-size: 14px; color: #E07A5F;">{{f.nameErr}}</span></div>
+                  <div><label class="lbl" for="em">Email, for your receipt</label><input id="em" class="fld" type="email" autocomplete="email" value="{{f.email}}" onInput="{{f.setEmail}}" onChange="{{f.setEmail}}" aria-invalid="{{f.emailBad}}"><span class="ui" style="display: block; margin-top: 4px; font-size: 14px; color: #E07A5F;">{{f.emailErr}}</span></div>
+                  <div class="stack" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px;">
+                    <div><label class="lbl" for="ph">Phone <span style="color: #8C8474;">(optional)</span></label><input id="ph" class="fld" type="tel" autocomplete="tel" value="{{f.phone}}" onInput="{{f.setPhone}}" onChange="{{f.setPhone}}"></div>
+                    <div><label class="lbl" for="pan">PAN <span style="color: #8C8474;">(for an 80G receipt)</span></label><input id="pan" class="fld" type="text" autocomplete="off" placeholder="[If 80G applies]" value="{{f.pan}}" onInput="{{f.setPan}}" onChange="{{f.setPan}}"></div>
+                  </div>
+                  <div><label class="lbl" for="ded">In the name of <span style="color: #8C8474;">(optional, for a gift given for someone)</span></label><input id="ded" class="fld" type="text" placeholder="e.g. in memory of a grandparent" value="{{f.ded}}" onInput="{{f.setDed}}" onChange="{{f.setDed}}"></div>
+                  <label class="chk"><input type="checkbox" checked="{{f.show}}" onChange="{{f.toggleShow}}"><span>Show my name on the record of the leaf my gift publishes</span></label>
+                </div>
+              </fieldset>
+            </sc-if>
+
+            <!-- step 4 · review -->
+            <sc-if value="{{is.s4}}" hint-placeholder-val="{{false}}">
+              <div>
+                <p style="margin: 0; font-weight: 300; font-size: 30px; line-height: 1.25;">Check, then tie the knot.</p>
+                <dl style="margin: 20px 0 0; border-top: 1px solid rgba(227,176,75,.45);">
+                  <sc-for list="{{review}}" as="r" hint-placeholder-count="5">
+                    <div style="display: grid; grid-template-columns: 140px minmax(0, 1fr) auto; gap: 12px; align-items: baseline; padding: 14px 0; border-bottom: 1px solid rgba(239,228,204,.12);">
+                      <dt class="ui" style="font-size: 15px; color: #9C927E;">{{r.k}}</dt><dd style="margin: 0; font-size: 19px;">{{r.v}}</dd><dd style="margin: 0;"><button type="button" class="line ui" onClick="{{r.edit}}" style="min-height: 44px; font-size: 15px;">Edit</button></dd>
+                    </div>
+                  </sc-for>
+                </dl>
+                <div style="margin-top: 20px; padding: 18px; border: 1px dashed rgba(239,228,204,.3); border-radius: 4px;">
+                  <p class="ui" style="margin: 0; font-size: 15px; color: #C9BEA4;">[Secure payment by the Vedshala's payment provider: UPI, cards, netbanking. It opens here; this page never sees your card or bank details.]</p>
+                </div>
+                <label class="chk proto"><input type="checkbox" checked="{{simFail}}" onChange="{{toggleFail}}"><span>Prototype only: show what happens if the payment fails</span></label>
+              </div>
+            </sc-if>
+
+            <!-- the payment did not go through -->
+            <sc-if value="{{is.fail}}" hint-placeholder-val="{{false}}">
+              <div role="alert" style="padding: 6px 0;">
+                <p class="ui" style="margin: 0; font-size: 14px; letter-spacing: .12em; color: #E07A5F;">PAYMENT NOT COMPLETED</p>
+                <p style="margin: 10px 0 0; font-weight: 300; font-size: 32px; line-height: 1.2;">The knot didn't hold this time.</p>
+                <p class="body" style="margin-top: 12px; font-size: 19px;">The payment didn't go through, and nothing was taken from your account. Your choices are kept: try again, or pay another way.</p>
+                <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; margin-top: 22px;">
+                  <button type="button" class="pill" onClick="{{retry}}">Try again · {{amtTxt}} <span aria-hidden="true">→</span></button>
+                  <button type="button" class="line" onClick="{{retry}}">Pay by UPI instead</button>
+                  <a href="tel:+919557140296" class="line">Call the family</a>
+                </div>
+                <p class="ui" style="margin: 16px 0 0; font-size: 14px; color: #8C8474;">If money left your account and no receipt arrives within a day, write to nakshatravedshaladev@gmail.com with the time of payment.</p>
+              </div>
+            </sc-if>
+
+            <!-- step 5 · thank you -->
+            <sc-if value="{{is.s5}}" hint-placeholder-val="{{false}}">
+              <div style="text-align: center; padding: 10px 0;">
+                <p style="margin: 0; font-family: 'Tiro Devanagari Sanskrit', serif; font-size: 22px; color: #E3B04B;">॥ धन्यवादः ॥</p>
+                <p style="margin: 10px 0 0; font-weight: 200; font-size: 40px; line-height: 1.15;">Your thread is tied{{thanksName}}.</p>
+                <p class="body" style="margin: 14px auto 0; max-width: 24em; font-size: 19px;">{{thanksText}}</p>
+                <ol class="ui after">
+                  <li><b>Today</b><span>A receipt by email, [receipt no.], with an 80G certificate if it applies</span></li>
+                  <li><b>Within weeks</b><span>Your bundle moves to its next stage in the register</span></li>
+                  <li><b>When it is published</b><span>A note from the family, and your name in the leaf's record if you chose it</span></li>
+                </ol>
+                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 24px; margin-top: 22px;">
+                  <a href="/manuscripts/" class="pill">See the leaves you are keeping <span aria-hidden="true">→</span></a>
+                  <button type="button" class="line" onClick="{{again}}">Tie another</button>
+                </div>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{showNav}}" hint-placeholder-val="{{true}}">
+              <div style="display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-top: 28px; padding-top: 22px; border-top: 1px solid rgba(239,228,204,.12);">
+                <button type="button" class="line" onClick="{{back}}" style="visibility: {{backVis}};">← Back</button>
+                <button type="button" class="pill" onClick="{{next}}">{{nextLabel}} <span aria-hidden="true">→</span></button>
+              </div>
+            </sc-if>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- trust -->
+    <section aria-label="Who you are giving to" style="position: relative; padding: 80px 0; background: linear-gradient(180deg, rgba(7,10,20,0), rgba(7,10,20,.95) 14%);">
+      <div class="w">
+        <div class="stack" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px 48px;">
+          <div>
+            <p class="kick"><span class="sh"><span class="t">किसे</span></span> · to whom</p>
+            <div style="display: flex; gap: 20px; align-items: flex-end; margin-top: 14px;">
+              <figure style="flex: none; width: 96px; margin: 0;"><img src="/img/2dd93a8e376c5690775f17bad1d50f3c.jpg" alt="Hand-tinted family portrait of an elder in a cream shawl" style="display: block; width: 100%; aspect-ratio: 3 / 4; object-fit: cover; object-position: 50% 18%; border-radius: 999px 999px 0 0; border: 1px solid rgba(227,176,75,.6); filter: sepia(.14) saturate(.88) brightness(.94);"></figure>
+              <p style="margin: 0; font-weight: 300; font-size: 26px; line-height: 1.3;">Nakshatra Vedshala, Devprayag. Kept by the Joshi family since 1946.</p>
+            </div>
+            <p class="ui" style="margin: 8px 0 0; font-size: 14px; color: #8C8474;">Family photograph · name to confirm</p>
+            <p class="ui" style="margin: 12px 0 0; font-size: 15px; color: #9C927E;">Run by the Shri Laxmidhar Acharya Chakradhar Joshi Vidyamandir Shodh Sansthan, a Gyan Bharatam cluster centre · [registration number] · [80G status] · [FCRA status for gifts from abroad]</p>
+          </div>
+          <div>
+            <p class="kick"><span class="sh"><span class="t">कहाँ</span></span> · where it goes</p>
+            <ul class="ui" style="list-style: none; margin: 12px 0 0; padding: 0; font-size: 16px;">
+              <sc-for list="{{uses}}" as="u" hint-placeholder-count="4">
+                <li style="display: flex; justify-content: space-between; gap: 12px; padding: 12px 0; border-bottom: 1px solid rgba(239,228,204,.12);"><span style="color: #EFE4CC;">{{u.k}}</span><span style="color: #8C8474;">[share]</span></li>
+              </sc-for>
+            </ul>
+          </div>
+          <div>
+            <p class="kick"><span class="sh"><span class="t">कैसे</span></span> · how you'll know</p>
+            <p style="margin: 12px 0 0; font-weight: 300; font-size: 22px; line-height: 1.4;">Every gift is acknowledged. When a leaf you supported is published, its record carries a note, and your name if you wish.</p>
+            <a href="/visit/" class="line" style="margin-top: 8px;">Visit what you support</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- questions -->
+    <section aria-label="Questions" style="position: relative; padding: 40px 0 120px; background: rgba(7,10,20,.95);">
+      <div class="w" style="max-width: 900px;">
+        <p class="kick"><span class="sh"><span class="t">प्रश्न</span></span> · questions</p>
+        <div style="margin-top: 18px;">
+          <sc-for list="{{faqs}}" as="q" hint-placeholder-count="4">
+            <details class="q"><summary><span>{{q.q}}</span><span aria-hidden="true" style="color: #E3B04B;">+</span></summary><p class="body" style="margin: 0 0 20px; font-size: 18px;">{{q.a}}</p></details>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  
+</div>
