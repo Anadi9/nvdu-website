@@ -1,0 +1,5 @@
+# Copy to .dev.vars for local testing with test-mode keys only. .dev.vars is git-ignored.
+RAZORPAY_KEY_ID=rzp_test_xxxxxxxxxxxx
+RAZORPAY_KEY_SECRET=xxxxxxxxxxxxxxxx
+RAZORPAY_WEBHOOK_SECRET=xxxxxxxxxxxxxxxx
+FAMILY_EMAIL=

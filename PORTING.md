@@ -24,7 +24,7 @@ Preview the prototype: `python3 -m http.server 5190 --directory ../design/protot
 - [x] **404** (`/404`) · built as dist/404.html (Cloudflare Pages serves it for unknown paths); text, links and height identical to the prototype at both sizes (1209px / 1862px); no console errors
 - [x] **Hindi** (`/hi/`) · Hindi Home through Astro i18n routing · `<html lang="hi">`, Hindi header and footer; identical section offsets and page text to the prototype at both sizes (8281px / 10572px); no lang="sa" tagging on the Hindi page; no console errors. Other pages stay English, as in the prototype
 - [x] **Content collections**: journal posts, manuscript records, register as Markdown/JSON · `src/content/register.json`, `journal.json`, `records/4642.catalogue.json`, `records/4642.reading.json`, documented in `src/content/README.md`; the extractor now seeds these once and makes the boards read them; Journal, Manuscripts register and the record give identical text to the prototype
-- [ ] **Worker stubs**: visit request and Razorpay webhook in `worker/` (no keys)
+- [x] **Worker stubs**: visit request and Razorpay webhook in `worker/` (no keys) · `/api/visit`, `/api/gift/order`, `/api/gift/webhook` (HMAC-verified); answer 503 until keys and an email binding are set; `npm run test:worker` passes. The pages still show their prototype placeholders; wiring their buttons to these routes waits for the family's accounts
 - [ ] **Visual tests green**: Playwright compares every page with the prototype at both sizes
 - [ ] **README**: how to run, build, test, where content lives, what the family still has to supply
 

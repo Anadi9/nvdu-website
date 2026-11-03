@@ -1,0 +1,12 @@
+# Cloudflare Worker for /api/* (visit requests and gifts). Not deployed yet.
+name = "nakshatra-vedshala-api"
+main = "src/index.js"
+compatibility_date = "2025-01-01"
+
+[vars]
+# FAMILY_EMAIL = "nakshatravedshaladev@gmail.com"   # confirm with the family before setting
+
+# Secrets, never in this file:
+#   wrangler secret put RAZORPAY_KEY_ID
+#   wrangler secret put RAZORPAY_KEY_SECRET
+#   wrangler secret put RAZORPAY_WEBHOOK_SECRET

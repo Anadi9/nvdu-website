@@ -10,7 +10,8 @@
     "check": "astro check",
     "proto": "python3 -m http.server 5190 --directory ../design/prototype",
     "test:visual": "playwright test",
-    "test:astro": "node tests/astro.check.mjs"
+    "test:astro": "node tests/astro.check.mjs",
+    "test:worker": "node worker/test.mjs"
   },
   "dependencies": {
     "astro": "^5.18.2",
