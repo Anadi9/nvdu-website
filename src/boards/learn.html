@@ -1,0 +1,207 @@
+<div ref="{{rootRef}}" class="vroot" style="position: relative; font-family: Spectral, Georgia, serif; color: #EFE4CC; background: #070A14; overflow-x: clip;">
+  
+
+  <canvas ref="{{skyRef}}" aria-hidden="true" style="position: fixed; left: 0; top: 0; width: 100vw; height: 100vh; display: block; z-index: 0; pointer-events: none;"></canvas>
+  <div ref="{{labelsRef}}" aria-hidden="true" style="position: fixed; left: 0; top: 0; width: 100vw; height: 100vh; z-index: 1; pointer-events: none; overflow: hidden;">
+    <sc-for list="{{labels}}" as="n" hint-placeholder-count="15">
+      <span style="position: absolute; left: 0; top: 0; font-family: 'Tiro Devanagari Sanskrit', serif; font-size: 15px; color: #C9BEA4; white-space: nowrap; opacity: 0; will-change: transform, opacity;">{{n.d}}</span>
+    </sc-for>
+  </div>
+
+  
+
+  <nav ref="{{railRef}}" class="rail" aria-label="Sections" style="position: fixed; right: 26px; top: 50%; transform: translateY(-50%); z-index: 20; display: flex; flex-direction: column; align-items: flex-end;">
+    <span aria-hidden="true" style="position: absolute; right: 4px; top: 10px; bottom: 10px; width: 1px; background: linear-gradient(#B23A1F, #E3B04B);"></span>
+    <sc-for list="{{scenes}}" as="s" hint-placeholder-count="6">
+      <a href="{{s.href}}" class="bead" data-on="0" aria-label="{{s.en}}"><span>{{s.deva}}</span><i></i></a>
+    </sc-for>
+  </nav>
+
+  <main id="main">
+    <!-- 0 · arrival -->
+    <section id="top" data-scene="0" aria-label="Learn Jyotisha" style="position: relative; min-height: clamp(720px, 100vh, 980px); display: flex; align-items: flex-end;">
+      <div class="w" style="width: 100%; padding-bottom: 72px;">
+        <div class="panel" style="max-width: 760px;">
+          <p class="ui" style="margin: 0; font-size: 14px; letter-spacing: .16em; color: #9C927E;">पाठशाला · LEARN</p>
+          <h1 style="margin: 14px 0 0; font-family: 'Rozha One', serif; font-weight: 400; font-size: clamp(64px, 8.4vw, 132px); line-height: 1.02;">त्रिस्कन्धं ज्योतिषम्</h1>
+          <p class="lede" style="margin-top: 18px; max-width: 16em;">Learn Jyotisha with your hands on the sky.</p>
+          <p class="body" style="margin-top: 16px; max-width: 30em;">Three branches, three instruments. Turn the Moon, step through the days, draw a chart. Every number on this page is computed from the real sky over Devprayag.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 1 · the path -->
+    <section id="path" data-scene="1" aria-label="The path of study" style="position: relative; padding: 100px 0 120px;">
+      <div class="w">
+        <div class="panel rv" style="max-width: 700px;">
+          <p class="kick"><span class="sh"><span class="t">मार्ग</span></span> · the path</p>
+          <h2 class="lede" style="margin-top: 14px;">Begin with the Nakshatras. Then follow a branch.</h2>
+        </div>
+        <div class="stack" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px 48px; margin-top: 56px;">
+          <sc-for list="{{branches}}" as="b" hint-placeholder-count="3">
+            <div class="rv" style="background: rgba(7,10,20,.72); padding: 26px 0 8px;">
+              <p class="ui" style="margin: 0; font-size: 14px; letter-spacing: .14em; color: #9C927E;">{{b.num}}</p>
+              <h3 style="margin: 6px 0 0; font-family: 'Tiro Devanagari Sanskrit', serif; font-weight: 400; font-size: clamp(44px, 4vw, 60px); line-height: 1.1;">{{b.deva}}</h3>
+              <p style="margin: 2px 0 0; font-weight: 300; font-style: italic; font-size: 22px; color: #E3B04B;">{{b.en}} · {{b.short}}</p>
+              <ol style="list-style: none; margin: 18px 0 0; padding: 0; border-top: 1px solid rgba(227,176,75,.45);">
+                <sc-for list="{{b.lessons}}" as="l" hint-placeholder-count="4">
+                  <li style="border-bottom: 1px solid rgba(239,228,204,.12);"><a href="{{l.href}}" class="step" style="display: grid; grid-template-columns: 32px minmax(0, 1fr) auto; gap: 10px; align-items: baseline; padding: 14px 0; color: #EFE4CC; text-decoration: none;">
+                    <span class="ui" style="font-size: 14px; color: #8C8474;">{{l.n}}</span>
+                    <span style="font-weight: 300; font-size: 20px; line-height: 1.3;">{{l.t}}</span>
+                    <span class="ui" style="font-size: 14px; color: {{l.c}};">{{l.tag}}</span>
+                  </a></li>
+                </sc-for>
+              </ol>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2 · Siddhanta lab: reckon the tithi -->
+    <section id="siddhanta" data-scene="2" aria-label="Siddhanta: reckon the tithi" style="position: relative; min-height: clamp(760px, 104vh, 1020px); display: flex; align-items: center;">
+      <div class="w" style="width: 100%;">
+        <div class="stack" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px 80px; align-items: center;">
+          <span class="hide-sm" aria-hidden="true"></span>
+          <div>
+            <div class="panel rv">
+              <p class="kick"><span class="sh"><span class="t">सिद्धान्त</span></span> · instrument one</p>
+              <h2 class="lede" style="margin-top: 14px;">Turn the Moon away from the Sun.</h2>
+              <p class="body" style="margin-top: 14px;">A tithi is the time the Moon takes to gain 12° on the Sun. Thirty of them make a lunar month: fifteen while the Moon waxes, fifteen while it wanes.</p>
+            </div>
+            <div class="lab" style="margin-top: 28px;">
+              <label class="ui" for="elo" style="display: flex; justify-content: space-between; font-size: 15px; color: #9C927E;"><span>Angle between Moon and Sun</span><span style="color: #EFE4CC;">{{t.eloTxt}}</span></label>
+              <input id="elo" type="range" min="0" max="359.5" step="0.5" value="{{t.elo}}" onInput="{{t.set}}" onChange="{{t.set}}">
+              <div aria-live="polite" style="display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 22px; align-items: center; margin-top: 14px;">
+                <svg role="img" aria-label="The Moon, {{t.illum}} percent lit" viewBox="0 0 128 128" width="96" height="96" style="flex: none;">
+                  <circle cx="64" cy="64" r="60" fill="#232842"></circle>
+                  <path d="{{t.path}}" fill="#EFE2BF"></path>
+                </svg>
+                <div>
+                  <p style="margin: 0; font-family: 'Tiro Devanagari Sanskrit', serif; font-size: 30px; line-height: 1.3; color: #E3B04B;">{{t.deva}}</p>
+                  <p style="margin: 2px 0 0; font-weight: 300; font-size: 22px;">{{t.name}}</p>
+                  <p class="ui" style="margin: 4px 0 0; font-size: 15px; color: #9C927E;">Tithi {{t.num}} of 30 · {{t.illum}}% lit</p>
+                </div>
+              </div>
+              <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px; margin-top: 12px;">
+                <button type="button" class="line lnk" onClick="{{t.tonight}}">Set to tonight</button>
+                <span class="ui" style="font-size: 14px; color: #8C8474;">Tonight: {{t.tonightName}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 · Samhita lab: the pañcāṅga -->
+    <section id="samhita" data-scene="3" aria-label="Samhita: the pañcāṅga" style="position: relative; min-height: clamp(780px, 106vh, 1040px); display: flex; align-items: center;">
+      <div class="w" style="width: 100%;">
+        <div class="stack" style="display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 40px 80px; align-items: center;">
+          <div>
+            <div class="panel rv">
+              <p class="kick"><span class="sh"><span class="t">संहिता</span></span> · instrument two</p>
+              <h2 class="lede" style="margin-top: 14px;">Five limbs make a day.</h2>
+              <p class="body" style="margin-top: 14px;">The pañcāṅga reads each day by five measures of the Sun and Moon, taken at sunrise. Step through the days and watch them change.</p>
+            </div>
+            <div class="lab" style="margin-top: 28px;">
+              <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+                <button type="button" class="ring" onClick="{{p.prev}}" aria-label="Previous day">‹</button>
+                <div aria-live="polite" style="text-align: center;">
+                  <p style="margin: 0; font-weight: 300; font-size: 24px;">{{p.date}}</p>
+                  <p class="ui" style="margin: 2px 0 0; font-size: 14px; color: #9C927E;">Sunrise at Devprayag {{p.sunrise}}{{p.todayTag}}</p>
+                </div>
+                <button type="button" class="ring" onClick="{{p.next}}" aria-label="Next day">›</button>
+              </div>
+              <div class="limbs" style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px 14px; margin-top: 22px;">
+                <sc-for list="{{p.limbs}}" as="l" hint-placeholder-count="5">
+                  <div class="limb">
+                    <span style="display: block; font-family: 'Tiro Devanagari Sanskrit', serif; font-size: 17px; color: #E3B04B;">{{l.deva}}</span>
+                    <span class="ui" style="display: block; font-size: 14px; letter-spacing: .08em; color: #8C8474;">{{l.en}}</span>
+                    <span style="display: block; margin-top: 6px; font-weight: 300; font-size: 19px; line-height: 1.3;">{{l.v}}</span>
+                    <span class="ui" style="display: block; margin-top: 4px; font-size: 14px; line-height: 1.4; color: #9C927E;">{{l.how}}</span>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+          </div>
+          <span class="hide-sm" aria-hidden="true"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 · Hora lab: draw a chart -->
+    <section id="hora" data-scene="4" aria-label="Hora: draw a chart" style="position: relative; min-height: clamp(820px, 108vh, 1080px); display: flex; align-items: center;">
+      <div class="w" style="width: 100%;">
+        <div class="stack" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px 80px; align-items: center;">
+          <div>
+            <div class="panel rv">
+              <p class="kick"><span class="sh"><span class="t">होरा</span></span> · instrument three</p>
+              <h2 class="lede" style="margin-top: 14px;">Draw a kuṇḍalī for any moment.</h2>
+              <p class="body" style="margin-top: 14px;">The houses stay fixed; the signs turn through them. The first house holds the lagna, the sign rising in the east at that moment over Devprayag. Change the time and watch the sky wheel.</p>
+            </div>
+            <div class="lab" style="margin-top: 28px;">
+              <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px;">
+                <label class="ui" for="kdate" style="font-size: 15px; color: #9C927E;">Date</label>
+                <input id="kdate" type="date" value="{{k.date}}" onChange="{{k.setDate}}" onInput="{{k.setDate}}">
+                <button type="button" class="line lnk" onClick="{{k.now}}">Now</button>
+              </div>
+              <label class="ui" for="khour" style="display: flex; justify-content: space-between; margin-top: 16px; font-size: 15px; color: #9C927E;"><span>Time, IST</span><span style="color: #EFE4CC;">{{k.time}}</span></label>
+              <input id="khour" type="range" min="0" max="23.75" step="0.25" value="{{k.hour}}" onInput="{{k.setHour}}" onChange="{{k.setHour}}">
+              <p aria-live="polite" class="ui" style="margin: 10px 0 0; font-size: 16px;">Lagna <span style="font-family: 'Tiro Devanagari Sanskrit', serif; font-size: 20px; color: #E3B04B;">{{k.lagnaDeva}}</span> {{k.lagnaEn}} · Sun in {{k.sunSign}} · Moon in {{k.moonSign}}</p>
+            </div>
+          </div>
+          <figure style="margin: 0; position: relative; z-index: 3;">
+            <div role="img" aria-label="North-Indian chart with the lagna {{k.lagnaEn}} in the first house" style="position: relative; width: 100%; max-width: 520px; aspect-ratio: 1 / 1; margin: 0 auto; background: rgba(7,10,20,.94);">
+              <svg aria-hidden="true" viewBox="0 0 300 300" width="100%" height="100%" style="position: absolute; inset: 0; display: block; overflow: visible;">
+                <rect x="1" y="1" width="298" height="298" fill="none" stroke="#E3B04B" stroke-width="1.5"></rect>
+                <path d="M1 1 L299 299 M299 1 L1 299" fill="none" stroke="#E3B04B" stroke-width="1" opacity=".7"></path>
+                <path d="M150 1 L299 150 L150 299 L1 150 Z" fill="none" stroke="#E3B04B" stroke-width="1.5"></path>
+                <path d="M150 1 L224.5 75.5 L150 150 L75.5 75.5 Z" fill="rgba(227,176,75,.1)" stroke="none"></path>
+              </svg>
+              <sc-for list="{{k.houses}}" as="h" hint-placeholder-count="12">
+                <span style="position: absolute; left: {{h.x}}%; top: {{h.y}}%; transform: translate(-50%, -50%); display: flex; flex-direction: column; align-items: center; text-align: center; line-height: 1.15;">
+                  <span class="ui" style="font-size: clamp(13px, 1.2vw, 16px); color: {{h.numC}};">{{h.sign}}</span>
+                  <span style="font-family: 'Tiro Devanagari Sanskrit', serif; font-size: clamp(16px, 1.6vw, 22px); color: #F2CD7A;">{{h.planets}}</span>
+                </span>
+              </sc-for>
+            </div>
+            <figcaption class="ui" style="margin: 14px auto 0; max-width: 520px; font-size: 14px; color: #8C8474;">Sign numbers run 1 (Mesha) to 12 (Meena). Shown: लग्न lagna, सू Sun, च Moon. A full chart adds the other seven grahas from an ephemeris.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 · learn at the hill -->
+    <section id="classes" data-scene="5" aria-label="Learn at the hill" style="position: relative; padding: 140px 0 140px;">
+      <div class="w">
+        <div class="stack" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px 80px; align-items: start;">
+          <div class="panel rv">
+            <p class="kick"><span class="sh"><span class="t">गुरुकुल</span></span> · at the hill</p>
+            <h2 class="lede" style="margin-top: 14px;">Learn from the keepers, under the sky itself.</h2>
+            <p class="body" style="margin-top: 14px;">The Joshi family teaches at the Vedshala: night sessions at the telescope, readings from the manuscripts, and courses in each branch. [Details to come from the family.]</p>
+            <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px 28px; margin-top: 26px;">
+              <a href="#classes" class="pill">Ask about a course <span aria-hidden="true">→</span></a>
+              <a href="/visit/" class="line">Plan a visit</a>
+            </div>
+          </div>
+          <div>
+            <figure style="margin: 0 0 28px;">
+              <img src="/img/148a20c666d7bab5ab19226eca8d272f.jpg" alt="Two cream-coloured Carl Zeiss double telescopes from about 1930, on mounts" style="display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; object-position: 50% 40%; border: 1px solid rgba(227,176,75,.3); filter: sepia(.1) saturate(.85) brightness(.88);">
+              <figcaption class="ui" style="margin-top: 10px; font-size: 14px; color: #8C8474;">Carl Zeiss double telescopes, c. 1930, on museum display · stand-in until the Vedshala photographs its own</figcaption>
+            </figure>
+            <ul style="list-style: none; margin: 0; padding: 0; border-top: 1px solid rgba(227,176,75,.45); background: rgba(7,10,20,.7);">
+              <sc-for list="{{courses}}" as="c" hint-placeholder-count="3">
+                <li style="display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; align-items: baseline; padding: 22px 0; border-bottom: 1px solid rgba(239,228,204,.12);">
+                  <span><span class="ui" style="display: block; font-size: 14px; letter-spacing: .12em; color: #E3B04B;">{{c.kind}}</span><span style="display: block; margin-top: 4px; font-weight: 300; font-size: 24px;">{{c.title}}</span><span class="ui" style="display: block; margin-top: 2px; font-size: 15px; color: #9C927E;">{{c.meta}}</span></span>
+                  <span class="ui" style="font-size: 15px; color: #8C8474;">[dates]</span>
+                </li>
+              </sc-for>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  
+</div>

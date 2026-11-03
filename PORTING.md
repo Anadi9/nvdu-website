@@ -15,7 +15,7 @@ Preview the prototype: `python3 -m http.server 5190 --directory ../design/protot
 - [x] **Manuscripts** (`/manuscripts/`) · opening, how to read a leaf, the shelf, register with search and empty state, six stages, adopt · same section offsets as the prototype at both sizes (17915px / 14393px); stepping the page's tick() gives the identical reading-camera transform, shelf offset and active stage; search empty state and the ४६४२ row link work
 - [x] **Manuscript record** (`/manuscripts/4642/`) · scan viewer, reading tabs, catalogue, stages, cite, paper default · identical layout to the prototype at both sizes (2906px / 5166px); opens in Paper with the paper header; zoom, reading tabs, glossary and Night switch work; a remembered reading light overrides the default, as designed
 - [x] **The 27** (`/nakshatra/`) · nakshatra explorer and its sky · identical section offsets at both sizes (6256px / 7839px); picking a nakshatra, the 3D sky and the Moon's road (star catalogue from public/data, astronomy-engine from public/vendor) work; no console errors
-- [ ] **Learn** (`/learn/`) · the three instruments (tithi, shadow-stick, kundali)
+- [x] **Learn** (`/learn/`) · the three instruments (tithi, shadow-stick, kundali) · identical section offsets at both sizes (6102px / 7856px); after driving both sliders and the date field the page text matches the prototype exactly; no console errors (the prototype shows raw-template errors; the site renders at build time so it has none)
 - [ ] **Our story** (`/our-story/`) · keepers, shadow-stick, 3D journey
 - [ ] **Visit** (`/visit/`) · at a glance, getting there, ask-to-come form and its states
 - [ ] **Journal** (`/journal/`) · list, filters
