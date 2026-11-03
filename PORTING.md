@@ -22,7 +22,7 @@ Preview the prototype: `python3 -m http.server 5190 --directory ../design/protot
 - [x] **Journal article** (`/journal/sky-guide/`) · Moon that walks the month, reading light, glossary · identical height and heading offsets at both sizes (5252px / 6763px); the computed 30-night text matches the prototype exactly; glossary, Paper/Night and astronomy-engine work; no console errors
 - [x] **Support** (`/support/`) · giving flow with errors, payment failed, thank you · identical section offsets at both sizes (2200px / 4419px); walking the flow (empty-field errors → review → simulated payment failure → try again → thank you) reads exactly as in the prototype; no console errors
 - [x] **404** (`/404`) · built as dist/404.html (Cloudflare Pages serves it for unknown paths); text, links and height identical to the prototype at both sizes (1209px / 1862px); no console errors
-- [ ] **Hindi** (`/hi/`) · Hindi Home through Astro i18n routing
+- [x] **Hindi** (`/hi/`) · Hindi Home through Astro i18n routing · `<html lang="hi">`, Hindi header and footer; identical section offsets and page text to the prototype at both sizes (8281px / 10572px); no lang="sa" tagging on the Hindi page; no console errors. Other pages stay English, as in the prototype
 - [ ] **Content collections**: journal posts, manuscript records, register as Markdown/JSON
 - [ ] **Worker stubs**: visit request and Razorpay webhook in `worker/` (no keys)
 - [ ] **Visual tests green**: Playwright compares every page with the prototype at both sizes
