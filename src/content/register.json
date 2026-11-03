@@ -1,0 +1,51 @@
+[
+  {
+    "no": "४६४२",
+    "title": "[Title to be identified] · the long stained folio",
+    "branch": "[branch]",
+    "mat": "Paper",
+    "status": "Being surveyed"
+  },
+  {
+    "no": "[क्र.]",
+    "title": "[Manuscript on the Nakshatras]",
+    "branch": "Siddhānta",
+    "mat": "Palm leaf",
+    "status": "Published"
+  },
+  {
+    "no": "[क्र.]",
+    "title": "[Commentary on the Sūrya Siddhānta]",
+    "branch": "Siddhānta",
+    "mat": "Paper",
+    "status": "Awaiting a sponsor"
+  },
+  {
+    "no": "[क्र.]",
+    "title": "[Manuscript on muhūrta]",
+    "branch": "Saṃhitā",
+    "mat": "Paper",
+    "status": "Published"
+  },
+  {
+    "no": "[क्र.]",
+    "title": "[Almanac, a yearly pañcāṅga]",
+    "branch": "Saṃhitā",
+    "mat": "Paper",
+    "status": "Awaiting a sponsor"
+  },
+  {
+    "no": "[क्र.]",
+    "title": "[Manuscript on the birth chart]",
+    "branch": "Horā",
+    "mat": "Palm leaf",
+    "status": "Being photographed"
+  },
+  {
+    "no": "[क्र.]",
+    "title": "[Horoscope scroll]",
+    "branch": "Horā",
+    "mat": "Paper scroll",
+    "status": "Awaiting a sponsor"
+  }
+]

@@ -1,0 +1,30 @@
+{
+  "dev": {
+    "lang": "sa",
+    "l1": "[पंक्ति १ · as read by the Vedshala]",
+    "l2": "[पंक्ति २]",
+    "l3": "[पंक्ति ३]",
+    "note": "Read from the scan by the Vedshala · line by line, as written on the leaf"
+  },
+  "iast": {
+    "lang": "en",
+    "l1": "[line 1, in IAST transliteration]",
+    "l2": "[line 2]",
+    "l3": "[line 3]",
+    "note": "International Alphabet of Sanskrit Transliteration · one line for each line of the leaf"
+  },
+  "hi": {
+    "lang": "hi",
+    "l1": "[हिन्दी अनुवाद · पंक्ति १]",
+    "l2": "[पंक्ति २]",
+    "l3": "[पंक्ति ३]",
+    "note": "Hindi translation · checked by the Vedshala"
+  },
+  "en": {
+    "lang": "en",
+    "l1": "[English translation, line 1]",
+    "l2": "[line 2]",
+    "l3": "[line 3]",
+    "note": "English translation · checked by the Vedshala"
+  }
+}

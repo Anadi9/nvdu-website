@@ -23,7 +23,7 @@ Preview the prototype: `python3 -m http.server 5190 --directory ../design/protot
 - [x] **Support** (`/support/`) · giving flow with errors, payment failed, thank you · identical section offsets at both sizes (2200px / 4419px); walking the flow (empty-field errors → review → simulated payment failure → try again → thank you) reads exactly as in the prototype; no console errors
 - [x] **404** (`/404`) · built as dist/404.html (Cloudflare Pages serves it for unknown paths); text, links and height identical to the prototype at both sizes (1209px / 1862px); no console errors
 - [x] **Hindi** (`/hi/`) · Hindi Home through Astro i18n routing · `<html lang="hi">`, Hindi header and footer; identical section offsets and page text to the prototype at both sizes (8281px / 10572px); no lang="sa" tagging on the Hindi page; no console errors. Other pages stay English, as in the prototype
-- [ ] **Content collections**: journal posts, manuscript records, register as Markdown/JSON
+- [x] **Content collections**: journal posts, manuscript records, register as Markdown/JSON · `src/content/register.json`, `journal.json`, `records/4642.catalogue.json`, `records/4642.reading.json`, documented in `src/content/README.md`; the extractor now seeds these once and makes the boards read them; Journal, Manuscripts register and the record give identical text to the prototype
 - [ ] **Worker stubs**: visit request and Razorpay webhook in `worker/` (no keys)
 - [ ] **Visual tests green**: Playwright compares every page with the prototype at both sizes
 - [ ] **README**: how to run, build, test, where content lives, what the family still has to supply
@@ -44,6 +44,7 @@ Anything that could not be matched exactly, and why.
 - Pages with their own root background use the layout's `bare` mode: header and footer sit beside the page root instead of inside it. The header follows the root's Paper light through `body:has(.vroot.paper)`.
 - Live values (tonight's Moon, dates) are computed at build time in the HTML and recomputed in the browser on load.
 - The Moon's road and the sky guide use astronomy-engine (MIT, Don Cross). The prototype's exact minified browser build ships as `public/vendor/astronomy.browser.min.js`, licence header intact, loaded with `defer` before the page logic. Star and Milky Way catalogues are in `public/data/`.
+- Journal dates are stored as `daysAgo` (the prototype computed them relative to today); swap for real dates when posts are written.
 - Sky maths: kept as verbatim JavaScript (`src/lib/astro.js` + types) rather than rewritten in TypeScript, so the numbers cannot drift from the prototype.
 
 ## Still needed from the family
