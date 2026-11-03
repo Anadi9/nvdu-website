@@ -1,0 +1,25 @@
+// Types for astro.js (the prototype's sky maths, kept verbatim as JavaScript).
+type Ms = number;
+export const LAT: number; export const LON: number; export const span: number;
+export const YOGA: string[]; export const KARANA_MOV: string[];
+export function rad(x: number): number; export function deg(x: number): number; export function norm(x: number): number;
+export function dayN(ms: Ms): number;
+export function sunLon(ms: Ms): number; export function moonLon(ms: Ms): number; export function ayanOf(ms: Ms): number;
+export function nakAt(ms: Ms): number; export function sunNakAt(ms: Ms): number;
+export function eqOf(lam: number, bet: number): { ra: number; dec: number };
+export function lst(ms: Ms): number;
+export function altAz(ra: number, dec: number, ms: Ms): { alt: number; az: number };
+export function riseSet(ra: number, dec: number, ms: Ms): any;
+export function sunAlt(ms: Ms): number;
+export function moonVisits(k: number, ms: Ms, n?: number): any;
+export function sunVisit(k: number, ms: Ms): any;
+export function fmtIST(ms: Ms): string; export function fmtDate(ms: Ms): string; export function compass(az: number): string;
+export function sidSun(ms: Ms): number; export function sidMoon(ms: Ms): number;
+export function karanaOf(ms: Ms): any; export function yogaOf(ms: Ms): any;
+export function sunrise(ms: Ms): Ms; export function sunset(ms: Ms): Ms;
+export function lagnaOf(ms: Ms): number;
+export function sunAltAz(ms: Ms): { alt: number; az: number };
+export function nextNewMoon(ms: Ms): Ms | null; export function nextFullMoon(ms: Ms): Ms | null; export function nextSankranti(ms: Ms): any;
+export function elongAt(ms: Ms): number; export function tithiIdx(ms: Ms): number;
+export function phasePath(f: number): string;
+export function istParts(ms: Ms): any; export function istMidnight(ms: Ms): Ms;

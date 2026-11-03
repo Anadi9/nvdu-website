@@ -10,7 +10,7 @@ Preview the prototype: `python3 -m http.server 5190 --directory ../design/protot
 - [x] **Tokens and base CSS**: `src/styles/tokens.css` from System, shared base CSS (header, pill, line, bead rail, skip link, focus, paper reading light, glossary, starfield fallback) · base.css holds the 26 rules identical on all 11 pages; reading.css is the paper/glossary block verbatim; pill and header pill compute the same as the prototype. Rules that vary by page (.line, .kick, .lede, .body, .bead, phone media) travel with each page
 - [x] **Shared layout**: `BaseLayout.astro` with head, fonts, header (solid on scroll, outline pill, language switch, phone menu), footer, Emblem component · header and footer links sit at the same x, y, width and height as the prototype at 1440px; phone menu matches at 375px; English and Hindi strings; routes in src/lib/routes.ts
 - [x] **Shared islands**: cursor thread, headings that write themselves, Devanagari `lang` tagging, reading light, glossary popover · checked in the browser: cursor draws on mouse only, headings get data-w/data-in, Devanagari gets lang="sa", glossary opens/closes on Esc and returns focus, Paper toggles and is stored as nv-read. Cursor and lang tags are in BaseLayout; reading and glossary are per page (ReadingSwitch, Term, GlossaryPopover). Manuscripts and Record keep their own heading variant, ported with those pages
-- [ ] **Shared maths**: `src/lib/astro.ts` (Sun, Moon, nakshatra, tithi, sunrise/sunset, new and full Moon) with unit checks against the prototype's numbers
+- [x] **Shared maths**: `src/lib/astro.ts` (Sun, Moon, nakshatra, tithi, sunrise/sunset, new and full Moon) with unit checks against the prototype's numbers · kept as `astro.js` (verbatim) with `astro.d.ts` types; `npm run test:astro` compares 20,000 values against all 7 page variants, 0 differ
 - [ ] **Home** (`/`) · live 3D sky ring, thread, tonight, 27 picker and month play, three branches, verse leaf, Devprayag, gifts, journal
 - [ ] **Manuscripts** (`/manuscripts/`) · opening, how to read a leaf, the shelf, register with search and empty state, six stages, adopt
 - [ ] **Manuscript record** (`/manuscripts/4642/`) · scan viewer, reading tabs, catalogue, stages, cite, paper default
@@ -33,6 +33,7 @@ Preview the prototype: `python3 -m http.server 5190 --directory ../design/protot
 Anything that could not be matched exactly, and why.
 
 - Phone menu: the canvas mounts it on demand; the site renders it once with `hidden` and toggles it (adds Esc to close). Looks and behaves the same.
+- Sky maths: kept as verbatim JavaScript (`src/lib/astro.js` + types) rather than rewritten in TypeScript, so the numbers cannot drift from the prototype.
 
 ## Still needed from the family
 
