@@ -19,7 +19,7 @@ Preview the prototype: `python3 -m http.server 5190 --directory ../design/protot
 - [x] **Our story** (`/our-story/`) · keepers, shadow-stick, 3D journey · identical section offsets at both sizes (7040px / 9033px); 3D valley runs; after moving the shadow-stick the page text matches the prototype exactly; no console errors
 - [x] **Visit** (`/visit/`) · at a glance, getting there, ask-to-come form and its states · identical section offsets at both sizes (3887px / 6591px); the form's empty-field errors and sent state read exactly as in the prototype; no 3D and no three.js loaded; no console errors
 - [x] **Journal** (`/journal/`) · list, filters · identical section offsets at both sizes (3332px / 5546px); after choosing a filter the list text matches the prototype exactly; no console errors
-- [ ] **Journal article** (`/journal/sky-guide/`) · Moon that walks the month, reading light, glossary
+- [x] **Journal article** (`/journal/sky-guide/`) · Moon that walks the month, reading light, glossary · identical height and heading offsets at both sizes (5252px / 6763px); the computed 30-night text matches the prototype exactly; glossary, Paper/Night and astronomy-engine work; no console errors
 - [ ] **Support** (`/support/`) · giving flow with errors, payment failed, thank you
 - [ ] **404** (`/404`)
 - [ ] **Hindi** (`/hi/`) · Hindi Home through Astro i18n routing

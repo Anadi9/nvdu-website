@@ -1,0 +1,86 @@
+<div ref="{{rootRef}}" class="vroot" style="position: relative; font-family: Spectral, Georgia, serif; color: #EFE4CC; background: #070A14; overflow-x: clip;">
+  
+  <canvas ref="{{skyRef}}" aria-hidden="true" style="position: fixed; left: 0; top: 0; width: 100vw; height: 100vh; display: block; z-index: 0; pointer-events: none;"></canvas>
+  <div aria-hidden="true" class="hide-sm" style="position: fixed; right: 7vw; bottom: 9vh; z-index: 2; text-align: right; pointer-events: none;">
+    <span class="ui" style="display: block; font-size: 14px; letter-spacing: .14em; color: #9C927E;">THE MOON ON</span>
+    <span style="display: block; font-weight: 300; font-size: 26px;">{{cap.date}}</span>
+    <span class="ui" style="display: block; font-size: 15px; color: #E3B04B;">{{cap.tithi}} · {{cap.illum}}% lit</span>
+  </div>
+
+  
+
+  <main id="main">
+    <article class="art">
+      <header class="w" style="min-height: clamp(640px, 92vh, 900px); display: flex; align-items: flex-end; padding-bottom: 64px;">
+        <div class="col">
+          <p class="ui" style="margin: 0; font-size: 14px; letter-spacing: .14em; color: #E3B04B;">SKY GUIDE · {{range}}</p>
+          <h1 style="margin: 14px 0 0; font-weight: 200; font-size: clamp(46px, 5.4vw, 80px); line-height: 1.04;">What to see over Devprayag in the next thirty nights.</h1>
+          <p class="ui" style="margin: 20px 0 0; font-size: 15px; color: #9C927E;">Computed for Dashrathanchal hill, 30.15° N · [Notes from the keepers to be added] · 6 min read</p>
+          <div class="mode" role="group" aria-label="Reading light" style="margin-top: 26px;"><span class="ui mode-k">Read in</span><button type="button" class="mode-b ui" aria-pressed="{{mode.night}}" onClick="{{mode.toNight}}">Night</button><button type="button" class="mode-b ui" aria-pressed="{{mode.paper}}" onClick="{{mode.toPaper}}">Paper</button></div>
+          <p class="ui" style="margin: 18px 0 0; font-size: 14px; color: #8C8474;">Scroll, and the Moon walks the month with you: NASA's Moon, lit from where the Sun really is and tilted as it looks from Devprayag at nine in the evening.</p>
+        </div>
+      </header>
+
+      <div class="w artbg" style="background: linear-gradient(90deg, rgba(7,10,20,.92) 0%, rgba(7,10,20,.86) 52%, rgba(7,10,20,0) 75%); padding-bottom: 120px;">
+        <div class="col" ref="{{bodyRef}}">
+          <p class="first">Tonight the Moon is {{tonight.tithi}}, {{tonight.illum}}% lit, and rests in {{tonight.nak}}. Over the next month it will empty and fill again: dark on {{nm.date}}, full on {{fm.date}}. These are the nights to plan by.</p>
+
+          <h2><b>चन्द्र · the Moon</b>The month by the Moon</h2>
+          <p>The <button type="button" class="gt" data-gt="panchanga" aria-expanded="false">pañcāṅga</button> counts the month in <button type="button" class="gt" data-gt="tithi" aria-expanded="false">tithis</button>, each the time it takes the Moon to gain twelve degrees on the Sun. These are the turning points of the coming month, with the times they fall at Devprayag.</p>
+          <div style="margin-top: 22px; border-top: 1px solid rgba(227,176,75,.45);">
+            <sc-for list="{{events}}" as="e" hint-placeholder-count="4">
+              <div class="ev">
+                <svg aria-hidden="true" viewBox="0 0 128 128" width="40" height="40"><circle cx="64" cy="64" r="60" fill="#232842"></circle><path d="{{e.path}}" fill="#EFE2BF"></path></svg>
+                <span><span style="display: block; font-size: 21px;">{{e.what}}</span><span class="ui" style="display: block; font-size: 14px; color: #9C927E;">{{e.why}}</span></span>
+                <span class="ui" style="text-align: right; font-size: 15px; color: #EFE4CC;">{{e.when}}</span>
+              </div>
+            </sc-for>
+          </div>
+          <p class="note">For the darkest skies, come in the three or four nights around {{nm.date}}. Near {{fm.date}} the Moon itself is the sight: watch it rise over the eastern ridge at dusk.</p>
+
+          <h2><b>मास · the whole month</b>Thirty Moons</h2>
+          <p>Each disc is the Moon as it stands at nine in the evening. Ringed nights are the new and full Moon.</p>
+          <div class="cal" role="list" aria-label="The Moon each night">
+            <sc-for list="{{cal}}" as="c" hint-placeholder-count="30">
+              <div class="day" role="listitem" aria-label="{{c.label}}" style="border-color: {{c.border}}; background: {{c.bg}};">
+                <span class="ui" style="font-size: 14px; color: #8C8474;">{{c.wd}}</span>
+                <svg aria-hidden="true" viewBox="0 0 128 128" width="34" height="34"><circle cx="64" cy="64" r="60" fill="#232842"></circle><path d="{{c.path}}" fill="#EFE2BF"></path></svg>
+                <span style="font-size: 16px;">{{c.d}}</span>
+                <span class="ui" style="font-size: 14px; color: #9C927E;">{{c.t}}</span>
+              </div>
+            </sc-for>
+          </div>
+
+          <h2><b>सूर्य · the Sun</b>The Sun changes house</h2>
+          <p>On {{sk.date}} the Sun leaves {{sk.from}} and enters {{sk.to}}: the {{sk.to}} saṅkrānti. Day by day it now rises later and sets earlier. At Devprayag the Sun rises at {{sun.rise0}} and sets at {{sun.set0}} today; by {{sun.endDate}} it will rise at {{sun.rise1}} and set at {{sun.set1}}.</p>
+
+          <h2><b>तारा · the stars</b>High at nine in the evening</h2>
+          <p>Around {{stars.date}} at nine, these junction stars of the Nakshatras stand well above the hills. Face the direction given and look up by the height shown; your fist held at arm's length covers about ten degrees.</p>
+          <div style="margin-top: 22px; border-top: 1px solid rgba(227,176,75,.45);">
+            <sc-for list="{{stars.list}}" as="s" hint-placeholder-count="5">
+              <div class="ev" style="grid-template-columns: minmax(0, 1fr) auto;">
+                <span><span style="display: block; font-size: 21px;">{{s.star}} <span style="font-family: 'Tiro Devanagari Sanskrit', serif; color: #E3B04B;">{{s.deva}}</span></span><span class="ui" style="display: block; font-size: 14px; color: #9C927E;">junction star of {{s.nak}}</span></span>
+                <span class="ui" style="text-align: right; font-size: 15px;">{{s.dir}}<br><span style="color: #9C927E;">{{s.alt}}° up</span></span>
+              </div>
+            </sc-for>
+          </div>
+          <figure style="margin: 40px 0 0;">
+            <img src="/img/e6664ac5788e2b971b3c2150b48913a7.jpg" alt="A starry sky over dark hills, with the lights of a hill town below" style="display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover;">
+            <figcaption class="ui" style="margin-top: 10px; font-size: 14px; color: #8C8474;">What a dark hill sky looks like in Uttarakhand: Mukteshwar, not Devprayag · Ashwini Chaudhary, Unsplash</figcaption>
+          </figure>
+          <p class="note">[Keepers' note: what they will show at the telescope this month, and anything special to watch for.]</p>
+
+          <div style="display: flex; flex-wrap: wrap; gap: 12px 28px; margin-top: 64px; padding-top: 24px; border-top: 1px solid rgba(239,228,204,.12);">
+            <a href="/visit/" class="line">Plan a night on the hill →</a>
+            <a href="/nakshatra/" class="line">Tonight's Nakshatra in depth →</a>
+            <a href="/journal/" class="line">All notes</a>
+          </div>
+          <p class="ui" style="margin: 18px 0 0; font-size: 14px; color: #8C8474;">Positions are computed live with simple formulas; times may differ from printed pañcāṅgas by an hour or so, and star heights by a degree.</p>
+        </div>
+      </div>
+    </article>
+    <div class="gpop" role="dialog" aria-modal="false" aria-label="Glossary" hidden><p class="gpop-d" lang="sa"></p><p class="gpop-i"></p><p class="gpop-m"></p><a class="gpop-l ui" href="/learn/">More in Learn →</a></div>
+  </main>
+
+  
+</div>
