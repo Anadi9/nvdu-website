@@ -1,0 +1,98 @@
+<div ref="{{rootRef}}" class="vroot" style="position: relative; font-family: Spectral, Georgia, serif; color: #EFE4CC; background: #070A14; overflow-x: clip;">
+  
+  <canvas ref="{{skyRef}}" aria-hidden="true" style="position: fixed; left: 0; top: 0; width: 100vw; height: 100vh; display: block; z-index: 0; pointer-events: none;"></canvas>
+
+  
+
+  <main id="main">
+    <section id="top" aria-label="Journal" style="position: relative; min-height: clamp(640px, 92vh, 900px); display: flex; align-items: flex-end;">
+      <div class="w" style="width: 100%; padding-bottom: 64px;">
+        <div style="max-width: 680px;">
+          <p class="ui" style="margin: 0; font-size: 14px; letter-spacing: .16em; color: #9C927E;">पत्रिका · JOURNAL</p>
+          <h1 style="margin: 14px 0 0; font-weight: 200; font-size: clamp(56px, 7vw, 108px); line-height: 1;">Notes from the hill.</h1>
+          <p class="body" style="margin-top: 18px; max-width: 28em;">Sky guides, stories from the collection, and explainers from the keepers. Each note carries the Moon as it was on the night it was written.</p>
+          <p class="ui" aria-live="polite" style="margin: 18px 0 0; font-size: 15px; color: #9C927E;">Tonight the Moon is {{tonight.illum}}% lit · {{tonight.tithi}} · in {{tonight.nak}}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- featured: the live sky guide -->
+    <section aria-label="This month's sky guide" style="position: relative; padding: 20px 0 80px;">
+      <div class="w">
+        <a href="/journal/sky-guide/" class="post" style="display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 32px 56px; align-items: center; padding: 40px; border: 1px solid rgba(227,176,75,.45); background: rgba(7,10,20,.82); color: #EFE4CC; text-decoration: none;">
+          <div>
+            <p class="ui" style="margin: 0; font-size: 14px; letter-spacing: .14em; color: #E3B04B;">SKY GUIDE · THE NEXT THIRTY DAYS · LIVE</p>
+            <h2 class="pt" style="margin: 12px 0 0; font-weight: 200; font-size: clamp(32px, 3.4vw, 48px); line-height: 1.15; transition: color .3s ease;">What to see over Devprayag, {{guide.range}}</h2>
+            <p class="body" style="margin-top: 14px; font-size: 19px;">{{guide.teaser}}</p>
+            <span class="line" style="margin-top: 10px;">Read the guide →</span>
+          </div>
+          <ol class="ui" style="list-style: none; margin: 0; padding: 0; border-top: 1px solid rgba(227,176,75,.35);">
+            <sc-for list="{{guide.marks}}" as="k" hint-placeholder-count="4">
+              <li style="display: grid; grid-template-columns: 44px minmax(0, 1fr) auto; gap: 14px; align-items: center; padding: 14px 0; border-bottom: 1px solid rgba(239,228,204,.12);">
+                <svg aria-hidden="true" viewBox="0 0 128 128" width="34" height="34"><circle cx="64" cy="64" r="60" fill="#232842"></circle><path d="{{k.path}}" fill="#EFE2BF"></path></svg>
+                <span style="font-size: 16px; color: #EFE4CC;">{{k.what}}</span>
+                <span style="font-size: 15px; color: #9C927E;">{{k.when}}</span>
+              </li>
+            </sc-for>
+          </ol>
+        </a>
+      </div>
+    </section>
+
+    <!-- all notes -->
+    <section aria-label="All notes" style="position: relative; padding: 40px 0 100px; background: linear-gradient(180deg, rgba(7,10,20,0), rgba(7,10,20,.94) 12%);">
+      <div class="w">
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 16px;">
+          <h2 class="lede">All notes</h2>
+          <div role="group" aria-label="Show" style="display: flex; flex-wrap: wrap; gap: 8px;">
+            <sc-for list="{{chips}}" as="c" hint-placeholder-count="5">
+              <button type="button" class="chip ui" aria-pressed="{{c.on}}" onClick="{{c.pick}}" style="min-height: 44px; padding: 0 18px; border-radius: 999px; border: 1px solid {{c.border}}; background: {{c.bg}}; color: {{c.fg}}; cursor: pointer; font-size: 15px;">{{c.label}}</button>
+            </sc-for>
+          </div>
+        </div>
+        <ul style="list-style: none; margin: 28px 0 0; padding: 0; border-top: 1px solid rgba(227,176,75,.45);">
+          <sc-for list="{{posts}}" as="p" hint-placeholder-count="6">
+            <li style="border-bottom: 1px solid rgba(239,228,204,.12);">
+              <a href="{{p.href}}" class="post prow" onMouseEnter="{{p.enter}}" onMouseLeave="{{leave}}" onFocus="{{p.enter}}" onBlur="{{leave}}" style="display: grid; grid-template-columns: 64px minmax(0, 1fr) 180px; gap: 24px; align-items: center; padding: 26px 8px; color: #EFE4CC; text-decoration: none;">
+                <span style="display: flex; flex-direction: column; align-items: center; gap: 4px;">
+                  <svg role="img" aria-label="The Moon that night, {{p.illum}}% lit" viewBox="0 0 128 128" width="46" height="46"><circle cx="64" cy="64" r="60" fill="#232842"></circle><path d="{{p.path}}" fill="#EFE2BF"></path></svg>
+                  <span class="ui" style="font-size: 14px; color: #8C8474;">{{p.tithiShort}}</span>
+                </span>
+                <span>
+                  <span class="ui" style="display: block; font-size: 14px; letter-spacing: .12em; color: #E3B04B;">{{p.kind}}</span>
+                  <span class="pt" style="display: block; margin-top: 4px; font-weight: 300; font-size: 27px; line-height: 1.25; transition: color .3s ease;">{{p.title}}</span>
+                  <span style="display: block; margin-top: 6px; font-weight: 300; font-size: 18px; line-height: 1.55; color: #9C927E;">{{p.excerpt}}</span>
+                </span>
+                <span class="ui pm" style="text-align: right; font-size: 15px; color: #9C927E;">{{p.date}}<br><span style="color: #8C8474;">{{p.read}}</span></span>
+              </a>
+            </li>
+          </sc-for>
+        </ul>
+        <p class="ui" style="margin: 16px 0 0; font-size: 14px; color: #8C8474;">Notes other than the sky guide are samples; the family's own will replace them.</p>
+      </div>
+    </section>
+
+    <!-- subscribe -->
+    <section aria-label="The monthly sky guide by email" style="position: relative; padding: 60px 0 140px; background: rgba(7,10,20,.94);">
+      <div class="w" style="max-width: 900px; text-align: center;">
+        <p class="kick"><span class="sh"><span class="t">मासिक</span></span> · every month</p>
+        <h2 class="lede" style="margin-top: 12px;">The sky over Devprayag, in your inbox at each new Moon.</h2>
+        <sc-if value="{{sub.open}}" hint-placeholder-val="{{true}}">
+          <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 28px;">
+            <label for="se" class="ui" style="position: absolute; left: -9999px;">Email</label>
+            <input id="se" class="fld" type="email" autocomplete="email" placeholder="you@example.com" value="{{sub.email}}" onInput="{{sub.set}}" onChange="{{sub.set}}" style="flex: 1 1 320px; max-width: 420px;">
+            <button type="button" class="pill" onClick="{{sub.go}}">Send me the sky</button>
+          </div>
+          <p class="ui" style="margin: 10px 0 0; font-size: 14px; color: #E07A5F;">{{sub.err}}</p>
+          <p class="ui" style="margin: 4px 0 0; font-size: 14px; color: #8C8474;">Next guide on {{sub.next}}, the new Moon. One email a month.</p>
+        </sc-if>
+        <sc-if value="{{sub.done}}" hint-placeholder-val="{{false}}">
+          <p aria-live="polite" style="margin: 26px 0 0; font-weight: 300; font-size: 24px;">You'll hear from the hill on {{sub.next}}.</p>
+          <p class="ui" style="margin: 6px 0 0; font-size: 14px; color: #8C8474;">[On the live site this goes to the family's mailing list.]</p>
+        </sc-if>
+      </div>
+    </section>
+  </main>
+
+  
+</div>

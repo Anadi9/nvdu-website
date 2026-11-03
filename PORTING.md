@@ -18,7 +18,7 @@ Preview the prototype: `python3 -m http.server 5190 --directory ../design/protot
 - [x] **Learn** (`/learn/`) · the three instruments (tithi, shadow-stick, kundali) · identical section offsets at both sizes (6102px / 7856px); after driving both sliders and the date field the page text matches the prototype exactly; no console errors (the prototype shows raw-template errors; the site renders at build time so it has none)
 - [x] **Our story** (`/our-story/`) · keepers, shadow-stick, 3D journey · identical section offsets at both sizes (7040px / 9033px); 3D valley runs; after moving the shadow-stick the page text matches the prototype exactly; no console errors
 - [x] **Visit** (`/visit/`) · at a glance, getting there, ask-to-come form and its states · identical section offsets at both sizes (3887px / 6591px); the form's empty-field errors and sent state read exactly as in the prototype; no 3D and no three.js loaded; no console errors
-- [ ] **Journal** (`/journal/`) · list, filters
+- [x] **Journal** (`/journal/`) · list, filters · identical section offsets at both sizes (3332px / 5546px); after choosing a filter the list text matches the prototype exactly; no console errors
 - [ ] **Journal article** (`/journal/sky-guide/`) · Moon that walks the month, reading light, glossary
 - [ ] **Support** (`/support/`) · giving flow with errors, payment failed, thank you
 - [ ] **404** (`/404`)
