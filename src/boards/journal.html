@@ -80,7 +80,7 @@
         <sc-if value="{{sub.open}}" hint-placeholder-val="{{true}}">
           <div style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 28px;">
             <label for="se" class="ui" style="position: absolute; left: -9999px;">Email</label>
-            <input id="se" class="fld" type="email" autocomplete="email" placeholder="you@example.com" value="{{sub.email}}" onInput="{{sub.set}}" onChange="{{sub.set}}" style="flex: 1 1 320px; max-width: 420px;">
+            <input id="se" class="fld" type="email" autocomplete="email" placeholder="Your email" value="{{sub.email}}" onInput="{{sub.set}}" onChange="{{sub.set}}" style="flex: 1 1 320px; max-width: 420px;">
             <button type="button" class="pill" onClick="{{sub.go}}">Send me the sky</button>
           </div>
           <p class="ui" style="margin: 10px 0 0; font-size: 14px; color: #E07A5F;">{{sub.err}}</p>

@@ -4,7 +4,7 @@ main = "src/index.js"
 compatibility_date = "2025-01-01"
 
 [vars]
-# FAMILY_EMAIL = "nakshatravedshaladev@gmail.com"   # confirm with the family before setting
+# FAMILY_EMAIL = "nakshatravedhshaladev@gmail.com"   # confirm with the family before setting
 
 # Secrets, never in this file:
 #   wrangler secret put RAZORPAY_KEY_ID
