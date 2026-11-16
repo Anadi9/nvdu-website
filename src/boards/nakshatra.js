@@ -145,12 +145,12 @@ class Component extends DCLogic {
         ["Ashvini","अश्विनी","the Ashvins","β Arietis",33.96,8.5,"the horse-headed twins"],["Bharani","भरणी","Yama","41 Arietis",38.0,10.4,"the bearer"],["Krittika","कृत्तिका","Agni","the Pleiades",60.0,4.1,"the cutters"],
         ["Rohini","रोहिणी","Prajapati","Aldebaran",69.8,-5.5,"the red one"],["Mrigashira","मृगशिरा","Soma","λ Orionis",83.7,-13.4,"the deer's head"],["Ardra","आर्द्रा","Rudra","Betelgeuse",88.8,-16.0,"the moist one"],
         ["Punarvasu","पुनर्वसु","Aditi","Pollux",113.2,6.7,"the return of the light"],["Pushya","पुष्य","Brihaspati","δ Cancri",128.7,0.1,"the nourisher"],["Ashlesha","आश्लेषा","the Serpents","ε Hydrae",132.4,-11.1,"the embrace"],
-        ["Magha","मघा","the Pitris","Regulus",149.8,0.5,"the bountiful"],["Purva Phalguni","पूर्वफाल्गुनी","Bhaga","δ Leonis",161.3,14.3,"the former red one"],["Uttara Phalguni","उत्तरफाल्गुनी","Aryaman","Denebola",171.6,12.3,"the latter red one"],
-        ["Hasta","हस्त","Savitri","δ Corvi",193.4,-12.2,"the hand"],["Chitra","चित्रा","Tvashtri","Spica",203.8,-2.1,"the bright one"],["Svati","स्वाति","Vayu","Arcturus",204.2,30.7,"the self-going"],
+        ["Magha","मघा","the Pitris","Regulus",149.8,0.5,"the bountiful"],["Purva Phalguni","पूर्वाफाल्गुनी","Bhaga","δ Leonis",161.3,14.3,"the former red one"],["Uttara Phalguni","उत्तराफाल्गुनी","Aryaman","Denebola",171.6,12.3,"the latter red one"],
+        ["Hasta","हस्त","Ravi (Surya)","δ Corvi",193.4,-12.2,"the hand"],["Chitra","चित्रा","Tvashta","Spica",203.8,-2.1,"the bright one"],["Svati","स्वाति","Vayu","Arcturus",204.2,30.7,"the self-going"],
         ["Vishakha","विशाखा","Indra–Agni","α Librae",225.1,0.3,"the forked branch"],["Anuradha","अनुराधा","Mitra","δ Scorpii",242.6,-2.0,"following Radha"],["Jyeshtha","ज्येष्ठा","Indra","Antares",249.8,-4.6,"the eldest"],
         ["Mula","मूल","Nirriti","λ Scorpii",264.6,-13.8,"the root"],["Purva Ashadha","पूर्वाषाढा","Apas","δ Sagittarii",274.6,-6.5,"the former unconquered"],["Uttara Ashadha","उत्तराषाढा","the Vishvedevas","σ Sagittarii",282.4,-3.4,"the latter unconquered"],
         ["Shravana","श्रवण","Vishnu","Altair",301.8,29.3,"the ear"],["Dhanishtha","धनिष्ठा","the Vasus","β Delphini",316.3,31.9,"the wealthiest"],["Shatabhisha","शतभिषा","Varuna","λ Aquarii",341.6,-0.4,"a hundred healers"],
-        ["Purva Bhadrapada","पूर्वभाद्रपदा","Aja Ekapada","Markab",353.5,19.4,"the former lucky feet"],["Uttara Bhadrapada","उत्तरभाद्रपदा","Ahir Budhnya","Algenib",9.2,12.6,"the latter lucky feet"],["Revati","रेवती","Pushan","ζ Piscium",19.9,-0.2,"the wealthy"]
+        ["Purva Bhadrapada","पूर्वाभाद्रपदा","Aja Ekapada","Markab",353.5,19.4,"the former lucky feet"],["Uttara Bhadrapada","उत्तराभाद्रपदा","Ahir Budhnya","Algenib",9.2,12.6,"the latter lucky feet"],["Revati","रेवती","Pushan","ζ Piscium",19.9,-0.2,"the wealthy"]
       ],
       RASHI: [["Mesha","मेष"],["Vrishabha","वृषभ"],["Mithuna","मिथुन"],["Karka","कर्क"],["Simha","सिंह"],["Kanya","कन्या"],["Tula","तुला"],["Vrishchika","वृश्चिक"],["Dhanu","धनु"],["Makara","मकर"],["Kumbha","कुम्भ"],["Meena","मीन"]],
       LORDS: [["Ketu","केतु",7],["Venus","शुक्र",20],["the Sun","सूर्य",6],["the Moon","चन्द्र",10],["Mars","मङ्गल",7],["Rahu","राहु",18],["Jupiter","गुरु",16],["Saturn","शनि",19],["Mercury","बुध",17]],
@@ -520,6 +520,9 @@ class Component extends DCLogic {
       .concat(padas.map(function (p) { return { d: p.navDeva, f: "'Tiro Devanagari Sanskrit', serif" }; }))
       .concat(D.DIRS.map(function (x) { return { d: x[0], f: "'Tiro Devanagari Sanskrit', serif" }; }));
     var dots = NAK.map(function (n, i) { var on = i === k; return { n: i + 1, label: n[0] + (i === cur ? ', the Moon tonight' : ''), on: on ? 'true' : 'false', pick: go(i), bg: on ? '#E3B04B' : 'transparent', fg: on ? '#120D08' : (i === cur ? '#F2CD7A' : '#9C927E'), border: on ? '#E3B04B' : (i === cur ? 'rgba(242,205,122,.7)' : 'rgba(239,228,204,.18)') }; });
+    // Abhijit: the last 15 ghatis of Uttara Ashadha and the first 4 of Shravana (276° 40′ to 280° 53′ 20″)
+    var mL = A.norm(A.moonLon(now) - A.ayanOf(now)), inAbhi = mL >= 276 + 40 / 60 && mL < 280 + 53 / 60 + 20 / 3600;
+    var abhi = { show: k === 20 || k === 21, now: inAbhi ? ' The Moon is in Abhijit now.' : '' };
     var scenes = [['#top', 'नक्षत्र', 'The mansion'], ['#padas', 'पाद', 'The four padas'], ['#lord', 'स्वामी', 'The lord'], ['#hill', 'दर्शन', 'From the hill'], ['#visits', 'चन्द्र', 'Visits'], ['#deeper', 'आगे', 'Go deeper']].map(function (x) { return { href: x[0], deva: x[1], en: x[2] }; });
     return {
       road: this.rdVals(), roadRef: r.road, cur: this.cur_(), nav: this.nav_('nakshatra'), rootRef: r.root, skyRef: r.sky, labelsRef: r.labels, railRef: r.rail, fadeRef: r.fade, labels: labels, scenes: scenes, dots: dots,
@@ -527,7 +530,7 @@ class Component extends DCLogic {
         spanFrom: inSign(a0), spanTo: inSign(a1), rashiLine: rashiLine, prevName: NAK[(k + 26) % 27][0], prevDeva: NAK[(k + 26) % 27][1], nextName: NAK[(k + 1) % 27][0], nextDeva: NAK[(k + 1) % 27][1] },
       prev: go(k - 1), next: go(k + 1), padas: padas, lords: lords,
       h: { headline: headline, text: text, rise: rs.rise ? A.fmtIST(rs.rise) : 'Never sets', riseDir: rs.rise ? A.compass(riseAz) : '', transit: A.fmtIST(tr), alt: Math.round(top.alt), transitDir: A.compass(top.az), set: rs.set ? A.fmtIST(rs.set) : '—', setDir: rs.set ? A.compass(setAz) : '' },
-      visits: vis, sun: sun
+      visits: vis, sun: sun, abhi: abhi
     };
   }
 }

@@ -29,8 +29,11 @@
           <dl class="ui" style="margin: 30px 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px 24px; font-size: 15px;">
             <div style="border-top: 1px solid rgba(227,176,75,.4); padding-top: 10px;"><dt style="color: #9C927E;">Deity</dt><dd style="margin: 2px 0 0; font-family: Spectral, serif; font-size: 20px; color: #EFE4CC;">{{n.deity}}</dd></div>
             <div style="border-top: 1px solid rgba(227,176,75,.4); padding-top: 10px;"><dt style="color: #9C927E;">Junction star</dt><dd style="margin: 2px 0 0; font-family: Spectral, serif; font-size: 20px; color: #EFE4CC;">{{n.star}}</dd></div>
-            <div style="border-top: 1px solid rgba(227,176,75,.4); padding-top: 10px;"><dt style="color: #9C927E;">Lord</dt><dd style="margin: 2px 0 0; font-family: Spectral, serif; font-size: 20px; color: #EFE4CC;">{{n.lordEn}}</dd></div>
+            <div style="border-top: 1px solid rgba(227,176,75,.4); padding-top: 10px;"><dt style="color: #9C927E;">Ruling planet</dt><dd style="margin: 2px 0 0; font-family: Spectral, serif; font-size: 20px; color: #EFE4CC;">{{n.lordEn}}</dd></div>
           </dl>
+          <sc-if value="{{abhi.show}}" hint-placeholder-val="{{false}}">
+            <p class="ui" style="margin: 22px 0 0; padding-top: 12px; border-top: 1px solid rgba(239,228,204,.14); font-size: 15px; line-height: 1.55; color: #C9BEA4;"><span style="font-family: 'Tiro Devanagari Sanskrit', serif; font-size: 18px; color: #E3B04B;">अभिजित</span> · Abhijit, the 28th Nakshatra, is formed from the last 15 ghaṭī of Uttara Ashadha and the first 4 ghaṭī of Shravana: 19 ghaṭī, from 276° 40′ to 280° 53′ 20″. Its lord is Brahmā (Vidhi).{{abhi.now}}</p>
+          </sc-if>
         </div>
         <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px 18px; margin-top: 34px;">
           <button type="button" class="ring pk-a" onClick="{{prev}}" aria-label="Previous Nakshatra: {{n.prevName}}">‹</button>

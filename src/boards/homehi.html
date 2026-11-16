@@ -64,7 +64,7 @@
           <p style="margin: 6px 0 0; font-family: 'Rozha One', serif; font-size: clamp(76px, 9vw, 136px); line-height: 1; color: #E3B04B;">{{nakDeva}}</p>
           <p style="margin: 10px 0 0; font-weight: 300; font-size: 26px;"><span style="color: #9C927E;">{{nakName}}</span></p>
           <dl class="ui" style="margin: 36px 0 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 32px; font-size: 16px;">
-            <div style="border-top: 1px solid rgba(227,176,75,.35); padding-top: 10px;"><dt style="color: #9C927E;">देवता</dt><dd style="margin: 2px 0 0; font-family: Spectral, serif; font-size: 20px; color: #EFE4CC;">{{nakDeity}}</dd></div>
+            <div style="border-top: 1px solid rgba(227,176,75,.35); padding-top: 10px;"><dt style="color: #9C927E;">देवता</dt><dd style="margin: 2px 0 0; font-family: 'Tiro Devanagari Sanskrit', serif; font-size: 20px; color: #EFE4CC;">{{nakDeity}}</dd></div>
             <div style="border-top: 1px solid rgba(227,176,75,.35); padding-top: 10px;"><dt style="color: #9C927E;">योगतारा</dt><dd style="margin: 2px 0 0; font-family: Spectral, serif; font-size: 20px; color: #EFE4CC;">{{nakStar}}</dd></div>
             <div style="border-top: 1px solid rgba(227,176,75,.35); padding-top: 10px;"><dt style="color: #9C927E;">तिथि</dt><dd style="margin: 2px 0 0; font-family: Spectral, serif; font-size: 20px; color: #EFE4CC;">{{paksha}} {{tithiName}} · {{illum}}% प्रकाशित</dd></div>
             <div style="border-top: 1px solid rgba(227,176,75,.35); padding-top: 10px;"><dt style="color: #9C927E;">मास</dt><dd style="margin: 2px 0 0; font-family: Spectral, serif; font-size: 20px; color: #EFE4CC;">{{month}} · संवत् <span style="font-family: 'Tiro Devanagari Sanskrit', serif;">{{vsDeva}}</span></dd></div>
@@ -98,6 +98,9 @@
             <span style="font-weight: 300; font-size: 22px;">{{selName}}</span>
             <span class="ui" style="font-size: 15px; color: #9C927E;">{{selDeity}} · {{selStar}} · {{selSpan}}{{selNow}}</span>
           </div>
+          <sc-if value="{{selAbhi}}" hint-placeholder-val="{{false}}">
+            <p class="ui" style="margin: 8px 0 0; font-size: 15px; color: #C9BEA4;"><span style="font-family: 'Tiro Devanagari Sanskrit', serif; color: #E3B04B;">अभिजित</span> · अट्ठाईसवाँ नक्षत्र: उत्तराषाढ़ा की अन्तिम १५ घटी और श्रवण की प्रारम्भिक ४ घटी, कुल १९ घटी (276° 40′–280° 53′ 20″)। इसके स्वामी ब्रह्मा (विधि) हैं।</p>
+          </sc-if>
           <a href="/nakshatra/" class="line" style="margin-top: 8px;">किसी नक्षत्र को विस्तार से देखें →</a>
         </div>
       </div>

@@ -80,12 +80,12 @@ class Component extends DCLogic {
       ["Ashvini","अश्विनी","The Ashvins","β Arietis",33.96,8.5,"the horse-headed twins"],["Bharani","भरणी","Yama","41 Arietis",38.0,10.4,"the bearer"],["Krittika","कृत्तिका","Agni","the Pleiades",60.0,4.1,"the cutters"],
       ["Rohini","रोहिणी","Prajapati","Aldebaran",69.8,-5.5,"the red one"],["Mrigashira","मृगशिरा","Soma","λ Orionis",83.7,-13.4,"the deer's head"],["Ardra","आर्द्रा","Rudra","Betelgeuse",88.8,-16.0,"the moist one"],
       ["Punarvasu","पुनर्वसु","Aditi","Pollux",113.2,6.7,"the return of the light"],["Pushya","पुष्य","Brihaspati","δ Cancri",128.7,0.1,"the nourisher"],["Ashlesha","आश्लेषा","the Serpents","ε Hydrae",132.4,-11.1,"the embrace"],
-      ["Magha","मघा","the Pitris","Regulus",149.8,0.5,"the bountiful"],["Purva Phalguni","पूर्वफाल्गुनी","Bhaga","δ Leonis",161.3,14.3,"the former red one"],["Uttara Phalguni","उत्तरफाल्गुनी","Aryaman","Denebola",171.6,12.3,"the latter red one"],
-      ["Hasta","हस्त","Savitri","δ Corvi",193.4,-12.2,"the hand"],["Chitra","चित्रा","Tvashtri","Spica",203.8,-2.1,"the bright one"],["Svati","स्वाति","Vayu","Arcturus",204.2,30.7,"the self-going"],
+      ["Magha","मघा","the Pitris","Regulus",149.8,0.5,"the bountiful"],["Purva Phalguni","पूर्वाफाल्गुनी","Bhaga","δ Leonis",161.3,14.3,"the former red one"],["Uttara Phalguni","उत्तराफाल्गुनी","Aryaman","Denebola",171.6,12.3,"the latter red one"],
+      ["Hasta","हस्त","Ravi (Surya)","δ Corvi",193.4,-12.2,"the hand"],["Chitra","चित्रा","Tvashta","Spica",203.8,-2.1,"the bright one"],["Svati","स्वाति","Vayu","Arcturus",204.2,30.7,"the self-going"],
       ["Vishakha","विशाखा","Indra–Agni","α Librae",225.1,0.3,"the forked branch"],["Anuradha","अनुराधा","Mitra","δ Scorpii",242.6,-2.0,"following Radha"],["Jyeshtha","ज्येष्ठा","Indra","Antares",249.8,-4.6,"the eldest"],
       ["Mula","मूल","Nirriti","λ Scorpii",264.6,-13.8,"the root"],["Purva Ashadha","पूर्वाषाढा","Apas","δ Sagittarii",274.6,-6.5,"the former unconquered"],["Uttara Ashadha","उत्तराषाढा","the Vishvedevas","σ Sagittarii",282.4,-3.4,"the latter unconquered"],
       ["Shravana","श्रवण","Vishnu","Altair",301.8,29.3,"the ear"],["Dhanishtha","धनिष्ठा","the Vasus","β Delphini",316.3,31.9,"the wealthiest"],["Shatabhisha","शतभिषा","Varuna","λ Aquarii",341.6,-0.4,"a hundred healers"],
-      ["Purva Bhadrapada","पूर्वभाद्रपदा","Aja Ekapada","Markab",353.5,19.4,"the former lucky feet"],["Uttara Bhadrapada","उत्तरभाद्रपदा","Ahir Budhnya","Algenib",9.2,12.6,"the latter lucky feet"],["Revati","रेवती","Pushan","ζ Piscium",19.9,-0.2,"the wealthy"]
+      ["Purva Bhadrapada","पूर्वाभाद्रपदा","Aja Ekapada","Markab",353.5,19.4,"the former lucky feet"],["Uttara Bhadrapada","उत्तराभाद्रपदा","Ahir Budhnya","Algenib",9.2,12.6,"the latter lucky feet"],["Revati","रेवती","Pushan","ζ Piscium",19.9,-0.2,"the wealthy"]
     ];
     var rad = function (x) { return x * Math.PI / 180; }, norm = function (x) { return ((x % 360) + 360) % 360; };
     var now = new Date(), d = now.getTime() / 864e5 + 2440587.5 - 2451545.0, Ms = rad(357.529 + 0.98560028 * d);
@@ -376,7 +376,7 @@ class Component extends DCLogic {
       month: MONTH[sk.monthIdx], vsDeva: dn(sk.vs),
       play: { on: S.playing ? 'true' : 'false', cls: S.playing ? 'on' : '', label: S.playing ? 'Pause' : (S.done ? 'Play again' : (S.away ? 'Keep playing' : 'Play a month')), icon: S.playing ? 'M2 1h3v10H2zM7 1h3v10H7z' : 'M2 1l9 5-9 5z', away: !!S.away,
         line: S.line || this.playLine_(Date.now()), toggle: function () { self.playToggle(); }, tonight: function () { self.playTonight(); } },
-      list27: list27, selDeva: s[1], selName: s[0], selDeity: s[2], selStar: s[3], selSpan: fmt(sel * sk.span) + '–' + fmt((sel + 1) * sk.span), selNow: sel === cur ? ' · the Moon tonight' : '',
+      list27: list27, selDeva: s[1], selName: s[0], selDeity: s[2], selStar: s[3], selSpan: fmt(sel * sk.span) + '–' + fmt((sel + 1) * sk.span), selNow: sel === cur ? ' · the Moon tonight' : '', selAbhi: sel === 20 || sel === 21,
       branches: branches, layers: layers, layer: layer,
       records: [{ g: 'siddhanta', title: '[Manuscript on the Nakshatras]', branch: 'Siddhānta' }, { g: 'samhita', title: '[Manuscript on muhūrta]', branch: 'Saṃhitā' }, { g: 'hora', title: '[Manuscript on the birth chart]', branch: 'Horā' }],
       story: story, gifts: gifts, giftTitle: GIFTS[gi].title.toLowerCase(),
