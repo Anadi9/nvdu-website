@@ -4,17 +4,21 @@ import Emblem from './Emblem.astro';
 import { R, type Lang } from '../lib/routes';
 interface Props { lang?: Lang }
 const hi = (Astro.props.lang ?? 'en') === 'hi';
+// Builder credit. Set ANTA_URL to turn the name into a link.
+const ANTA_URL = '';
 const T = hi ? {
   about: '1946 से जोशी परिवार द्वारा सँभाली गई वेधशाला और पाण्डुलिपि पुस्तकालय।',
   explore: 'देखें', e: ['सत्ताईस नक्षत्र', 'ज्योतिष सीखें', 'पाण्डुलिपियाँ', 'पत्रिका'],
   part: 'जुड़ें', p: ['हमारी कथा', 'यात्रा की योजना', 'धागा बाँधें', 'मासिक आकाश-दर्शिका'],
   find: 'पता', addr: ['दशरथाञ्चल पहाड़ी, देवप्रयाग', 'टिहरी गढ़वाल, उत्तराखण्ड'],
+  credit: 'वेबसाइट:',
   note: 'इन पृष्ठों का आकाश देवप्रयाग के लिए लगभग एक अंश की शुद्धता से अभी गिना जाता है। इतिहास और अनुवाद परिवार की जाँच के बाद।',
 } : {
   about: 'An observatory and manuscript library kept by the Joshi family since 1946.',
   explore: 'EXPLORE', e: ['The 27 Nakshatras', 'Learn Jyotisha', 'The manuscripts', 'Journal'],
   part: 'TAKE PART', p: ['Our story', 'Plan a visit', 'Tie a thread', 'The monthly sky guide'],
   find: 'FIND US', addr: ['Dashrathanchal hill, Devprayag', 'Tehri Garhwal, Uttarakhand'],
+  credit: 'Website by',
   note: "The sky on these pages is computed live for Devprayag, to about a degree. History and translations pending the family's review.",
 };
 ---
@@ -32,5 +36,6 @@ const T = hi ? {
   <div class="w ui" style="padding-top: 18px; padding-bottom: 36px; border-top: 1px solid rgba(239,228,204,.08); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; font-size: 14px; color: #8C8474;">
     <span style="font-family: 'Tiro Devanagari Sanskrit', serif; font-size: 17px; color: #E3B04B;">॥ इति शुभम् ॥</span>
     <span>{T.note}</span>
+    <span>{T.credit} {ANTA_URL ? <a href={ANTA_URL} target="_blank" rel="noopener" style="color: #B8AE98; text-decoration: none; border-bottom: 1px solid rgba(227,176,75,.35);">Anta</a> : <span style="color: #B8AE98;">Anta</span>}</span>
   </div>
 </footer>
