@@ -5,7 +5,7 @@ import { R, type Lang } from '../lib/routes';
 interface Props { lang?: Lang }
 const hi = (Astro.props.lang ?? 'en') === 'hi';
 // Builder credit. Set ANTA_URL to turn the name into a link.
-const ANTA_URL = '';
+const ANTA_URL = 'https://theanta.com';
 const T = hi ? {
   about: '1946 से जोशी परिवार द्वारा सँभाली गई वेधशाला और पाण्डुलिपि पुस्तकालय।',
   explore: 'देखें', e: ['सत्ताईस नक्षत्र', 'ज्योतिष सीखें', 'पाण्डुलिपियाँ', 'पत्रिका'],
