@@ -36,6 +36,17 @@ const T = hi ? {
   <div class="w ui" style="padding-top: 18px; padding-bottom: 36px; border-top: 1px solid rgba(239,228,204,.08); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; font-size: 14px; color: #8C8474;">
     <span style="font-family: 'Tiro Devanagari Sanskrit', serif; font-size: 17px; color: #E3B04B;">॥ इति शुभम् ॥</span>
     <span>{T.note}</span>
-    <span>{T.credit} {ANTA_URL ? <a href={ANTA_URL} target="_blank" rel="noopener" style="color: #B8AE98; text-decoration: none; border-bottom: 1px solid rgba(227,176,75,.35);">Anta</a> : <span style="color: #B8AE98;">Anta</span>}</span>
+    <span class="anta-credit">{T.credit} {ANTA_URL
+      ? <a class="anta-name" href={ANTA_URL} target="_blank" rel="noopener"><span class="anta-mark" aria-hidden="true"></span>Anta</a>
+      : <span class="anta-name"><span class="anta-mark" aria-hidden="true"></span>Anta</span>}</span>
   </div>
 </footer>
+
+<style>
+  .anta-credit { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; letter-spacing: .02em; color: #8C8474; }
+  .anta-name { display: inline-flex; align-items: center; gap: 5px; color: #B8AE98; text-decoration: none; transition: color .2s; }
+  /* The mark is a mask, so its colour follows the text and can switch to Anta's gradient on hover. */
+  .anta-mark { width: 21px; height: 12px; background: currentColor; -webkit-mask: url(/img/anta-mark.svg) center / contain no-repeat; mask: url(/img/anta-mark.svg) center / contain no-repeat; }
+  a.anta-name:hover, a.anta-name:focus-visible { color: #EFE4CC; }
+  a.anta-name:hover .anta-mark, a.anta-name:focus-visible .anta-mark { background: linear-gradient(90deg, #EC0F55, #6E005E); }
+</style>
